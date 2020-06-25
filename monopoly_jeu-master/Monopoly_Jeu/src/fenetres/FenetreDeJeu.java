@@ -2,7 +2,7 @@ package fenetres;
 
 import java.util.ArrayList;
 import java.util.Random;
-import cases.CaseCompetence;
+import cases.CaseSalarie;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -33,10 +33,10 @@ public class FenetreDeJeu {
 
 	private Stage stage;
 	private StackPane root;
-	private Label l_ParcGratuit = new Label("0€");
+	private Label l_OpenSpace = new Label("0€");
 	private Label l_Message = new Label("");
 	private ArrayList <Label> l_Joueurs = new ArrayList <Label>();
-	private ArrayList <Label> l_ListeCompetences = new ArrayList <Label>();
+	private ArrayList <Label> l_ListeSalaries = new ArrayList <Label>();
 	private ArrayList <Circle> l_Pions = new ArrayList <Circle>();
 	private ArrayList<Label> l_Logs = new ArrayList<Label>();
 	private ArrayList<Image> imageDes = new ArrayList<Image>();
@@ -48,9 +48,9 @@ public class FenetreDeJeu {
 	private FenetreDemarrage fd = new FenetreDemarrage(this);
 	private FenetreCarteChance fch = new FenetreCarteChance(this);
 	private FenetreCarteCommunaute fco = new FenetreCarteCommunaute(this);
-	private FenetreAcheterCompetence fat = new FenetreAcheterCompetence(this);
+	private FenetreEmbaucheSalarie fat = new FenetreEmbaucheSalarie(this);
 	private FenetreSortirArretMaladie farretmaladie = new FenetreSortirArretMaladie(this);
-	private FenetreActionSurCompetence fact_ter = new FenetreActionSurCompetence(this);
+	private FenetreActionSurSalarie fenSal = new FenetreActionSurSalarie(this);
 	private Partie partie;
 
 	/**
@@ -65,13 +65,14 @@ public class FenetreDeJeu {
 		this.stage = primaryStage;
 		root = new StackPane();
 		root.setOnMouseClicked(new EvtClicRoot());
+		
 		initRoot();
 
 		Scene scene = new Scene(root,655,655);
 		stage.setScene(scene);
 		stage.setTitle("UPM-Monopoly");
 
-		fd.getStage().show();
+		fd.getStage().show(); 
 	}
 
 	/**
@@ -79,7 +80,8 @@ public class FenetreDeJeu {
 	 */
 	@SuppressWarnings("static-access")
 	private void initRoot() {
-		root.setStyle("-fx-background-image: url('images/plateau.png'); -fx-background-repeat: no-repeat");
+		root.setStyle("-fx-background-image: url('images/plateau.png'); -fx-background-repeat: no-repeat;");
+		
 		root.setAlignment(Pos.TOP_LEFT);
 
 		for(int i=1; i<7; i++)
@@ -94,9 +96,9 @@ public class FenetreDeJeu {
 		root.getChildren().add(Des.get(0));
 		root.getChildren().add(Des.get(1));
 
-		l_ParcGratuit.setTranslateX(3);
-		l_ParcGratuit.setTranslateY(68);
-		root.getChildren().add(l_ParcGratuit);
+		l_OpenSpace.setTranslateX(3);
+		l_OpenSpace.setTranslateY(68);
+		root.getChildren().add(l_OpenSpace);
 
 		l_Message.setFont(Font.font("Arial", 16));
 		l_Message.setTranslateX(95);
@@ -149,7 +151,7 @@ public class FenetreDeJeu {
 	 * Méthode permettant de lancer une partie. 
 	 * Instanciation d'une partie avec le nombre de joueurs rentré
 	 * C'est ci que les comptes des joueurs et les éléments graphique vont être initialisés
-	 * la liste de leurs Competences et les pions.
+	 * la liste de leurs Salaries et les pions.
 	 * @param nbJoueurs int
 	 */
 	public void setPartie(int nbJoueurs, ArrayList<String> nomsDesJoueurs) {
@@ -169,11 +171,11 @@ public class FenetreDeJeu {
 			l_Joueurs.get(i).setFont(Font.font("Arial", 15));
 			root.getChildren().add(l_Joueurs.get(i));
 
-			l_ListeCompetences.add(new Label("\n"));
-			l_ListeCompetences.get(i).setTranslateX(95+i*120);
-			l_ListeCompetences.get(i).setTranslateY(140);
-			l_ListeCompetences.get(i).setMaxWidth(110);
-			root.getChildren().add(l_ListeCompetences.get(i));
+			l_ListeSalaries.add(new Label("\n"));
+			l_ListeSalaries.get(i).setTranslateX(95+i*120);
+			l_ListeSalaries.get(i).setTranslateY(140);
+			l_ListeSalaries.get(i).setMaxWidth(110);
+			root.getChildren().add(l_ListeSalaries.get(i));
 
 			l_Pions.add(new Circle(7));
 			l_Pions.get(i).setFill(Couleurs[i]);
@@ -218,14 +220,14 @@ public class FenetreDeJeu {
 		Platform.runLater(new Runnable() {
             @Override public void run() {
 
-        		l_ParcGratuit.setText(""+pm.getCase(20).getPrix()+"€");
+        		l_OpenSpace.setText(""+pm.getCase(20).getPrix()+"€");
 
         		for(int i=0; i<pm.getNbJoueurs(); i++) {
             		l_Joueurs.get(i).setText(""+pm.getJoueur(i).getArgent()+"€ "+(pm.getJoueur(i).getCarteSortieArretMaladie()?"[S]":""));
 
-            		String listeCompetences = pm.getJoueur(i).getListeStringCompetences();
-            		listeCompetences = listeCompetences.replaceAll(",", "\n");
-            		l_ListeCompetences.get(i).setText(listeCompetences);
+            		String listeSalaries = pm.getJoueur(i).getListeStringSalaries();
+            		listeSalaries = listeSalaries.replaceAll(",", "\n");
+            		l_ListeSalaries.get(i).setText(listeSalaries);
         		}
 
             }
@@ -233,10 +235,10 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Affiche la fenêtre {@link FenetreAcheterCompetence}.
-	 * @see FenetreAcheterCompetence
+	 * Affiche la fenêtre FenetreEmbaucheSalarie
+	 * @see FenetreEmbaucheSalarie
 	 */
-	public void afficherFenetreAchatCompetence() {
+	public void afficherFenetreEmbaucherSalarie() {
 
 		Platform.runLater(new Runnable() {
             @Override public void run() {
@@ -247,7 +249,7 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Affiche la fenêtre {@link FenetreSortirArretMaladie}.
+	 * Affiche la fenêtre FenetreSortirArretMaladie
 	 * @see FenetreSortirArretMaladie
 	 */
 	public void afficherFenetreArretMaladie() {
@@ -261,7 +263,7 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Affiche la fenêtre {@link FenetreCarteChance}. <br>
+	 * Affiche la fenêtre FenetreCarteChance}. 
 	 * Les paramètres String Intitule et String description passés seront utilisés dans la fenêtre pour indiquer qu'elle carte on a tiré.
 	 * @param Intitule String
 	 * @param description String
@@ -299,46 +301,46 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Méthode plaçant un Signet désignant le propriétaire du Competence quand le joueur achète le Competence.
+	 * Méthode plaçant un SignetPatron désignant le propriétaire du Salarie quand le joueur achète le Salarie.
 	 * @param joueur JoueurMonopoly
 	 * @param cells Case
 	 * @see JoueurMonopoly
 	 * @see Case
 	 */
-	public void setSignetProprietaire(JoueurMonopoly joueur, Case cells) {
+	public void setSignetPatron(JoueurMonopoly joueur, Case cells) {
 
 		Platform.runLater(new Runnable() {
             @Override public void run() {
 
-            	cells.getSignet().setFill(getPionActif().getFill());
+            	cells.getSignetPatron().setFill(getPionActif().getFill());
 
             	double x = 100, y = 100;
         		int pos = joueur.getPosition();
 
-        		if(cells.getSignet().getPoints().isEmpty())
-        			root.getChildren().add(cells.getSignet());
+        		if(cells.getSignetPatron().getPoints().isEmpty())
+        			root.getChildren().add(cells.getSignetPatron());
 
         		if(pos > 0 && pos < 10) {
-        			if(cells.getSignet().getPoints().isEmpty())
-        				cells.getSignet().getPoints().addAll(new Double[] {0.,0.,0.,12.,12.,12.});
+        			if(cells.getSignetPatron().getPoints().isEmpty())
+        				cells.getSignetPatron().getPoints().addAll(new Double[] {0.,0.,0.,12.,12.,12.});
         			x = 517 - ((pos-1) * 54);
         			y = 642;
         		}
         		else if(pos > 10 && pos < 20) {
-        			if(cells.getSignet().getPoints().isEmpty())
-        				cells.getSignet().getPoints().addAll(new Double[] {0.,12.,12.,12.,12.,0.});
+        			if(cells.getSignetPatron().getPoints().isEmpty())
+        				cells.getSignetPatron().getPoints().addAll(new Double[] {0.,12.,12.,12.,12.,0.});
         			x = 51;
         			y = 558 - ((pos-11) * 54);
         		}
         		else if(pos > 20 && pos < 30) {
-        			if(cells.getSignet().getPoints().isEmpty())
-        				cells.getSignet().getPoints().addAll(new Double[] {0.,0.,0.,12.,12.,12.});
+        			if(cells.getSignetPatron().getPoints().isEmpty())
+        				cells.getSignetPatron().getPoints().addAll(new Double[] {0.,0.,0.,12.,12.,12.});
         			x = 85 + ((pos-21) * 54);
         			y = 51;
         		}
         		else if(pos > 30 && pos < 40) {
-        				if(cells.getSignet().getPoints().isEmpty())
-        			cells.getSignet().getPoints().addAll(new Double[] {0.,0.,12.,0.,0.,12.});
+        				if(cells.getSignetPatron().getPoints().isEmpty())
+        			cells.getSignetPatron().getPoints().addAll(new Double[] {0.,0.,12.,0.,0.,12.});
         			x = 592;
         			y = 85 + ((pos-31) * 54);
         		}
@@ -350,40 +352,40 @@ public class FenetreDeJeu {
         		else if(pos == 35)
         			x-=21;
 
-        		cells.getSignet().setTranslateX(x);
-        		cells.getSignet().setTranslateY(y);
+        		cells.getSignetPatron().setTranslateX(x);
+        		cells.getSignetPatron().setTranslateY(y);
             }
         });
 	}
 
 	/**
-	 * Méthode ajoutant un {@link Polygon} Competence dans la fenêtre principale en fonction de la {@link Case} passée en paramètre.
+	 * Méthode ajoutant un {@link Polygon} Salarie dans la fenêtre principale en fonction de la {@link Case} passée en paramètre.
 	 * @param cells Case
 	 * @see Case
 	 */
-	public void setCompetence(CaseCompetence cells){
+	public void setCompetence(CaseSalarie cells){
 
 		Platform.runLater(new Runnable() {
             @Override public void run() {
 
-            	Polygon Competence = cells.Competences.get(cells.getNbCompetence());
+            	Polygon Salarie = cells.Salaries.get(cells.getNbCompetence());
 
-            	Competence.setFill(Color.BLACK);
+            	Salarie.setFill(Color.BLACK);
 
             	int x = -50;
             	int y = -50;
             	int pos = cells.getId();
 
-            	if(cells.getSignet().getPoints().isEmpty())
-            		root.getChildren().add(Competence);
+            	if(cells.getSignetPatron().getPoints().isEmpty())
+            		root.getChildren().add(Salarie);
 
             	boolean hotel = (cells.getNbCompetence() == 5);
             	if(!hotel)
-            		Competence.getPoints().addAll(new Double[] {0., 11., 0., 3., 5., 0., 10., 3., 10., 11.});
+            		Salarie.getPoints().addAll(new Double[] {0., 11., 0., 3., 5., 0., 10., 3., 10., 11.});
             	else if((pos > 0 && pos < 10) || (pos > 20 && pos < 30))
-            		Competence.getPoints().addAll(new Double[] {0., 0., 0., 11., 46., 11., 46., 0.});
+            		Salarie.getPoints().addAll(new Double[] {0., 0., 0., 11., 46., 11., 46., 0.});
             	else
-            		Competence.getPoints().addAll(new Double[] {0., 0., 0., 50., 10., 50., 10., 0.});
+            		Salarie.getPoints().addAll(new Double[] {0., 0., 0., 50., 10., 50., 10., 0.});
 
 
             	if(pos > 0 && pos < 10) {
@@ -403,8 +405,8 @@ public class FenetreDeJeu {
         			y = 87 + ((pos-31) * 54) + (hotel?0:(cells.getNbCompetence()-1)*13);
         		}
 
-            	Competence.setTranslateX(x);
-            	Competence.setTranslateY(y);
+            	Salarie.setTranslateX(x);
+            	Salarie.setTranslateY(y);
 
             }
 		});
@@ -540,9 +542,9 @@ public class FenetreDeJeu {
 	 * Réinitialise les éléments graphiques de la fenêtre tels que les labels, les pions et les logs.
 	 */
 	public void resetElementsGraphiques() {
-		l_ParcGratuit.setText("0€");
+		l_OpenSpace.setText("0€");
 		l_Joueurs.clear();
-		l_ListeCompetences.clear();
+		l_ListeSalaries.clear();
 		l_Pions.clear();
 		l_Logs.clear();
 	}
@@ -578,10 +580,10 @@ public class FenetreDeJeu {
 	/**
 	 * Évènement lorqu'on clic dans la StackPane root :
 	 * en fonction des coordonnées du pointeurs, on peux obtenir la position de la case visée. <br>
-	 * Si cette position est une position valide (càd que l'on clic sur une {@link CaseCompetence} qui appartient au joueur dont
-	 * c'est le tour), alors on peut déclencher l'affichage d'une {@link FenetreAcheterCompetence} avec en paramètre la position cliquée.
-	 * @see CaseCompetence
-	 * @see FenetreAcheterCompetence
+	 * Si cette position est une position valide (càd que l'on clic sur une {@link CaseSalarie} qui appartient au joueur dont
+	 * c'est le tour), alors on peut déclencher l'affichage d'une {@link FenetreEmbaucheSalarie} avec en paramètre la position cliquée.
+	 * @see CaseSalarie
+	 * @see FenetreEmbaucheSalarie
 	 */
 	private class EvtClicRoot implements EventHandler<MouseEvent> {
 
@@ -618,12 +620,12 @@ public class FenetreDeJeu {
 				CasesInterdites.add(i);
 			}
 			CasesInterdites.add(-1);
-			for(Case t:getPartie().getPM().getJoueurActif().getListeCompetences()) {
+			for(Case t:getPartie().getPM().getJoueurActif().getListeSalaries()) {
 				CasesInterdites.remove((Object)(t.getId()));
 			}
 
 			if(!CasesInterdites.contains(pos)) {
-				fact_ter.afficherFenetre(pos);
+				fenSal.afficherFenetre(pos);
 			}
 		}
 	}

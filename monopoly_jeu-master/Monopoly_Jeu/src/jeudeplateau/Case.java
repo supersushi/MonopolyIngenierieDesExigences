@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import cases.CaseChance;
 import cases.CaseCommunaute;
 import cases.CaseDepart;
-import cases.CaseGare;
 import cases.CaseImpots;
-import cases.CaseOpenSpace;
 import cases.CaseServicePublic;
 import fenetres.FenetreDeJeu;
 import javafx.scene.shape.Polygon;
@@ -24,7 +22,7 @@ public abstract class Case {
 	private int id = 0;
 	private int valeur = 0;
 	private Polygon signet = new Polygon();
-	public ArrayList<Polygon> Competences = new ArrayList<Polygon>();
+	public ArrayList<Polygon> Salaries = new ArrayList<Polygon>();
 
 	/**
 	 * Définit le nom de la case
@@ -36,8 +34,8 @@ public abstract class Case {
 		this.valeur = valeur;
 
 		for(int i=0; i<6; i++) {
-			Polygon Competence = new Polygon();
-			Competences.add(Competence);
+			Polygon Salarie = new Polygon();
+			Salaries.add(Salarie);
 		}
 	}
 
@@ -66,7 +64,7 @@ public abstract class Case {
 	}
 
 	/**
-	 * Renvoie le prix de la competence/société
+	 * Renvoie salaire du salarie
 	 * @return prix
 	 */
 	public int getPrix() {
@@ -74,7 +72,7 @@ public abstract class Case {
 	}
 
 	/**
-	 * Définit le prix le prix de la competence/société
+	 * Définit le salaire du salarie
 	 * @param valeur int
 	 */
 	public void setPrix(int valeur) {
@@ -86,12 +84,12 @@ public abstract class Case {
 	 * Marque la case en fonction de la couleur du joueur
 	 * @return Signet
 	 */
-	public Polygon getSignet(){
+	public Polygon getSignetPatron(){
 		return this.signet;
 	}
 
 	/**
-	 * Définit un Signet de possession d'une case
+	 * Définit un signet de possession d'un salarié
 	 * @param r Polygon
 	 */
 	public void setSignet(Polygon r){
@@ -101,10 +99,10 @@ public abstract class Case {
 	/* PARTIE ABSTRAITE */
 
 	/**
-	 * Renvoie le propriétaire/directeur d'une case
-	 * @return proprietaire
+	 * Renvoie le directeur d'un salarié
+	 * @return Patron
 	 */
-	public abstract JoueurMonopoly getProprietaire();
+	public abstract JoueurMonopoly getPatron();
 
 	/**
 	 * Renvoie la couleur de la case
@@ -113,20 +111,20 @@ public abstract class Case {
 	public abstract String getCouleur();
 
 	/**
-	 * Renvoie le loyer de la case en fonction du nombre de competences présente sur la case
+	 * Renvoie le salaire du salarié en fonction du nombre de compétences 
 	 * @return apayer
 	 */
-	public abstract int getLoyer();
+	public abstract int getSalaire();
 
 	/**
-	 * Renvoie le prix d'une Competence
-	 * @return prixCompetence
+	 * Renvoie le prix d'une Salarie
+	 * @return prixSalarie
 	 */
 	public abstract int getPrixCompetence();
 
 	/**
-	 * Rentourne le nombre de competences sur une case
-	 * @return nbCompetence
+	 * Rentourne le nombre de competence d'un salarie 
+	 * @return nbSalarie
 	 */
 	public abstract int getNbCompetence();
 
@@ -137,20 +135,20 @@ public abstract class Case {
 	public abstract boolean getRep();
 
 	/**
-	 * Détermine si un joueur peut acquérir une competence. 
+	 * Détermine si un joueur peut monter en competence. 
 	 * Possible lorsque:
-	 * - Le joueur possède toutes les compétences d'une même couleur
-	 * - Le nombre de competences sur chaque case doit être identique pour en rajouter (ex : 1 competence sur chaque case d'une couleur pour  en poser une deuxième)
+	 * - Le joueur possède toutes les salaries d'une même couleur
+	 * - Le nombre de competence sur chaque case doit être identique pour en rajouter (ex : 1 Salarie sur chaque case d'une couleur pour  en poser une deuxième)
 	 * @return boolean
 	 * @see JoueurMonopoly
 	 */
-	public abstract boolean getPeutAcheterCompetence();
+	public abstract boolean getPeutMonterEnCompetence();
 
 	/**
-	 * Définition du propriétaire/directeur de la case.
+	 * Définition du directeur de la case.
 	 * @param j : joueur
 	 */
-	public abstract void setProprietaire(JoueurMonopoly j);
+	public abstract void setPatron(JoueurMonopoly j);
 
 	/**
 	 * Définition de la réponse du joueur via les boutons de l'interface.
@@ -173,13 +171,13 @@ public abstract class Case {
 	 * @see CaseDepart
 	 * @see CaseCommunaute
 	 * @see CaseImpots
-	 * @see CaseGare
+	 * @see CaseClient
 	 * @see CaseChance
 	 * @see CaseArretMaladie
 	 * @see CaseServicePublic
-	 * @see CaseParcGratuit
+	 * @see CaseOpenSpace
 	 * @see CaseAllerArretMaladie
-	 * @see CaseTerrain
+	 * @see CaseSalarie
 	 */
 	public abstract void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu);
 

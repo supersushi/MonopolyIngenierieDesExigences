@@ -22,7 +22,7 @@ public class CaseImpots extends Case {
 
 	/**
 	 * Cette méthode retire de au joueur et crédite le Parc Gratuit
-	 * @see CaseParcGratuit
+	 * @see CaseOpenSpace
 	 * @see jeudeplateau.Joueur
 	 * @see Case
 	 */
@@ -36,8 +36,8 @@ public class CaseImpots extends Case {
 
 		joueur.retirerArgent(this.getPrix());
 
-		int nouveauMontantParcGratuit = plateau.getCase(20).getPrix() + this.getPrix();
-		plateau.getCase(20).setPrix(nouveauMontantParcGratuit);
+		int nouveauMontantOpenSpace = plateau.getCase(20).getPrix() + this.getPrix();
+		plateau.getCase(20).setPrix(nouveauMontantOpenSpace);
 	}
 
 	
@@ -50,7 +50,7 @@ public class CaseImpots extends Case {
 	}
 
 	@Override
-	public JoueurMonopoly getProprietaire() {
+	public JoueurMonopoly getPatron() {
 		return null;
 	}
 
@@ -60,7 +60,7 @@ public class CaseImpots extends Case {
 	}
 
 	@Override
-	public int getLoyer() {
+	public int getSalaire() {
 		return 0;
 	}
 
@@ -80,12 +80,12 @@ public class CaseImpots extends Case {
 	}
 
 	@Override
-	public boolean getPeutAcheterCompetence() {
+	public boolean getPeutMonterEnCompetence() {
 		return false;
 	}
 
 	@Override
-	public void setProprietaire(JoueurMonopoly j) {}
+	public void setPatron(JoueurMonopoly j) {}
 
 	@Override
 	public void setRep(boolean b) {}

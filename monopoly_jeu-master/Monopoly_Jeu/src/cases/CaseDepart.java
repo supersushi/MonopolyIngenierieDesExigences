@@ -29,8 +29,8 @@ public class CaseDepart extends Case {
 		Console es = new Console();
 
 		joueur.ajouterArgent(200);
-		es.println("-> " + joueur.getNom() + " s'arrête sur la case départ et reçoit 200€  !");
-		if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " s'arrête sur la case départ et reçoit 200€ !");
+		es.println("-> " + joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€  !");
+		if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€ !");
 	}
 
 
@@ -43,7 +43,7 @@ public class CaseDepart extends Case {
 	}
 	
 	@Override
-	public JoueurMonopoly getProprietaire() {
+	public JoueurMonopoly getPatron() {
 		return null;
 	}
 
@@ -53,7 +53,7 @@ public class CaseDepart extends Case {
 	}
 
 	@Override
-	public int getLoyer() {
+	public int getSalaire() {
 		return 0;
 	}
 
@@ -73,12 +73,12 @@ public class CaseDepart extends Case {
 	}
 
 	@Override
-	public boolean getPeutAcheterCompetence() {
+	public boolean getPeutMonterEnCompetence() {
 		return false;
 	}
 
 	@Override
-	public void setProprietaire(JoueurMonopoly j) {}
+	public void setPatron(JoueurMonopoly j) {}
 
 	@Override
 	public void setRep(boolean b) {}

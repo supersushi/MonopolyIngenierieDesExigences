@@ -21,7 +21,7 @@ public class JoueurMonopoly extends Joueur {
 	private boolean possedeCarteSortieArretMaladie = false;
 	private int nombreEntreprisesPossedees = 0;
 	private int nombreServicesPossedes = 0;
-	private ArrayList<Case> Competences = new ArrayList<Case>();
+	private ArrayList<Case> Salaries = new ArrayList<Case>();
 	private ArrayList<String> couleurs = new ArrayList<String>();
 
 	/* CONSTRUCTEUR */
@@ -88,7 +88,7 @@ public class JoueurMonopoly extends Joueur {
 		possedeCarteSortieArretMaladie = sortie;
 	}
 
-	/* PARTIE COMPETENCES GRADES ENTREPRISE */
+	/* PARTIE Salaries GRADES ENTREPRISE */
 
 	
 
@@ -132,10 +132,10 @@ public class JoueurMonopoly extends Joueur {
 	/**
 	 * Ajoute une compétence à la liste 
 	 * 
-	 * @param competence Case
+	 * @param Salarie Case
 	 */
-	public void ajouterCompetence(Case Competence) {
-		this.Competences.add(Competence);
+	public void ajouterSalarie(Case Salarie) {
+		this.Salaries.add(Salarie);
 	}
 
 	/**
@@ -144,9 +144,9 @@ public class JoueurMonopoly extends Joueur {
 	 * @return s
 	 * @see Case
 	 */
-	public String getListeStringCompetences() {
+	public String getListeStringSalaries() {
 		String s = "";
-		for (Case t : this.Competences) {
+		for (Case t : this.Salaries) {
 			s += (t.getNom() + ",");
 		}
 		return s;
@@ -155,10 +155,10 @@ public class JoueurMonopoly extends Joueur {
 	/**
 	 * Retourne la liste de compétence qu'a acquis un joueur
 	 * 
-	 * @return Competences
+	 * @return Salaries
 	 */
-	public ArrayList<Case> getListeCompetences() {
-		return this.Competences;
+	public ArrayList<Case> getListeSalaries() {
+		return this.Salaries;
 	}
 
 	
@@ -174,7 +174,7 @@ public class JoueurMonopoly extends Joueur {
 
 		int brun = 0, turquoise = 0, mauve = 0, orange = 0, rouge = 0, jaune = 0, vert = 0, bleu = 0;
 
-		for (Case t : this.getListeCompetences()) {
+		for (Case t : this.getListeSalaries()) {
 
 			if (t.getCouleur() == "brun")
 				brun += 1;
@@ -271,24 +271,24 @@ public class JoueurMonopoly extends Joueur {
 	public void setEstFauche(boolean Fauche) {
 		this.estFauche = Fauche;
 		clearSignets();
-		this.Competences.clear();
+		this.Salaries.clear();
 	}
 
 	/**
-	 * Supprime le Signet de possession d'un Competence
+	 * Supprime le Signet de possession d'un Salarie
 	 * 
 	 * @see Case
 	 */
 	public void clearSignets() {
 
-		for (Case t : getListeCompetences()) {
-			t.setProprietaire(null);
+		for (Case t : getListeSalaries()) {
+			t.setPatron(null);
 
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
 
-					t.getSignet().setFill(Color.TRANSPARENT);
+					t.getSignetPatron().setFill(Color.TRANSPARENT);
 				}
 			});
 		}
@@ -299,7 +299,7 @@ public class JoueurMonopoly extends Joueur {
 		return "JoueurMonopoly [" + super.toString() + ", argent=" + argent + ", estFauche=" + estFauche
 				+ ", estMalade=" + estMalade + ", toursEnArretMaladie=" + nbtoursArret + ", possedeCarteSortieArretMaladie="
 				+ possedeCarteSortieArretMaladie + ", nombreEntreprisesPossedees=" + nombreEntreprisesPossedees
-				+ ", nombreServicesPossedes=" + nombreServicesPossedes + ", \nCompetences=[" + getListeStringCompetences()
+				+ ", nombreServicesPossedes=" + nombreServicesPossedes + ", \nSalaries=[" + getListeStringSalaries()
 				+ "], \ncouleurs=" + getListeCouleur() + "]";
 	}
 }

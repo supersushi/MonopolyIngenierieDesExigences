@@ -50,9 +50,9 @@ public class CartePayer extends Carte {
 		else {
 			joueur.retirerArgent(montant);
 			plateau.getCase(20).setPrix(plateau.getCase(20).getPrix() + montant);
-			es.println("-> "+joueur.getNom()+" dépose "+montant+"€ au parc gratuit");
+			es.println("-> "+joueur.getNom()+" dépose "+montant+"€ dans l'open space");
 			if(fp !=null)
-				fp.afficherMessage(joueur.getNom()+" dépose "+montant+"€ au parc gratuit");
+				fp.afficherMessage(joueur.getNom()+" dépose "+montant+"€ dans l'open space");
 		}
 	}
 	public int getMontant(){

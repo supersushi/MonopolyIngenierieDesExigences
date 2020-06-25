@@ -14,7 +14,7 @@ import jeumonopoly.PlateauMonopoly;
 
 public class CaseServicePublic extends Case {
 
-	private JoueurMonopoly proprietaire;
+	private JoueurMonopoly Patron;
 	private boolean reponseQuestion = false;
 
 	/**
@@ -28,7 +28,7 @@ public class CaseServicePublic extends Case {
 	@Override
 	/**A VOIR
 	 * Méthode gérant l'acquisition d'une entreprise par un joueur <br />
-	 * Gère le changement du loyer en fonction du nombre d'entreprise possédé par un joueur
+	 * Gère le changement du Salaire en fonction du nombre d'entreprise possédé par un joueur
 	 * @see Joueur
 	 * @see Case
 	 */
@@ -36,10 +36,10 @@ public class CaseServicePublic extends Case {
 
 		Console es = new Console();
 
-		if(this.getProprietaire() == null) {
+		if(this.getPatron() == null) {
 			if(getRep()) {
-				if(acheterCompetence(joueur, fjeu))
-					fjeu.setSignetProprietaire(joueur, this);
+				if(EmbaucheSalarie(joueur, fjeu))
+					fjeu.setSignetPatron(joueur, this);
 			}
 			else {
 				es.println(" > " + joueur.getNom() + " décide de ne pas acheter cette entreprise.");
@@ -47,24 +47,24 @@ public class CaseServicePublic extends Case {
 			}
 		}
 
-		else if(this.getProprietaire() != joueur)
-			payerLoyer(joueur, plateau, fjeu);
+		else if(this.getPatron() != joueur)
+			payerSalaire(joueur, plateau, fjeu);
 
 		else {
 			es.println(" > " + joueur.getNom() + " possède l'entreprise.");
-			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de loyer.");
+			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
 		}
 	}
 
 
-	public boolean acheterCompetence(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
+	public boolean EmbaucheSalarie(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
 		if((joueur.getArgent() - this.getPrix()) <= 0) {
 			System.out.println("Vous n'avez pas assez d'argent!");
 			return false;
 		}
 		else {
-			setProprietaire(joueur);
-			joueur.ajouterCompetence(this);
+			setPatron(joueur);
+			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
 			joueur.setNbServices(joueur.getNbServices() + 1);
 
@@ -74,33 +74,33 @@ public class CaseServicePublic extends Case {
 		}
 	}
 
-	public void payerLoyer(JoueurMonopoly joueur, PlateauMonopoly pm, FenetreDeJeu fjeu) {
+	public void payerSalaire(JoueurMonopoly joueur, PlateauMonopoly pm, FenetreDeJeu fjeu) {
 		String beneficiaire = "la Banque";
 
-		if(!this.getProprietaire().getEstMalade()) {
+		if(!this.getPatron().getEstMalade()) {
 
-			int loyer = pm.des.lancerDes();
+			int Salaire = pm.des.lancerDes();
 			if(fjeu!=null) {
 				fjeu.effacerDes();
 				fjeu.afficherDes(pm);
 			}
 
-			if(this.getProprietaire().getNbServices() == 2) loyer*=10;
-			else loyer*=4;
+			if(this.getPatron().getNbServices() == 2) Salaire*=10;
+			else Salaire*=4;
 
 			System.out.println(" > " + joueur.getNom() + " lance les dés... [" + pm.des.getDe1() + "][" + pm.des.getDe2() + "]... et obtient un " + pm.des.getDes());
-			joueur.retirerArgent(loyer);
+			joueur.retirerArgent(Salaire);
 
-			if(!this.getProprietaire().getEstFauche()) {
-				this.getProprietaire().ajouterArgent(loyer);
-				beneficiaire = this.getProprietaire().getNom();
+			if(!this.getPatron().getEstFauche()) {
+				this.getPatron().ajouterArgent(Salaire);
+				beneficiaire = this.getPatron().getNom();
 			}
-			System.out.println("-> " + joueur.getNom() + " paye un loyer de " + loyer + "€ à " + beneficiaire);
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un loyer de " + loyer + "€ à " + beneficiaire);
+			System.out.println("-> " + joueur.getNom() + " paye un Salaire de " + Salaire + "€ à " + beneficiaire);
+			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un Salaire de " + Salaire + "€ à " + beneficiaire);
 		}
 		else {
-			System.out.println("-> Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de loyer.");
-			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de loyer.");
+			System.out.println("-> Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
+			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
 		}
 	}
 
@@ -117,16 +117,16 @@ public class CaseServicePublic extends Case {
 				reponseQuestion = true;
 			fjeu.getPartie().reprendrePartie();
 		}
-		else if(this.getProprietaire() == null)
-			fjeu.afficherFenetreAchatCompetence();
+		else if(this.getPatron() == null)
+			fjeu.afficherFenetreEmbaucherSalarie();
 		else
 			fjeu.getPartie().reprendrePartie();
 	}
 
 
 	@Override
-	public JoueurMonopoly getProprietaire() {
-		return proprietaire;
+	public JoueurMonopoly getPatron() {
+		return Patron;
 	}
 
 	@Override
@@ -135,7 +135,7 @@ public class CaseServicePublic extends Case {
 	}
 
 	@Override
-	public int getLoyer() {
+	public int getSalaire() {
 		return 0;
 	}
 
@@ -155,13 +155,13 @@ public class CaseServicePublic extends Case {
 	}
 
 	@Override
-	public boolean getPeutAcheterCompetence() {
+	public boolean getPeutMonterEnCompetence() {
 		return false;
 	}
 
 	@Override
-	public void setProprietaire(JoueurMonopoly j) {
-		this.proprietaire = j;
+	public void setPatron(JoueurMonopoly j) {
+		this.Patron = j;
 	}
 
 	@Override
@@ -171,7 +171,7 @@ public class CaseServicePublic extends Case {
 
 	@Override
 	public String toString() {
-		return "CaseServicePublic [" + super.toString() + ", proprietaire=" + (proprietaire==null?"null":proprietaire.getNom()) + "]";
+		return "CaseServicePublic [" + super.toString() + ", Patron=" + (Patron==null?"null":Patron.getNom()) + "]";
 	}
 
 
@@ -186,18 +186,18 @@ public class CaseServicePublic extends Case {
 		es.println(j1.toString()+"\n");
 
 		CaseServicePublic c = (CaseServicePublic) pm.getCase(12);
-		c.acheterCompetence(j1, null);
+		c.EmbaucheSalarie(j1, null);
 
 		es.println("== Nombres de SP de " + j1.getNom() + " : " + j1.getNbServices());
 
-		c.payerLoyer(j2, pm, null);
+		c.payerSalaire(j2, pm, null);
 		es.println("");
 
 		c = (CaseServicePublic) pm.getCase(28);
-		c.acheterCompetence(j1, null);
+		c.EmbaucheSalarie(j1, null);
 		es.println("== Nombres de SP de " + j1.getNom() + " : " + j1.getNbServices());
 
-		c.payerLoyer(j2, pm, null);
+		c.payerSalaire(j2, pm, null);
 
 		es.println("\n" + j1.toString());
 	}

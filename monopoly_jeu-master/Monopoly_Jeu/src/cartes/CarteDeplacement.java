@@ -8,8 +8,8 @@ import jeumonopoly.PlateauMonopoly;
 
 /**
  * Type de carte pour les déplacements.
- * @param position int definit ou se positionne le joueur
- * @param deplacementRelatif boolean true si le déplacement depend de la position 
+ * @param position int : definit ou se positionne le joueur
+ * @param deplacementRelatif boolean : true si le déplacement depend de la position 
  * @see Carte
  */
 public class CarteDeplacement extends Carte {

@@ -49,7 +49,7 @@ Console es = new Console();
 
 
 	@Override
-	public JoueurMonopoly getProprietaire() {
+	public JoueurMonopoly getPatron() {
 		return null;
 	}
 
@@ -59,7 +59,7 @@ Console es = new Console();
 	}
 
 	@Override
-	public int getLoyer() {
+	public int getSalaire() {
 		return 0;
 	}
 
@@ -79,12 +79,12 @@ Console es = new Console();
 	}
 
 	@Override
-	public boolean getPeutAcheterCompetence() {
+	public boolean getPeutMonterEnCompetence() {
 		return false;
 	}
 
 	@Override
-	public void setProprietaire(JoueurMonopoly j) {}
+	public void setPatron(JoueurMonopoly j) {}
 
 	@Override
 	public void setRep(boolean b) {}
