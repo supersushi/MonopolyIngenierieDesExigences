@@ -142,21 +142,21 @@ public class CaseArretMaladie extends Case {
 
 		j.setPosition(10);
 		j.setEstMalade(true);
-		System.out.println("Joueur malade mais veut se soigner : " + j.toString()+"\n");
-		System.out.println(c.toString()+"\n");
+		System.out.println("Joueur malade mais veut se soigner : " + j.toString()+" \n");
+		System.out.println(c.toString()+" \n");
 		c.actionCase(j, p, null);
 
 		j.setEstMalade(true);
-		System.out.println("\nJoueur malade mais veut se soigner : " + j.toString()+"\n");
+		System.out.println("\n Joueur malade mais veut se soigner : " + j.toString()+" \n");
 		c.setRep(true);
 		System.out.println(c.toString()+"\n");
 		c.actionCase(j, p, null);
 
-		System.out.println("\nJoueur en visite de controle : " + j.toString()+"\n");
+		System.out.println("\n Joueur en visite de controle : " + j.toString()+" \n");
 		System.out.println(c.toString()+"\n");
 		c.actionCase(j, p, null);
 
-		System.out.println("\nJoueur après avoir ete en arret maladie : " + j.toString());
+		System.out.println("\n Joueur après avoir ete en arret maladie : " + j.toString());
 	}
 
 

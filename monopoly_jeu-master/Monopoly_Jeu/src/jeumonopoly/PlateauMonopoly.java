@@ -163,7 +163,7 @@ public class PlateauMonopoly extends jeudeplateau.Plateau {
 
 		if((joueur.getPosition() + nombreDeCases) >= getNbCases()) {
 			pos = (joueur.getPosition() + nombreDeCases) % getNbCases();
-			System.out.println(" > " + joueur.getNom() + " passe par la case départ et gagne 200€ !");
+			System.out.println("-> " + joueur.getNom() + " passe par la case départ et gagne 200€ !");
 			joueur.ajouterArgent(200);
 		}
 		else

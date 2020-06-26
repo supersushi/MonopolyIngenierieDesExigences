@@ -35,8 +35,8 @@ public class CaseCommunaute extends Case {
 Console es = new Console();
 
 		Carte carte = fjeu.getPartie().getPM().tirerCarteCommunauté();
-		es.println("-> " + fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte "+carte.getNom());
-		fjeu.afficherMessage(fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte "+carte.getNom());
+		es.println("-> " + fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
+		fjeu.afficherMessage(fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
 
 		carte.actionCarte(fjeu.getPartie().getPM().getJoueurActif(), fjeu.getPartie().getPM(), fjeu);
 

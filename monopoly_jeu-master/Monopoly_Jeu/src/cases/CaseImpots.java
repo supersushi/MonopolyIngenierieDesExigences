@@ -21,7 +21,7 @@ public class CaseImpots extends Case {
 	}
 
 	/**
-	 * Cette méthode retire de au joueur et crédite le Parc Gratuit
+	 * Cette méthode débite le joueur et crédite l'Open Space
 	 * @see CaseOpenSpace
 	 * @see jeudeplateau.Joueur
 	 * @see Case
@@ -30,9 +30,9 @@ public class CaseImpots extends Case {
 
 		Console es = new Console();
 
-		es.println(" -> " + joueur.getNom() + " crédite de " + this.getPrix() + "€ le Parc Gratuit.");
+		es.println(" -> " + joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
 		if(fjeu != null)
-			fjeu.afficherMessage(joueur.getNom() + " crédite de " + this.getPrix() + "€ le Parc Gratuit.");
+			fjeu.afficherMessage(joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
 
 		joueur.retirerArgent(this.getPrix());
 

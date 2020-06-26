@@ -128,12 +128,12 @@ public class CaseSalarie extends Case {
 		Patron.retirerArgent(this.getPrixCompetence());
 
 		if(this.nbCompetence <=4 ){
-			System.out.println(" > " + Patron.getNom() + " a posé une maison sur "+getNom()+" !");
-			if(fp!=null) fp.afficherMessage(" > " + Patron.getNom() + " a posé une maison sur "+getNom()+" !");
+			System.out.println("-> " + Patron.getNom() + " a fait monter en compétence l'employé "+getNom()+" !");
+			if(fp!=null) fp.afficherMessage("-> " + Patron.getNom() + " a fait monter en compétence l'employé "+getNom()+" !");
 		}
 		else{
-			System.out.println(" > " + Patron.getNom() + " a posé un hôtel sur "+getNom()+" et ne peut plus poser de bâtiments!");
-			if(fp!=null) fp.afficherMessage(" > " + Patron.getNom() + " a posé un hôtel sur "+getNom()+" et ne peut plus poser de bâtiments!");
+			System.out.println("-> " + Patron.getNom() + " a obtenu un grade "+getNom()+" et ne peut plus monter en compétence!");
+			if(fp!=null) fp.afficherMessage("-> " + Patron.getNom() + " a obtenu un grade "+getNom()+" et ne peut plus monter en compétence!");
 		}
 	}
 
@@ -193,7 +193,7 @@ public class CaseSalarie extends Case {
 	public int getSalaire() {
 		int aPayer = Salaire.get(getNbCompetence());
 		if(Patron.getListeCouleur().contains(this.getCouleur()) && getNbCompetence() == 0)
-			aPayer*=2; // Salaire double si le joueur possède tous les Salaries d'une couleur mais sans maison.
+			aPayer*=2; // Salaire double si le joueur possède tous les Salaries d'une couleur mais sans compétence.
 
 		return aPayer;
 	}
@@ -258,8 +258,8 @@ public class CaseSalarie extends Case {
 
 		c.embaucherSalarie(j1, null);
 
-		es.println("== Propriétaire de " + c.getNom() + " : "+ c.getPatron().getNom());
-		es.println("== Nombre de maisons : "+ c.getNbCompetence() + "");
+		es.println("== Patron de " + c.getNom() + " : "+ c.getPatron().getNom());
+		es.println("== Nombre de compétences : "+ c.getNbCompetence() + "");
 
 		c.payerSalaire(j2, null);
 
@@ -267,7 +267,7 @@ public class CaseSalarie extends Case {
 		c.monterEnCompetence(null);
 		c.monterEnCompetence(null);
 		c.monterEnCompetence(null);
-		es.println("== Nombre de maisons : "+ c.getNbCompetence() + "");
+		es.println("== Nombre de compétences : "+ c.getNbCompetence() + "");
 
 		c.payerSalaire(j2, null);
 

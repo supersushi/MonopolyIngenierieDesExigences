@@ -67,8 +67,8 @@ public class CaseClient extends Case {
 			joueur.retirerArgent(this.getPrix());
 			joueur.setNbEntreprises(joueur.getNbEntreprises() + 1);
 
-			System.out.println(" > " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
+			System.out.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
@@ -88,8 +88,8 @@ public class CaseClient extends Case {
 			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
 		}
 		else {
-			System.out.println("-> Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
-			if(fjeu!=null) fjeu.afficherMessage("Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
+			System.out.println("-> Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if(fjeu!=null) fjeu.afficherMessage("Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
@@ -97,7 +97,7 @@ public class CaseClient extends Case {
 	@SuppressWarnings("static-access")
 	@Override
 	/**
-	 * Affiche une fenêtre d'achat de Salarie
+	 * Affiche une fenêtre pour embaucher un salarié
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 

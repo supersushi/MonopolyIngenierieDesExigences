@@ -20,7 +20,7 @@ public class CaseOpenSpace extends Case {
 	}
 
 	/**
-	 * Méthode permettant à un joueur de récupérer l'argent de la case Open Space puis réinitialisation  à 0
+	 * Méthode permettant à un joueur de récupérer l'argent dans case Open Space puis réinitialisation  à 0
 	 * @see jeudeplateau.Joueur
 	 * @see Case
 	 */
@@ -28,30 +28,14 @@ public class CaseOpenSpace extends Case {
 
 		Console es = new Console();
 
-		es.println(" -> " + joueur.getNom() + " trouve " + this.getPrix() + "€ dans le Open Space !");
+		es.println(" -> " + joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
 		if(fjeu!=null)
-			fjeu.afficherMessage(joueur.getNom() + " trouve " + this.getPrix() + "€ dans le Open Space !");
+			fjeu.afficherMessage(joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
 		joueur.ajouterArgent(this.getPrix());
 		this.setPrix(0);
 	}
 
-	public static void main(String[] args){
-
-		System.out.println("TEST DE LA CLASSE : CaseParcGratuit");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-
-		CaseOpenSpace c = (CaseOpenSpace) p.getCase(20);
-
-		c.setPrix(100);
-		System.out.println("Initialisation de la case Open Space à 100€ : "+ c.toString());
-		System.out.println("Joueur avant le Open Space : "+ j.toString());
-		j.setPosition(20);
-		c.actionCase(j, p, null);
-
-		System.out.println("Case Open Space après le passage du joueur : " + c.toString());
-		System.out.println("Joueur après le Open Space : " + j.toString());
-	}
+	
 
 	@Override
 	/**
@@ -108,4 +92,21 @@ public class CaseOpenSpace extends Case {
 		return "CaseOpenSpace [" + super.toString() + "]";
 	}
 
+	public static void main(String[] args){
+
+		System.out.println("TEST DE LA CLASSE : CaseOpenSpace");
+		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
+		PlateauMonopoly p = new PlateauMonopoly(4);
+
+		CaseOpenSpace c = (CaseOpenSpace) p.getCase(20);
+
+		c.setPrix(100);
+		System.out.println("Initialisation de la case Open Space à 100€ : "+ c.toString());
+		System.out.println("Joueur avant le Open Space : "+ j.toString());
+		j.setPosition(20);
+		c.actionCase(j, p, null);
+
+		System.out.println("Case Open Space après le passage du joueur : " + c.toString());
+		System.out.println("Joueur après le Open Space : " + j.toString());
+	}
 }

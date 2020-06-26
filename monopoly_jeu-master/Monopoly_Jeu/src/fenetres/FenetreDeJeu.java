@@ -89,10 +89,10 @@ public class FenetreDeJeu {
 
 		Des.add(new ImageView());
 		Des.add(new ImageView());
-		Des.get(0).setTranslateX(247);
-		Des.get(0).setTranslateY(360);
-		Des.get(1).setTranslateX(337);
-		Des.get(1).setTranslateY(360);
+		Des.get(0).setTranslateX(315);
+		Des.get(0).setTranslateY(420);
+		Des.get(1).setTranslateX(315);
+		Des.get(1).setTranslateY(470);
 		root.getChildren().add(Des.get(0));
 		root.getChildren().add(Des.get(1));
 
@@ -106,10 +106,23 @@ public class FenetreDeJeu {
 		l_Message.setMaxWidth(470);
 		root.getChildren().add(l_Message);
 
-		tourSuivant.setTranslateX(473);
-		tourSuivant.setTranslateY(533);
+		tourSuivant.setTranslateX(445);
+		tourSuivant.setTranslateY(525);
 		tourSuivant.setOnAction(new EvtTourSuivant());
 		tourSuivant.setDefaultButton(true);
+		tourSuivant.setStyle(" -fx-background-color:#090a0c,\n" + 
+				"        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" + 
+				"        linear-gradient(#20262b, #191d22),\n" + 
+				"        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));\n" + 
+				"    -fx-background-radius: 5,4,3,5;\n" + 
+				"    -fx-background-insets: 0,1,2,0;\n" + 
+				"    -fx-text-fill: white;\n" + 
+				"    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );\n" + 
+				"    -fx-font-family: \"Arial\";\n" + 
+				"    -fx-text-fill: linear-gradient(white, #d0d0d0);\n" + 
+				"    -fx-font-size: 12px;\n" + 
+				"    -fx-padding: 10 20 10 20;");
+		
 		if(!partie.PARTIE_AUTO)
 			root.getChildren().add(tourSuivant);
 	}
@@ -168,7 +181,7 @@ public class FenetreDeJeu {
 			l_Joueurs.add(new Label(""+partie.getPM().getJoueur(i).getArgent()+"€"));
 			l_Joueurs.get(i).setTranslateX(95+i*120);
 			l_Joueurs.get(i).setTranslateY(120);
-			l_Joueurs.get(i).setFont(Font.font("Arial", 15));
+			l_Joueurs.get(i).setFont(Font.font("Arial", 12));
 			root.getChildren().add(l_Joueurs.get(i));
 
 			l_ListeSalaries.add(new Label("\n"));
@@ -205,6 +218,9 @@ public class FenetreDeJeu {
 
             	l_Message.setTextFill(Couleurs[getPartie().getPM().getJoueurActifID()]);
             	l_Message.setText(msg);
+            	l_Message.setTranslateX(90);
+            	l_Message.setTranslateY(540);
+            	
             }
         });
 	}
@@ -359,7 +375,7 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Méthode ajoutant un {@link Polygon} Salarie dans la fenêtre principale en fonction de la {@link Case} passée en paramètre.
+	 * Méthode ajoutant un salarie dans la fenêtre principale en fonction de la case passée en paramètre.
 	 * @param cells Case
 	 * @see Case
 	 */
@@ -379,8 +395,8 @@ public class FenetreDeJeu {
             	if(cells.getSignetPatron().getPoints().isEmpty())
             		root.getChildren().add(Salarie);
 
-            	boolean hotel = (cells.getNbCompetence() == 5);
-            	if(!hotel)
+            	boolean grade = (cells.getNbCompetence() == 5);
+            	if(!grade)
             		Salarie.getPoints().addAll(new Double[] {0., 11., 0., 3., 5., 0., 10., 3., 10., 11.});
             	else if((pos > 0 && pos < 10) || (pos > 20 && pos < 30))
             		Salarie.getPoints().addAll(new Double[] {0., 0., 0., 11., 46., 11., 46., 0.});
@@ -389,20 +405,20 @@ public class FenetreDeJeu {
 
 
             	if(pos > 0 && pos < 10) {
-        			x = 520 - ((pos-1) * 54) + (hotel?0:(cells.getNbCompetence()-1)*12);
+        			x = 520 - ((pos-1) * 54) + (grade?0:(cells.getNbCompetence()-1)*12);
         			y = 577;
         		}
         		else if(pos > 10 && pos < 20) {
         			x = 69;
-        			y = 519 - ((pos-11) * 54) + (hotel?0:(cells.getNbCompetence()-1)*13);
+        			y = 519 - ((pos-11) * 54) + (grade?0:(cells.getNbCompetence()-1)*13);
         		}
         		else if(pos > 20 && pos < 30) {
-        			x = 87 + ((pos-21) * 54)  + (hotel?0:(cells.getNbCompetence()-1)*12);
+        			x = 87 + ((pos-21) * 54)  + (grade?0:(cells.getNbCompetence()-1)*12);
         			y = 69;
         		}
         		else if(pos > 30 && pos < 40) {
         			x = 576;
-        			y = 87 + ((pos-31) * 54) + (hotel?0:(cells.getNbCompetence()-1)*13);
+        			y = 87 + ((pos-31) * 54) + (grade?0:(cells.getNbCompetence()-1)*13);
         		}
 
             	Salarie.setTranslateX(x);

@@ -39,7 +39,7 @@ public class CaseAllerArretMaladie extends Case {
 		else {
 			joueur.setEstMalade(true);
 			joueur.setPosition(10);
-			es.println(" > " + joueur.getNom() + " est mis en arret maladie!");
+			es.println("-> " + joueur.getNom() + " est mis en arret maladie!");
 			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " est mis en arret maladie!");
 		}
 	}

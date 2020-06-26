@@ -75,7 +75,7 @@ public class Partie {
                 				es.println("- Debut du tour " + pm.getNbTours() + " -");
 
                 			es.println("C'est au joueur: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
-                			fjeu.afficherMessage("C'est au joueur: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
+                			fjeu.afficherMessage("C'est à: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
 
                 			if(!joueur.getEstFauche()) {
                 				Thread.sleep(VITESSE_PARTIE);
@@ -107,7 +107,7 @@ public class Partie {
                 				cells.actionCase(joueur, pm, fjeu);
 
                 				es.println("" + joueur.getNom() + " possède à la fin du tour " + joueur.getArgent() + "€");
-                				System.out.println("et les terrains  :\n" + joueur.getListeStringSalaries());
+                				System.out.println("et les salariés :\n" + joueur.getListeStringSalaries());
                 			}
                 			else {
                 				es.println("" + pm.getJoueurActif().getNom() + " est fauché, il ne joue pas.");
