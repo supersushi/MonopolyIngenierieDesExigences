@@ -15,9 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -30,14 +31,15 @@ public class FenetreDemarrage {
 
 	private FenetreDeJeu fjeu;
 	private Stage stage;
-	private VBox root;
-	private Label l_NbJoueurs;private Label l_NbJoueurs2;
+	private HBox root;
+	private Label lab;
+	private Label lab2;
 	private ArrayList<TextField> listeJoueurs = new ArrayList<TextField>();
-	private Button b_Valider;
+	private Button butt;
 	private int choix = 0;
 
 	/**
-	 * Unique constructeur de la classe {@link FenetreDemarrage}, prenant en paramètre la {@link FenetreDeJeu} fjeu.
+	 * Constructeur.
 	 * @param fjeu FenetreDeJeu
 	 * @see FenetreDeJeu
 	 */
@@ -47,109 +49,73 @@ public class FenetreDemarrage {
 
 		this.stage = new Stage();
 
-		this.stage.setTitle("UPM-Monopoly");
+		this.stage.setTitle("Nouvelle partie Monopoly - Ingénierie des exigences");
 		this.stage.initOwner(fjeu.getStage());
 		this.stage.initModality(Modality.APPLICATION_MODAL);
 
-		AnchorPane AnchorPaneRoot = new AnchorPane();
-
-		//Scene scene = new Scene(AnchorPaneRoot, 884.0,495.0);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
-
-		root = new VBox();
-
+		root = new HBox();
 		initRoot();
-	    Scene scene = new Scene(root, 884.0,495.0/*400,190*/);
-
-
+	    Scene scene = new Scene(root, 650.0,650.0);
 		stage.setScene(scene);
-
 		stage.setOnHiding(new EvtQuitter());
 	}
 
 	/**
-	 * Initialise la VBox root de la FenetreDemarrage avec une {@link ListView} de nombres de joueurs et un bouton de validation.
+	 * Initialise la HBox root de la FenetreDemarrage avec une Liste de joueurs et un bouton de validation.
 	 */
 	private void initRoot() {
 		root.setPadding(new Insets(10,10,10,10));
 		root.setSpacing(5);
-       // root.resize(884, 495);
 
-		l_NbJoueurs = new Label("Noms des joueurs (2 minimum) :");
-		l_NbJoueurs2 = new Label("                                                        Coder par Hegel Motokoua");
+		lab = new Label("Joueurs (2 minimum) :");
+		lab2 = new Label("MIAGE - Projet Commun ");
+		butt = new Button("Commencer !");
+		butt.setOnAction(new EvtValider());
+		butt.setDefaultButton(true);
+		butt.setOnAction(new EvtValider());
+		ImageView iv=new ImageView();
+		iv.setFitHeight(500.0);
+		iv.setFitWidth(500.0);
+		iv.setPickOnBounds(true);
+		iv.setPreserveRatio(true);
+		iv.setImage(new Image("/images/acc.png"));
+		VBox VBox1 =new VBox();
+		//VBox1.setPrefHeight(400.0);
+		VBox1.setPrefWidth(400.0);
+		
+		HBox HBox1 =new HBox();
+		HBox1.setPrefHeight(650.0);
+		//HBox1.setPrefWidth(495.);
+		root.setStyle("-fx-background-color: rgba(63, 127, 191, 1);");
+		HBox1.setBlendMode(BlendMode.SRC_OVER);
+		HBox1.setDepthTest(DepthTest.INHERIT);
+		HBox1.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+		HBox1.setCenterShape(true);
+		lab2.setCenterShape(true);
 
+		HBox.setMargin((iv), new Insets(80,0,0,0));
 
-		VBox vBox1 =new VBox();
-		vBox1.setPrefHeight(884.0);
-		vBox1.setPrefWidth(495.);
-		vBox1.setStyle("-fx-background-color: #005395");
-		vBox1.setBlendMode(BlendMode.SRC_OVER);
-		vBox1.setDepthTest(DepthTest.INHERIT);
-		vBox1.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-		vBox1.setCenterShape(true);
-		l_NbJoueurs2.setCenterShape(true);
-
-		ImageView imageView1=new ImageView();
-		imageView1.setFitHeight(500.0);
-		imageView1.setFitWidth(500.0);
-		imageView1.setPickOnBounds(true);
-		imageView1.setPreserveRatio(true);
-
-		imageView1.setImage(new Image("/images/ml3.png"));
-
-		VBox.setMargin((imageView1), new Insets(10,0,0,170));
-
-		vBox1.getChildren().add(imageView1);
-
-
-
-		vBox1.getChildren().add(l_NbJoueurs2);
-
-
-
-		root.getChildren().add(vBox1);
-
-
-
-		root.getChildren().add(l_NbJoueurs);
+		
+		VBox1.getChildren().add(lab2);
+		VBox1.getChildren().add(lab);
+		lab.setTranslateY(80);
 		for(int i=0; i<4; i++) {
-			listeJoueurs.add(new TextField(i<2?"Joueur"+(i+1):""));
-			listeJoueurs.get(i).setPromptText("Nom du joueur "+(i+1));
-			root.getChildren().add(listeJoueurs.get(i));
+			TextField tf = new TextField(i<2?"Player"+(i+1):"");
+			listeJoueurs.add(tf);
+			listeJoueurs.get(i).setPromptText("Player "+(i+1));
+			VBox1.getChildren().add(listeJoueurs.get(i));
+			listeJoueurs.get(i).setPadding(new Insets(10,10,10,10));
+			listeJoueurs.get(i).setTranslateY(150+i*10);
+			
 		}
-		b_Valider = new Button("Valider");
-		b_Valider.setOnAction(new EvtValider());
-		b_Valider.setDefaultButton(true);
-		b_Valider.setOnAction(new EvtValider());
-
-		root.getChildren().add(b_Valider);
-
-
-
-		VBox vBox2 =new VBox();
-		vBox2.setPrefHeight(884.0);
-		vBox2.setPrefWidth(495.);
-		vBox2.setStyle("-fx-background-color: #005395");
-		vBox2.setBlendMode(BlendMode.SRC_OVER);
-		vBox2.setDepthTest(DepthTest.INHERIT);
-		vBox2.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-		vBox2.setCenterShape(true);
-		l_NbJoueurs2.setCenterShape(true);
-
-		ImageView imageView2=new ImageView();
-		imageView2.setFitHeight(300.0);
-		imageView2.setFitWidth(300.0);
-		imageView2.setPickOnBounds(true);
-		imageView2.setPreserveRatio(true);
-
-		imageView2.setImage(new Image("/images/LOGO_UPM_UNIVERSITE_PRIVEE_DE_MARRAKECH.jpg"));
-
-		VBox.setMargin((imageView2), new Insets(10,0,0,270));
-
-		vBox2.getChildren().add(imageView2);
-
-		root.getChildren().add(vBox2);
+		root.getChildren().add(VBox1);
+		
+		VBox1.getChildren().add(butt);
+		butt.setTranslateY(250);
+		lab2.setCenterShape(true);
+		
+		HBox1.getChildren().add(iv);
+		root.getChildren().add(HBox1);
 	}
 
 
