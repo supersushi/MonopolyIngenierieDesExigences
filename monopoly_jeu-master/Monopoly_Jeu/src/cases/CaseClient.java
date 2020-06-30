@@ -1,11 +1,11 @@
 package cases;
 
 import java.util.Random;
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case Client
@@ -34,7 +34,7 @@ public class CaseClient extends Case {
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		if(this.getPatron() == null) {
 			if(getRep()) {
@@ -168,35 +168,5 @@ public class CaseClient extends Case {
 		return "CaseClient [" + super.toString() + ", Patron=" + (Patron==null?"null":Patron.getNom()) + "]";
 	}
 
-	public static void main(String[] args) {
-
-		Console es = new Console();
-		es.println("TEST DE LA CLASSE : CaseClient");
-
-		JoueurMonopoly j1 = new JoueurMonopoly("Yann", 0, 1000);
-		JoueurMonopoly j2 = new JoueurMonopoly("Benoit", 1, 1000);
-		PlateauMonopoly pm = new PlateauMonopoly(2);
-		es.println(j1.toString());
-		es.println(j2.toString()+"\n");
-
-		CaseClient c = (CaseClient) pm.getCase(5);
-		c.EmbaucheSalarie(j1, null);
-
-		es.println("- Nombres de Clients de " + j1.getNom() + " : " + j1.getNbEntreprises());
-
-		c.payerSalaire(j2, null);
-		es.println("");
-
-		c = (CaseClient) pm.getCase(15);
-		c.EmbaucheSalarie(j1, null);
-		c = (CaseClient) pm.getCase(25);
-		c.EmbaucheSalarie(j1, null);
-		es.println("- Nombres de Clients de " + j1.getNom() + " : " + j1.getNbEntreprises());
-
-		c.payerSalaire(j2, null);
-
-		es.println("\n" + j1.toString());
-		es.println(j2.toString());
-	}
-
+	
 }

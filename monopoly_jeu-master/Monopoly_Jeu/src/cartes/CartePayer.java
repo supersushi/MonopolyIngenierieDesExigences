@@ -1,14 +1,12 @@
 package cartes;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Carte;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Cette classe permet a un joueur de se voir retirer un certain montant pour certaines action (amende, achat...)
- * @see Carte
  */
 public class CartePayer extends Carte {
 	
@@ -34,25 +32,25 @@ public class CartePayer extends Carte {
 	@Override
 	public void actionCarte(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
 		
-		Console es = new Console();
+		Clavier es = new Clavier();
 		
 		if(getNom().equals("Président du conseil d'administration")) {
 			for(int i=0; i<plateau.getNbJoueurs(); i++) {
 				if(plateau.getJoueur(i) != joueur && !plateau.getJoueur(i).getEstFauche()) {
-					plateau.getJoueur(i).ajouterArgent(50);
-					joueur.retirerArgent(50);
+					plateau.getJoueur(i).ajouterArgent(10);
+					joueur.retirerArgent(10);
 				}
 			}
-			es.println("-> "+joueur.getNom()+" verse 50€ à chaque joueur.");
+			es.println("-> "+joueur.getNom()+" verse 10€ à chaque joueur.");
 			if(fp!=null)
-				fp.afficherMessage(joueur.getNom()+" verse 50€ à chaque joueur.");
+				fp.afficherMessage(joueur.getNom()+" verse 10€ à chaque joueur.");
 		}
 		else {
 			joueur.retirerArgent(montant);
 			plateau.getCase(20).setPrix(plateau.getCase(20).getPrix() + montant);
-			es.println("-> "+joueur.getNom()+" dépose "+montant+"€ dans l'open space");
+			es.println("-> "+joueur.getNom()+" dépose " + montant + "€ dans l'open space");
 			if(fp !=null)
-				fp.afficherMessage(joueur.getNom()+" dépose "+montant+"€ dans l'open space");
+				fp.afficherMessage(joueur.getNom()+" dépose " + montant + "€ dans l'open space");
 		}
 	}
 	public int getMontant(){

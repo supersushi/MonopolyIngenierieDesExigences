@@ -1,11 +1,12 @@
 package cases;
 
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import view.FenetreDeJeu;
+
 import java.util.Random;
-import fenetres.FenetreDeJeu;
-import io.Console;
+
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
 
 /**
  * Crée l'action de la case Arret Maladie
@@ -31,7 +32,7 @@ public class CaseArretMaladie extends Case {
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 
 		int lancé = plateau.des.lancerDes();

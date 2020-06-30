@@ -1,15 +1,13 @@
 package cartes;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Carte;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Carte permettant d'être guéri, et donc de ne plus être en arrêt maladie. 
  * Carte conservée par le joueur.
- * @see Carte
  */
 public class CarteSortirArretMaladie extends Carte {
 
@@ -31,7 +29,7 @@ public class CarteSortirArretMaladie extends Carte {
 	@Override
 	public void actionCarte(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
 		
-		Console es = new Console();
+		Clavier es = new Clavier();
 		es.println("-> "+joueur.getNom()+" recoit la carte 'Sortir d arret maladie' !");
 		if(fp != null)
 			fp.afficherMessage(joueur.getNom()+" recoit la carte 'Sortir d arret maladie' !");

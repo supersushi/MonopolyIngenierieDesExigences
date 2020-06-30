@@ -1,11 +1,10 @@
 package cases;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Carte;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import cartes.Carte;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case communauté
@@ -32,7 +31,7 @@ public class CaseCommunaute extends Case {
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 
-Console es = new Console();
+Clavier es = new Clavier();
 
 		Carte carte = fjeu.getPartie().getPM().tirerCarteCommunauté();
 		es.println("-> " + fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());

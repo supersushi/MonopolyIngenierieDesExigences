@@ -1,11 +1,11 @@
 package cases;
 
 import java.util.Random;
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action de la case Service Public
@@ -26,15 +26,13 @@ public class CaseEntreprise extends Case {
 	}
 
 	@Override
-	/**A VOIR
-	 * Méthode gérant l'acquisition d'une entreprise par un joueur <br />
+	/**
+	 * Méthode gérant l'acquisition d'une entreprise par un joueur 
 	 * Gère le changement du Salaire en fonction du nombre d'entreprise possédé par un joueur
-	 * @see Joueur
-	 * @see Case
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		if(this.getPatron() == null) {
 			if(getRep()) {
@@ -42,7 +40,7 @@ public class CaseEntreprise extends Case {
 					fjeu.setSignetPatron(joueur, this);
 			}
 			else {
-				es.println(" > " + joueur.getNom() + " décide de ne pas acheter cette entreprise.");
+				es.println("-> " + joueur.getNom() + " décide de ne pas acheter cette entreprise.");
 				fjeu.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
 			}
 		}
@@ -52,7 +50,7 @@ public class CaseEntreprise extends Case {
 
 		else {
 			es.println(" > " + joueur.getNom() + " possède l'entreprise.");
-			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
+			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
@@ -66,7 +64,7 @@ public class CaseEntreprise extends Case {
 			setPatron(joueur);
 			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
-			joueur.setNbServices(joueur.getNbServices() + 1);
+			joueur.setNbEntreprises(joueur.getNbEntreprises() + 1);
 
 			System.out.println(" > " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
 			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
@@ -85,7 +83,7 @@ public class CaseEntreprise extends Case {
 				fjeu.afficherDes(pm);
 			}
 
-			if(this.getPatron().getNbServices() == 2) Salaire*=10;
+			if(this.getPatron().getNbEntreprises() == 2) Salaire*=10;
 			else Salaire*=4;
 
 			System.out.println(" > " + joueur.getNom() + " lance les dés... [" + pm.des.getDe1() + "][" + pm.des.getDe2() + "]... et obtient un " + pm.des.getDes());
@@ -95,19 +93,19 @@ public class CaseEntreprise extends Case {
 				this.getPatron().ajouterArgent(Salaire);
 				beneficiaire = this.getPatron().getNom();
 			}
-			System.out.println("-> " + joueur.getNom() + " paye un Salaire de " + Salaire + "€ à " + beneficiaire);
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un Salaire de " + Salaire + "€ à " + beneficiaire);
+			System.out.println("-> " + joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
+			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
 		}
 		else {
-			System.out.println("-> Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
-			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de Salaire.");
+			System.out.println("-> Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
 	@SuppressWarnings("static-access")
 	@Override
 	/**
-	 * Affiche une fenêtre pour l'achat de la case et reprend le cours de la partie
+	 * Affiche une fenêtre pour l'achat de la case concernée
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 
@@ -175,31 +173,5 @@ public class CaseEntreprise extends Case {
 	}
 
 
-	public static void main(String[] args) {
-
-		Console es = new Console();
-		es.println("TEST DE LA CLASSE : CaseServicePublic");
-
-		JoueurMonopoly j1 = new JoueurMonopoly("Yann", 0, 1000);
-		JoueurMonopoly j2 = new JoueurMonopoly("Benoit", 1, 1000);
-		PlateauMonopoly pm = new PlateauMonopoly(2);
-		es.println(j1.toString()+"\n");
-
-		CaseEntreprise c = (CaseEntreprise) pm.getCase(12);
-		c.EmbaucheSalarie(j1, null);
-
-		es.println("== Nombres de SP de " + j1.getNom() + " : " + j1.getNbServices());
-
-		c.payerSalaire(j2, pm, null);
-		es.println("");
-
-		c = (CaseEntreprise) pm.getCase(28);
-		c.EmbaucheSalarie(j1, null);
-		es.println("== Nombres de SP de " + j1.getNom() + " : " + j1.getNbServices());
-
-		c.payerSalaire(j2, pm, null);
-
-		es.println("\n" + j1.toString());
-	}
-
+	
 }

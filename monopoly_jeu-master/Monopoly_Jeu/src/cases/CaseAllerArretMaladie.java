@@ -1,10 +1,9 @@
 package cases;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action pour aller en arret maladie
@@ -28,7 +27,7 @@ public class CaseAllerArretMaladie extends Case {
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		if(joueur.getCarteSortieArretMaladie()) {
 			es.println(" -> " + joueur.getNom() + " utilise sa carte et évite l arret maladie !");

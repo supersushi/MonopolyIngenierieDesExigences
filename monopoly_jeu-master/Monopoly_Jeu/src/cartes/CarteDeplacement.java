@@ -1,16 +1,14 @@
 package cartes;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Carte;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
- * Type de carte pour les déplacements.
+ * Carte de déplacement
  * @param position int : definit ou se positionne le joueur
  * @param deplacementRelatif boolean : true si le déplacement depend de la position 
- * @see Carte
  */
 public class CarteDeplacement extends Carte {
 	
@@ -41,7 +39,7 @@ public class CarteDeplacement extends Carte {
 	@Override
 	public void actionCarte(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 		
-		Console es = new Console();
+		Clavier es = new Clavier();
 		/*En cas de déplacement relatif à la position actuelle
 		Pour les cartes 'Reculez ou Avancez de x cases'*/
 		if(deplacementRelatif) 
@@ -79,7 +77,6 @@ public class CarteDeplacement extends Carte {
 			try {
 				Thread.sleep(800);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			plateau.getCase(joueur.getPosition()).fenetreAction(fjeu);
@@ -88,7 +85,6 @@ public class CarteDeplacement extends Carte {
 			while(fjeu.getPartie().getPausePartie() && !fjeu.getPartie().PARTIE_AUTO){ try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} }
 			plateau.getCase(joueur.getPosition()).actionCase(joueur, plateau, fjeu);

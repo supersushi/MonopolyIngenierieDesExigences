@@ -1,13 +1,12 @@
 package cases;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action de la case Salarie
@@ -43,20 +42,16 @@ public class CaseSalarie extends Case {
 	}
 
 	/**
-	 * Méthode permettant de vérifier un Salarie : <br>
-	 * <ul>
-	 * <li>Si personne ne possède le Salarie, un joueur peut l'acheter</li>
-	 * <li>Si un joueur tombe sur un Salarie appartenant à un autre joueur, il paye un Salaire au joueur qui le possède</li>
-	 * <li>si un joueur tombe sur un de ses Salaries il ne se passe rien, mais peut acheter des maisons</li>
-	 * </ul>
-	 * @see jeudeplateau.Joueur
-	 * @see Case
+	 * Action a réaliser sur un salarié:
+	 * - Si le salarié n'a pas de patron un joueur peut l'embaucher</li>
+	 * - Si un joueur tombe sur un salarié sans patron il règle un salaire au patron
+	 * - Si un joueur tombe sur un de ses salaries il ne se passe rien, mais peut les faire monter en compétences
 	 */
 
 	@SuppressWarnings({ "unused", "static-access" })
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		if(this.getPatron() == null) {
 			if(getRep()) {
@@ -64,8 +59,8 @@ public class CaseSalarie extends Case {
 					fp.setSignetPatron(joueur, this);
 			}
 			else {
-				es.println(" > " + joueur.getNom() + " décide de ne pas acheter ce Salarie.");
-				fp.afficherMessage(joueur.getNom() + " décide de ne pas acheter ce Salarie.");
+				es.println(" > " + joueur.getNom() + " décide de ne pas embaucher le salarié.");
+				fp.afficherMessage(joueur.getNom() + " décide de ne pas embaucher le salarié.");
 			}
 		}
 
@@ -73,13 +68,13 @@ public class CaseSalarie extends Case {
 			payerSalaire(joueur, fp);
 
 		else {
-			es.println(" > " + joueur.getNom() + " est sur son propre Salarie");
-			fp.afficherMessage(joueur.getNom() + " est sur son propre Salarie");
+			es.println("-> " + joueur.getNom() + " est le patron de ce salarié");
+			fp.afficherMessage(joueur.getNom() + " est le patron de ce salarié");
 
 			if(this.getPeutMonterEnCompetence() && fp.getPartie().PARTIE_AUTO) {
 				this.monterEnCompetence(fp);
 				fp.setCompetence(this);
-				es.println(" > " + joueur.getNom() + " possède désormais " + getNbCompetence() + " competennce" + (getNbCompetence()>0?"s":"") + " sur ce Salarie.");
+				es.println("-> " + joueur.getNom() + " a fait monter en compétence " + getNbCompetence() + "fois ce salarié" );
 			}
 		}
 	}
@@ -94,8 +89,8 @@ public class CaseSalarie extends Case {
 			setPatron(joueur);
 			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
-			System.out.println(" > " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
-			if(fp!=null) fp.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
+			System.out.println(" > " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+			if(fp!=null) fp.afficherMessage(joueur.getNom() + " embauche" + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
@@ -109,17 +104,17 @@ public class CaseSalarie extends Case {
 				this.getPatron().ajouterArgent(getSalaire());
 				beneficiaire = this.getPatron().getNom();
 			}
-			System.out.println(" > " + joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
-			if(fp!=null) fp.afficherMessage(joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
+			System.out.println(" > " + joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
+			if(fp!=null) fp.afficherMessage(joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
 		}
 		else {
-			System.out.println(" > Le propriétaire est en prison. " + joueur.getNom() + " ne paye pas de Salaire.");
-			if(fp!=null) fp.afficherMessage("Le propriétaire est en prison. " + joueur.getNom() + " ne paye pas de Salaire.");
+			System.out.println("-> Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if(fp!=null) fp.afficherMessage("Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
 	/**
-	 * Permet l'ajout d'une maison sur un Salarie
+	 * Permet l'ajout de compétence sur un salarié 
 	 * @param fp FenetrePrincipale
 	 */
 	public void monterEnCompetence(FenetreDeJeu fp){
@@ -138,7 +133,7 @@ public class CaseSalarie extends Case {
 	}
 
 	/**
-	 * Méthode permettant l'affichage d'une fenêtre pour l'achat d'un Salarie, et reprenant le cours de la partie
+	 * Méthode permettant l'affichage d'une fenêtre lors de l'embauche d'un salarie
 	 */
 	@SuppressWarnings("static-access")
 	public void fenetreAction(FenetreDeJeu fp) {
@@ -193,7 +188,8 @@ public class CaseSalarie extends Case {
 	public int getSalaire() {
 		int aPayer = Salaire.get(getNbCompetence());
 		if(Patron.getListeCouleur().contains(this.getCouleur()) && getNbCompetence() == 0)
-			aPayer*=2; // Salaire double si le joueur possède tous les Salaries d'une couleur mais sans compétence.
+			//le salaire est doublé si le joueur a embauché tous les salariés d'une même couleur
+			aPayer = aPayer * 2; 
 
 		return aPayer;
 	}
@@ -242,39 +238,7 @@ public class CaseSalarie extends Case {
 				+ ", prixMaison=" + prixMaison + ", monterEnComptence=" + monterEnComptence + ", nbCompetence=" + nbCompetence + "]";
 	}
 
-	public static void main(String[] args) {
-
-		Console es = new Console();
-
-		es.println("TEST DE LA CLASSE : CaseSalarie\n");
-
-		CaseSalarie c = new CaseSalarie("Avenue de la République", 120, new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise");
-		JoueurMonopoly j1 = new JoueurMonopoly("Yann", 0, 1000);
-		JoueurMonopoly j2 = new JoueurMonopoly("Benoit", 1, 1000);
-
-		es.println(c.toString() + "\n");
-		es.println(j1.toString() + "\n");
-		es.println(j2.toString() + "\n");
-
-		c.embaucherSalarie(j1, null);
-
-		es.println("== Patron de " + c.getNom() + " : "+ c.getPatron().getNom());
-		es.println("== Nombre de compétences : "+ c.getNbCompetence() + "");
-
-		c.payerSalaire(j2, null);
-
-		es.println("");
-		c.monterEnCompetence(null);
-		c.monterEnCompetence(null);
-		c.monterEnCompetence(null);
-		es.println("== Nombre de compétences : "+ c.getNbCompetence() + "");
-
-		c.payerSalaire(j2, null);
-
-		es.println("\n" + c.toString() + "\n");
-		es.println(j1.toString() + "\n");
-		es.println(j2.toString());
-	}
+	
 
 
 }

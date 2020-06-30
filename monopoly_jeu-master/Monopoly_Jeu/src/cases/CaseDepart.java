@@ -1,10 +1,9 @@
 package cases;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case départ
@@ -26,7 +25,7 @@ public class CaseDepart extends Case {
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		joueur.ajouterArgent(200);
 		es.println("-> " + joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€  !");
@@ -87,24 +86,5 @@ public class CaseDepart extends Case {
 	public String toString() {
 		return "CaseDepart ["+super.toString()+"]";
 	}
-	public static void main(String[] args){
-
-		System.out.println("TEST DE LA CLASSE : CaseDepart \n");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-
-		CaseDepart c = (CaseDepart) p.getCase(0);
-
-		j.setPosition(38);
-		System.out.println("\n Le joueur est sur la case " + p.getCase(j.getPosition()).toString()+" \n");
-		p.deplacerJoueur(j, 2);
-		c.actionCase(j, p, null);
-		System.out.println("Le joueur possède : " + j.getArgent()+"€ \n");
-
-		j.setPosition(38);
-		System.out.println("\n Le joueur est sur la case " + p.getCase(j.getPosition()).toString() + " \n");
-		p.deplacerJoueur(j, 3);
-		System.out.println("\n Le joueur est sur la case " + p.getCase(j.getPosition()).getNom()+" \n");
-		System.out.println("Le joueur possède : " + j.getArgent()+"€ \n");
-	}
+	
 }

@@ -1,13 +1,12 @@
 package cases;
 
-import jeudeplateau.Carte;
+import application.Clavier;
+import cartes.Carte;
 import cartes.CartePayer;
 import cartes.CarteSortirArretMaladie;
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case chance
@@ -39,7 +38,7 @@ public class CaseChance extends Case {
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		Carte carte = fjeu.getPartie().getPM().tirerCarteChance();
 		es.println("-> " + fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte "+carte.getNom());
@@ -110,20 +109,4 @@ public class CaseChance extends Case {
 	}
 
 
-	public static void main(String[] args) {
-
-		System.out.println("TEST DE LA CLASSE : CaseChance");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-		CartePayer payer = new CartePayer("Amende", "Amende pour excès de vitesse : 15€.", 15);
-		System.out.println(payer.toString());
-		payer.actionCarte(j, p, null);
-		System.out.println(j.toString()); //Le joueur Yann perd 15€
-		System.out.println(p.getCase(20).toString());
-
-		CarteSortirArretMaladie arretMal = new CarteSortirArretMaladie("Guerir", "Vous êtes gueri. \n(Cette carte doit être conservée)");
-		System.out.println(arretMal.toString());
-		arretMal.actionCarte(j, p, null);
-		System.out.println(j.toString()); //Le joueur Yann possède la carte de sortie d arret maladie
-	}
 }

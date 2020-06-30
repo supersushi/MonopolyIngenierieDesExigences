@@ -1,17 +1,5 @@
 package application;
 
-/**
- * Page de lancement de l'application
- * 
- * Terrain a acheter = competence a acquerir
- * gares a acheter = acheter entreprises
- * PRISON = ARRET MALADIE
- * PARC GRATUIT = OPEN SPACE
- * 
- * RESTE A VOIR SERVICE
- */
-
-import fenetres.FenetreDeJeu;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 
@@ -20,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import view.FenetreDeJeu;
 
 public class Main extends Application {
 

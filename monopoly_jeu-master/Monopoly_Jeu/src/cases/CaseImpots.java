@@ -1,10 +1,9 @@
 package cases;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case impôt ou d'une taxe de luxe
@@ -22,13 +21,10 @@ public class CaseImpots extends Case {
 
 	/**
 	 * Cette méthode débite le joueur et crédite l'Open Space
-	 * @see CaseOpenSpace
-	 * @see jeudeplateau.Joueur
-	 * @see Case
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		es.println(" -> " + joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
 		if(fjeu != null)
@@ -90,19 +86,6 @@ public class CaseImpots extends Case {
 	@Override
 	public void setRep(boolean b) {}
 	
-	public static void main(String[] args){
-
-		System.out.println("TEST DE LA CLASSE : CaseImpots");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-
-		CaseImpots c = (CaseImpots) p.getCase(4);
-		j.setPosition(4);
-		c.actionCase(j, p, null);
-		System.out.println(c.toString());
-		System.out.println(p.getCase(20).toString());
-		System.out.println(j.toString());
-	}
-
+	
 
 }

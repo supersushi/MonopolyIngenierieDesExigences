@@ -1,16 +1,13 @@
 package cartes;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Carte;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  *  Cette classe permet a un joueur de se voir créditer un certain montant pour certaines action (passage a la case départ etc)
- * @see Carte
  */
-
 public class CarteRecevoirArgent extends Carte {
 
 	private int montant;
@@ -38,18 +35,18 @@ public class CarteRecevoirArgent extends Carte {
 	@Override
 	public void actionCarte(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		if(getNom().equals("Anniversaire")) {
 			for(int i=0; i<plateau.getNbJoueurs(); i++) {
 				if(plateau.getJoueur(i) != joueur && !plateau.getJoueur(i).getEstFauche()) {
-					plateau.getJoueur(i).retirerArgent(10);
-					joueur.ajouterArgent(10);
+					plateau.getJoueur(i).retirerArgent(20);
+					joueur.ajouterArgent(20);
 				}
 			}
-			es.println("-> "+joueur.getNom()+" reçoit 10€ de chaque joueur.");
+			es.println("-> "+joueur.getNom()+" reçoit 20€ de chaque joueur.");
 			if(fp != null)
-				fp.afficherMessage(joueur.getNom()+" reçoit 10€ de chaque joueur.");
+				fp.afficherMessage(joueur.getNom()+" reçoit 20€ de chaque joueur.");
 		}
 
 		else {

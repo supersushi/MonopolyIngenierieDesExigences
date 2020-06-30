@@ -1,10 +1,9 @@
 package cases;
 
-import fenetres.FenetreDeJeu;
-import io.Console;
-import jeudeplateau.Case;
-import jeumonopoly.JoueurMonopoly;
-import jeumonopoly.PlateauMonopoly;
+import application.Clavier;
+import jeu.JoueurMonopoly;
+import jeu.PlateauMonopoly;
+import view.FenetreDeJeu;
 
 /**
  * Crée l'action de la case Open Space
@@ -21,12 +20,10 @@ public class CaseOpenSpace extends Case {
 
 	/**
 	 * Méthode permettant à un joueur de récupérer l'argent dans case Open Space puis réinitialisation  à 0
-	 * @see jeudeplateau.Joueur
-	 * @see Case
 	 */
 	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
-		Console es = new Console();
+		Clavier es = new Clavier();
 
 		es.println(" -> " + joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
 		if(fjeu!=null)
@@ -92,21 +89,5 @@ public class CaseOpenSpace extends Case {
 		return "CaseOpenSpace [" + super.toString() + "]";
 	}
 
-	public static void main(String[] args){
-
-		System.out.println("TEST DE LA CLASSE : CaseOpenSpace");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-
-		CaseOpenSpace c = (CaseOpenSpace) p.getCase(20);
-
-		c.setPrix(100);
-		System.out.println("Initialisation de la case Open Space à 100€ : "+ c.toString());
-		System.out.println("Joueur avant le Open Space : "+ j.toString());
-		j.setPosition(20);
-		c.actionCase(j, p, null);
-
-		System.out.println("Case Open Space après le passage du joueur : " + c.toString());
-		System.out.println("Joueur après le Open Space : " + j.toString());
-	}
+	
 }
