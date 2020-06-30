@@ -12,7 +12,7 @@ import jeumonopoly.PlateauMonopoly;
 *@author   Massourang Jugurtha Lina Emma
 */
 
-public class CaseServicePublic extends Case {
+public class CaseEntreprise extends Case {
 
 	private JoueurMonopoly Patron;
 	private boolean reponseQuestion = false;
@@ -21,7 +21,7 @@ public class CaseServicePublic extends Case {
 	 * Indique le nom de la case et définit son prix
 	 * @param nom String
 	 */
-	public CaseServicePublic(String nom) {
+	public CaseEntreprise(String nom) {
 		super(nom, 150);
 	}
 
@@ -185,7 +185,7 @@ public class CaseServicePublic extends Case {
 		PlateauMonopoly pm = new PlateauMonopoly(2);
 		es.println(j1.toString()+"\n");
 
-		CaseServicePublic c = (CaseServicePublic) pm.getCase(12);
+		CaseEntreprise c = (CaseEntreprise) pm.getCase(12);
 		c.EmbaucheSalarie(j1, null);
 
 		es.println("== Nombres de SP de " + j1.getNom() + " : " + j1.getNbServices());
@@ -193,7 +193,7 @@ public class CaseServicePublic extends Case {
 		c.payerSalaire(j2, pm, null);
 		es.println("");
 
-		c = (CaseServicePublic) pm.getCase(28);
+		c = (CaseEntreprise) pm.getCase(28);
 		c.EmbaucheSalarie(j1, null);
 		es.println("== Nombres de SP de " + j1.getNom() + " : " + j1.getNbServices());
 

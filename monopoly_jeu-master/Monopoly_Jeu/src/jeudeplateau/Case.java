@@ -1,11 +1,7 @@
 package jeudeplateau;
 
 import java.util.ArrayList;
-import cases.CaseChance;
-import cases.CaseCommunaute;
-import cases.CaseDepart;
-import cases.CaseImpots;
-import cases.CaseServicePublic;
+
 import fenetres.FenetreDeJeu;
 import javafx.scene.shape.Polygon;
 import jeumonopoly.JoueurMonopoly;

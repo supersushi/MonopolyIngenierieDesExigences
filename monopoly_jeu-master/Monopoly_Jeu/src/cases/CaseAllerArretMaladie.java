@@ -60,7 +60,7 @@ public class CaseAllerArretMaladie extends Case {
 
 		CaseAllerArretMaladie c = (CaseAllerArretMaladie) p.getCase(30);
 		j.setPosition(30);
-		System.out.println("\nLe joueur est sur la case "+ c.toString()+"\n");
+		System.out.println("\n Le joueur est sur la case "+ c.toString()+"\n");
 		c.actionCase(j, p, null);
 		System.out.println("\n Le joueur est sur la case "+ p.getCase(j.getPosition()).toString()+" et est en arret maladie\n");
 		System.out.println(j.toString());
