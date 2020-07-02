@@ -20,11 +20,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- * Fenêtre d'afficher lors du clique sur une compétence.
+ * Fenêtre d'affichage lors du clique sur une compétence.
 	 * Actions : 
-	 * - Poser une Salarie
-	 * - Revendre une Salarie
-	 * - Revendre le Salarie
+	 * - Embaucher un salarié
+	 * - Licencier un salarié
+	 * - Faire monter en compétence le salarié
  */
 public class FenetreActionSurSalarie {
 	
@@ -84,7 +84,7 @@ public class FenetreActionSurSalarie {
 		aside.setSpacing(15);
 		root.getChildren().add(aside);
 		
-		txt = new Label("Quelle action voulez-ous faire pour ce salarié "+ fjeu.getPartie().getPM().getCase(position).getNom() +" ?");
+		txt = new Label("Quelle action voulez-vous faire pour ce salarié "+ fjeu.getPartie().getPM().getCase(position).getNom() +" ?");
 		aside.getChildren().add(txt);
 
 		HBox buttons_horiz = new HBox();

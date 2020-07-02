@@ -171,4 +171,6 @@ public abstract class Case {
 		return "Case [nom=" + nom + ", id=" + id + ", valeur=" + valeur + "]";
 	}
 
+	public abstract String descriptionPoste();
+
 }

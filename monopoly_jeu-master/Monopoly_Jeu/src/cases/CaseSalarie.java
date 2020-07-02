@@ -19,7 +19,8 @@ public class CaseSalarie extends Case {
 	private JoueurMonopoly Patron;
 	private ArrayList<Integer> Salaire = new ArrayList<Integer>();
 	private String couleur;
-	private int prixMaison;
+	private String descriptionPoste;
+	private int prixCompetence;
 	private int nbCompetence = 0;
 	private boolean monterEnComptence = false;
 	private boolean Rep = false;
@@ -29,21 +30,22 @@ public class CaseSalarie extends Case {
 	 * @param nom String
 	 * @param valeur int
 	 * @param Salaire ArrayList
-	 * @param prixMaison int
+	 * @param prixCompetence int
 	 * @param nbCompetence int
 	 * @param couleur String
 	 */
-	public CaseSalarie(String nom, int valeur, ArrayList<Integer> Salaire, int prixMaison, int nbCompetence, String couleur) {
+	public CaseSalarie(String nom, int valeur, ArrayList<Integer> Salaire, int prixCompetence, int nbCompetence, String couleur, String descriptionPoste) {
 		super(nom, valeur);
 		this.couleur = couleur;
 		this.Salaire = Salaire;
-		this.prixMaison = prixMaison;
+		this.prixCompetence = prixCompetence;
 		this.nbCompetence = nbCompetence;
+		this.descriptionPoste = descriptionPoste;
 	}
 
 	/**
 	 * Action a réaliser sur un salarié:
-	 * - Si le salarié n'a pas de patron un joueur peut l'embaucher</li>
+	 * - Si le salarié n'a pas de patron un joueur peut l'embaucher
 	 * - Si un joueur tombe sur un salarié sans patron il règle un salaire au patron
 	 * - Si un joueur tombe sur un de ses salaries il ne se passe rien, mais peut les faire monter en compétences
 	 */
@@ -59,7 +61,7 @@ public class CaseSalarie extends Case {
 					fp.setSignetPatron(joueur, this);
 			}
 			else {
-				es.println(" > " + joueur.getNom() + " décide de ne pas embaucher le salarié.");
+				es.println("-> " + joueur.getNom() + " décide de ne pas embaucher le salarié.");
 				fp.afficherMessage(joueur.getNom() + " décide de ne pas embaucher le salarié.");
 			}
 		}
@@ -89,7 +91,7 @@ public class CaseSalarie extends Case {
 			setPatron(joueur);
 			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
-			System.out.println(" > " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+			System.out.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			if(fp!=null) fp.afficherMessage(joueur.getNom() + " embauche" + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
@@ -201,7 +203,7 @@ public class CaseSalarie extends Case {
 
 	@Override
 	public int getPrixCompetence() {
-		return prixMaison;
+		return prixCompetence;
 	}
 
 	@Override
@@ -235,9 +237,11 @@ public class CaseSalarie extends Case {
 	@Override
 	public String toString() {
 		return "CaseSalarie ["+ super.toString() +", Patron=" + (Patron==null?"null":Patron.getNom()) + ", couleur=" + couleur + ", Salaire=" + Salaire
-				+ ", prixMaison=" + prixMaison + ", monterEnComptence=" + monterEnComptence + ", nbCompetence=" + nbCompetence + "]";
+				+ ", prixCompetence=" + prixCompetence + ", monterEnComptence=" + monterEnComptence + ", nbCompetence=" + nbCompetence + ", descriptionPoste" + descriptionPoste + "]";
 	}
 
+	public String descriptionPoste() {
+		return descriptionPoste;}
 	
 
 

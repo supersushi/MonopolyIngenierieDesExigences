@@ -85,6 +85,12 @@ public class CaseImpots extends Case {
 
 	@Override
 	public void setRep(boolean b) {}
+
+	@Override
+	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

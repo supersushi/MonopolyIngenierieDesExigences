@@ -209,4 +209,10 @@ public class CaseArretMaladie extends Case {
 		return "CaseArretMaladie [ " + super.toString() + ", rep=" + rep + "]";
 	}
 
+	@Override
+	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -122,9 +122,7 @@ public class JoueurMonopoly extends Joueur {
 
 	/**
 	 * Affichage de la liste des compétences d'un joueur 
-	 * 
 	 * @return s
-	 * @see Case
 	 */
 	public String getListeStringSalaries() {
 		String s = "";
@@ -136,7 +134,6 @@ public class JoueurMonopoly extends Joueur {
 
 	/**
 	 * Retourne la liste de compétences qu'a acquise un joueur
-	 * 
 	 * @return Salaries
 	 */
 	public ArrayList<Case> getListeSalaries() {
@@ -146,7 +143,6 @@ public class JoueurMonopoly extends Joueur {
 	
 	/**
 	 * Rentourne la liste de couleurs que possède un joueur
-	 * 
 	 * @return couleurs
 	 */
 	public ArrayList<String> getListeCouleur() {

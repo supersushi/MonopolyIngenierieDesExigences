@@ -2,8 +2,6 @@ package cases;
 
 import application.Clavier;
 import cartes.Carte;
-import cartes.CartePayer;
-import cartes.CarteSortirArretMaladie;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import view.FenetreDeJeu;
@@ -106,6 +104,12 @@ public class CaseChance extends Case {
 	@Override
 	public String toString() {
 		return "CaseChance [" + super.toString() + "]";
+	}
+
+	@Override
+	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

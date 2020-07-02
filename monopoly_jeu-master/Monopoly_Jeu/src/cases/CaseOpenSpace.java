@@ -89,5 +89,11 @@ public class CaseOpenSpace extends Case {
 		return "CaseOpenSpace [" + super.toString() + "]";
 	}
 
+	@Override
+	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

@@ -1,6 +1,5 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -121,7 +120,7 @@ class Test {
 
 		es11.println("TEST DE LA CLASSE : CaseSalarie\n");
 
-		CaseSalarie c1111 = new CaseSalarie("Avenue de la République", 120, new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise");
+		CaseSalarie c1111 = new CaseSalarie("Avenue de la République", 120, new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise", null);
 		JoueurMonopoly j11111 = new JoueurMonopoly("Yann", 0, 1000);
 		JoueurMonopoly j211 = new JoueurMonopoly("Benoit", 1, 1000);
 

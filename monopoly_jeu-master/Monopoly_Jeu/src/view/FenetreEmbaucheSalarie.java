@@ -75,7 +75,7 @@ public class FenetreEmbaucheSalarie {
 		aside.setSpacing(15);
 		root.getChildren().add(aside);
 		
-		l_Texte = new Label("Voulez vous embaucher " + fp.getPartie().getPM().getCaseActive().getNom() + " pour " + fp.getPartie().getPM().getCaseActive().getPrix() + "€ ?");
+		l_Texte = new Label("Voulez vous embaucher " + fp.getPartie().getPM().getCaseActive().getNom() + " pour " + fp.getPartie().getPM().getCaseActive().getPrix() + "€ ? \n \n" + fp.getPartie().getPM().getCaseActive().descriptionPoste());
 		aside.getChildren().add(l_Texte);
 
 		HBox buttons_horiz = new HBox();
@@ -134,7 +134,7 @@ public class FenetreEmbaucheSalarie {
 		root = new HBox();
 		initRoot();
 		
-		Scene scene = new Scene(root,450,130);
+		Scene scene = new Scene(root,600,200);
 		stage.setScene(scene);
 		stage.show();
 	}

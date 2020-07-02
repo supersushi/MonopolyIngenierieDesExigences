@@ -172,6 +172,12 @@ public class CaseEntreprise extends Case {
 		return "CaseServicePublic [" + super.toString() + ", Patron=" + (Patron==null?"null":Patron.getNom()) + "]";
 	}
 
+	@Override
+	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 }

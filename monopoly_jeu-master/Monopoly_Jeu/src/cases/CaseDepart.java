@@ -86,5 +86,11 @@ public class CaseDepart extends Case {
 	public String toString() {
 		return "CaseDepart ["+super.toString()+"]";
 	}
+
+	@Override
+	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
