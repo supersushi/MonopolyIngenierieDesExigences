@@ -22,11 +22,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 	//Media music = new Media("images/music_Monopoly.mp3");
-	File file = new File("images\\musique.mp3");  
+	/*File file = new File("images\\musique.mp3");  
 	final Media music = new Media(file.toURI().toString());
 		mediaPlayer=new MediaPlayer(music);
 		mediaPlayer.setAutoPlay(true);
-		mediaPlayer.setVolume(10);
+		mediaPlayer.setVolume(10);*/
 
 		try { 
 			new FenetreDeJeu(primaryStage); 

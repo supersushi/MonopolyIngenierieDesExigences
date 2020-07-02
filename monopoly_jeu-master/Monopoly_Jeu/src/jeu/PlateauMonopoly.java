@@ -47,7 +47,7 @@ public class PlateauMonopoly extends jeu.Plateau {
 		setCase(7, new CaseChance());
 		setCase(10, new CaseArretMaladie());
 		setCase(12, new CaseEntreprise("Or"));
-		setCase(15, new CaseClient("Client : bancaire"));
+		setCase(15, new CaseClient("Client : Bancaire"));
 		setCase(17, new CaseCommunaute());
 		setCase(20, new CaseOpenSpace());
 		setCase(22, new CaseChance());
@@ -55,40 +55,40 @@ public class PlateauMonopoly extends jeu.Plateau {
 		setCase(28, new CaseEntreprise("Entreprise IT"));
 		setCase(30, new CaseAllerArretMaladie());
 		setCase(33, new CaseCommunaute());
-		setCase(35, new CaseClient("Client: Service"));
+		setCase(35, new CaseClient("Client : Service"));
 		setCase(36, new CaseChance());
 		setCase(38, new CaseImpots("Frais de mutuelle", 100));
 
 		/* INITIALISATION DES SALARIES */
 		setCase(1, new CaseSalarie("Responsable pilotage", 60, new ArrayList<Integer>(Arrays.asList(2, 10, 30, 90, 160, 250)), 50, 0, "brun","Rattaché au responsable du service pilotage et performance opérationnelle, \nvous assurez le suivi des indicateurs de pilotage des activités internes \net externalisées."));
-		setCase(3, new CaseSalarie("Technicien réseau", 60, new ArrayList<Integer>(Arrays.asList(4, 20, 60, 180, 320, 450)), 50, 0, "brun", "Vous veillerez au bon fonctionnement du réseau ou des réseaux de l’entreprise.\n Vous serez responsable de la qualité de l’acheminement de toutes les \ninformations qui circulent sur le réseau"));
-		setCase(6, new CaseSalarie("Admin", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "Vous occuperez un rôle hautement stratégique à la tête d'une entreprise.\nNommé par les actionnaires, vous ferez partie du conseil d'administration \net voterez les décisions les plus importantes pour la vie de sa société"));
-		setCase(8, new CaseSalarie("Responsable de la conduite du changement", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "Votre mission sera d’accompagner les entreprises dans la \nrestructuration de leurs systèmes d’information au niveau des technologies, \ndes ressources humaines et des finances."));
+		setCase(3, new CaseSalarie("Technicien réseau", 60, new ArrayList<Integer>(Arrays.asList(4, 20, 60, 180, 320, 450)), 50, 0, "brun", "Vous veillerez au bon fonctionnement du réseau ou des réseaux de l’entreprise.\n Vous serez responsable de la qualité de l’acheminement de toutes les \ninformations qui circulent sur le réseau."));
+		setCase(6, new CaseSalarie("Admin", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "Vous occuperez un rôle hautement stratégique à la tête d'une entreprise.\nNommé par les actionnaires, vous ferez partie du conseil d'administration \net voterez les décisions les plus importantes pour la vie de sa société."));
+		setCase(8, new CaseSalarie("Responsable de la conduite du changement", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "Votre mission sera d’accompagner les entreprises dans la restructuration de\nleurs systèmes d’information au niveau des technologies, des ressources\nhumaines et des finances."));
 		setCase(9, new CaseSalarie("Chef de projet MOE", 120, new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise", "Vous concevrez des applications informatiques répondant à des besoins \nspécifiques."));
-		setCase(11, new CaseSalarie("Chef de projet MOA", 140, new ArrayList<Integer>(Arrays.asList(10, 50, 150, 450, 625, 750)), 100, 0, "mauve", "Vous serez chef de projet fonctionnel web. \nVous aiderez le client à définir ses besoins et les traduirez « fonctionnellement » dans un cahier des charges.\n Ce cahier des charges sera ensuite traduit « techniquement » par la maîtrise d'œuvre (MOE)."));
-		setCase(13, new CaseSalarie("Sponsor", 140, new ArrayList<Integer>(Arrays.asList(10, 50, 150, 450, 625, 750)), 100, 0, "mauve", "Vous serez en charge de trouver des accords stratégiques avec des entreprises \net autres personnes morales, afin qu'elles financent des clubs sportifs, associations \nou autres organisations."));
-		setCase(14, new CaseSalarie("Acquéreur", 160, new ArrayList<Integer>(Arrays.asList(12, 60, 180, 500, 700, 900)), 100, 0, "mauve", "Vous serez chargé de l'achat des produits nécessaires à l'activité de votre \nentreprise. Vous rechercherez les fournisseurs qui correspondent aux exigences et \nnégocierez avec eux les prix et les délais de livraison."));
+		setCase(11, new CaseSalarie("Chef de projet MOA", 140, new ArrayList<Integer>(Arrays.asList(10, 50, 150, 450, 625, 750)), 100, 0, "mauve", "Vous serez chef de projet fonctionnel web. \nVous aiderez le client à définir ses besoins et les traduirez « fonctionnellement »\ndans un cahier des charges.\nCe cahier des charges sera ensuite traduit « techniquement »\npar la maîtrise d'œuvre (MOE)."));
+		setCase(13, new CaseSalarie("Sponsor", 140, new ArrayList<Integer>(Arrays.asList(10, 50, 150, 450, 625, 750)), 100, 0, "mauve", "Vous serez en charge de trouver des accords stratégiques avec des entreprises et\nautres personnes morales, afin qu'elles financent des clubs sportifs, associations ou\nautres organisations."));
+		setCase(14, new CaseSalarie("Acquéreur", 160, new ArrayList<Integer>(Arrays.asList(12, 60, 180, 500, 700, 900)), 100, 0, "mauve", "Vous serez chargé de l'achat des produits nécessaires à l'activité de votre entreprise.\nVous rechercherez les fournisseurs qui correspondent aux exigences et négocierez\navec eux les prix et les délais de livraison."));
 		setCase(16, new CaseSalarie("Gestionnaire d'application", 180, new ArrayList<Integer>(Arrays.asList(14, 70, 200, 550, 750, 950)), 100, 0, "orange", "Vous représenterez les maîtres d'ouvrage lors de la vie courante des systèmes. \nVous participerez à l'élaboration des règles de fonctionnement \net d'utilisation du système d'information."));
 		setCase(18, new CaseSalarie("Architecte fonctionnel", 180, new ArrayList<Integer>(Arrays.asList(14, 70, 200, 550, 750, 950)), 100, 0, "orange", "Vous traduirez les besoins fonctionnels d'un système d'information en \nfonction des contraintes logistiques, économiques et des objectifs \ndu domaine métier."));
-		setCase(19, new CaseSalarie("Expert métier", 200, new ArrayList<Integer>(Arrays.asList(16, 80, 220, 600, 800, 1000)), 100, 0, "orange", "Vous assurerez principalement le rôle de conseil, d'assistance et de formation.\nÀ ce titre, vous interviendrez directement sur la totalité ou sur une partie d'un projet."));
-		setCase(21, new CaseSalarie("Développeur", 220, new ArrayList<Integer>(Arrays.asList(18, 90, 250, 700, 875, 1050)), 150, 0, "rouge", "Vous endosserez plusieurs casquettes en fonction des demandes diverses.\nVotre quotidien consistera à concevoir, programmer, développer \net améliorer des logiciels, ou encore assurer un rôle de maintenance et de suivi. "));
+		setCase(19, new CaseSalarie("Expert métier", 200, new ArrayList<Integer>(Arrays.asList(16, 80, 220, 600, 800, 1000)), 100, 0, "orange", "Vous assurerez principalement le rôle de conseil, d'assistance et de formation.\nÀ ce titre, vous interviendrez directement sur la totalité ou sur une partie d'un\nprojet."));
+		setCase(21, new CaseSalarie("Développeur", 220, new ArrayList<Integer>(Arrays.asList(18, 90, 250, 700, 875, 1050)), 150, 0, "rouge", "Vous endosserez plusieurs casquettes en fonction des demandes diverses.\nVotre quotidien consistera à concevoir, programmer, développer et améliorer\ndes logiciels, ou encore assurer un rôle de maintenance et de suivi. "));
 		setCase(23, new CaseSalarie("Expert technique", 220, new ArrayList<Integer>(Arrays.asList(18, 90, 250, 700, 875, 1050)), 150, 0, "rouge", "Vous assurerez un rôle de conseil, d'assistance, d'information \net de formation."));
-		setCase(24, new CaseSalarie("Analyste concepteur", 240, new ArrayList<Integer>(Arrays.asList(20, 100, 300, 750, 925, 1100)), 150, 0, "rouge", "Vous mettrez au point ou améliore les systèmes et les applications \ninformatiques utilisées dans l'entreprise, sous la direction d'un chef de projet"));
-		setCase(26, new CaseSalarie("Architecte SI", 260, new ArrayList<Integer>(Arrays.asList(22, 110, 330, 800, 975, 1150)), 150, 0, "jaune", "Vous serez garant de la cohérence du SI, avec un focus fort sur la partie infrastructure.\n Vous préconiserez les solutions techniques en cas d'évolution de ce dernier.\n Votre connaissance technique sera un atout majeur dans cet objectif"));
+		setCase(24, new CaseSalarie("Analyste concepteur", 240, new ArrayList<Integer>(Arrays.asList(20, 100, 300, 750, 925, 1100)), 150, 0, "rouge", "Vous mettrez au point ou améliore les systèmes et les applications informatiques\nutilisées dans l'entreprise, sous la direction d'un chef de projet."));
+		setCase(26, new CaseSalarie("Architecte SI", 260, new ArrayList<Integer>(Arrays.asList(22, 110, 330, 800, 975, 1150)), 150, 0, "jaune", "Vous serez garant de la cohérence du SI, avec un focus fort sur la partie infrastructure.\n Vous préconiserez les solutions techniques en cas d'évolution de ce dernier.\n Votre connaissance technique sera un atout majeur dans cet objectif."));
 		setCase(27, new CaseSalarie("Expert securite", 260, new ArrayList<Integer>(Arrays.asList(22, 110, 330, 800, 975, 1150)), 150, 0, "jaune", "Vous réaliserez un diagnostic du système d'information d'une entreprise \ndans le but de déceler les éventuels points faibles "));
-		setCase(29, new CaseSalarie("Architecte technique", 280, new ArrayList<Integer>(Arrays.asList(24, 120, 360, 850, 1025, 1200)), 150, 0, "jaune", "Vous conçevrez l'architecture technique du système d'information.\n C'est-à-dire que vous contrôlerez tout l'aspect technique des différents \nprojets informatiques qui sont sous sa gestion."));
-		setCase(31, new CaseSalarie("Responsable portefeuille", 300, new ArrayList<Integer>(Arrays.asList(26, 130, 390, 900, 1100, 1275)), 200, 0, "vert", "Vous choisirez objectivement les produits de placement, achèterez\n et vendrez des actions et obligations en bourse puis assurerez le \nsuivi en informant le client."));
-		setCase(32, new CaseSalarie("Auditeur", 300, new ArrayList<Integer>(Arrays.asList(26, 130, 390, 900, 1100, 1275)), 200, 0, "vert","Expert en gestion, management et comptabilité votre mission première est de\nvérifier la régularité des comptes d'une entreprise.\n Dans la majorité des cas vous ne faites pas partie des salariés de l'entreprise \nque vous passerez au crible."));
+		setCase(29, new CaseSalarie("Architecte technique", 280, new ArrayList<Integer>(Arrays.asList(24, 120, 360, 850, 1025, 1200)), 150, 0, "jaune", "Vous conçevrez l'architecture technique du système d'information.\nC'est-à-dire que vous contrôlerez tout l'aspect technique des différents \nprojets informatiques qui sont sous sa gestion."));
+		setCase(31, new CaseSalarie("Responsable portefeuille", 300, new ArrayList<Integer>(Arrays.asList(26, 130, 390, 900, 1100, 1275)), 200, 0, "vert", "Vous choisirez objectivement les produits de placement, achèterez\net vendrez des actions et obligations en bourse puis assurerez le \nsuivi en informant le client."));
+		setCase(32, new CaseSalarie("Auditeur", 300, new ArrayList<Integer>(Arrays.asList(26, 130, 390, 900, 1100, 1275)), 200, 0, "vert","Expert en gestion, management et comptabilité votre mission première est de\nvérifier la régularité des comptes d'une entreprise.\nDans la majorité des cas vous ne faites pas partie des salariés de l'entreprise \nque vous passerez au crible."));
 		setCase(34, new CaseSalarie("Formateur", 320, new ArrayList<Integer>(Arrays.asList(28, 150, 450, 1000, 1200, 1400)), 200, 0, "vert", "Vous transmetrez des connaissances théoriques, pratiques et professionnelles \ntrès spécialisées."));
 		setCase(37, new CaseSalarie("Auditeur projet", 350, new ArrayList<Integer>(Arrays.asList(35, 175, 500, 1100, 1300, 1500)), 200, 0, "bleu","Expert en gestion, management et comptabilité votre mission première \nest de vérifier la régularité des comptes d'une entreprise.\nDans la majorité des cas vous ne faites pas partie des salariés de l'entreprise  \nque vous passerez au crible."));
-		setCase(39, new CaseSalarie("Expert méthodologique", 400, new ArrayList<Integer>(Arrays.asList(50, 200, 600, 1400, 1700, 2000)), 200, 0, "bleu", "Vous mettrez en place une démarche qualité pour établir des référentiels \nde bonnes pratique et implanter des démarches fondées sur l’amélioration continue.\nEn tant que contributeur aux audits qualité, vous utiliserez et mettrez en œuvre\n les techniques et les procédures d’audit. "));
+		setCase(39, new CaseSalarie("Expert méthodologique", 400, new ArrayList<Integer>(Arrays.asList(50, 200, 600, 1400, 1700, 2000)), 200, 0, "bleu", "Vous mettrez en place une démarche qualité pour établir des référentiels de bonnes\npratique et implanter des démarches fondées sur l’amélioration continue.\nEn tant que contributeur aux audits qualité, vous utiliserez et mettrez en œuvre les\ntechniques et les procédures d’audit. "));
 
 
 		/* INITIALISATION DES CARTES CHANCES */
 		
-		chance.add(new CarteDeplacement("Expert méthodologique", "Vous avez rendez-vous avec un expert méthodologique.\nSi vous passez par la case départ, recevez 200€.", 39, false));
+		chance.add(new CarteDeplacement("Expert méthodologique", "Vous avez rendez-vous avec un expert\nméthodologique.\nSi vous passez par la case départ, recevez 200€.", 39, false));
 		chance.add(new CarteDeplacement("Formateur", "Vous avez une formation. Allez voir formateur. \nSi vous passez par la case départ, recevez 200€.", 34, false));
-		chance.add(new CarteDeplacement("Développeur", "Vous avez rendez-vous avec un développeur pour votre site. \nSi vous passez par la case départ, recevez 200€.", 21, false));
+		chance.add(new CarteDeplacement("Développeur", "Vous avez rendez-vous avec un développeur\npour votre site. \nSi vous passez par la case départ, recevez 200€.", 21, false));
 		chance.add(new CarteDeplacement("Chef de projet MOA", "Le chef de projet n'aime pas attendre. Dépechez vous. \nSi vous passez par la case départ, recevez 200€.", 11, false));
 		chance.add(new CarteDeplacement("Reculez", "Reculez de 4 cases.", -4, true));
 		chance.add(new CarteDeplacement("Mutation", "Le joueur est muté. Il prend un nouveau départ.", 0, false));
@@ -101,19 +101,19 @@ public class PlateauMonopoly extends jeu.Plateau {
 		communauté.add(new CartePayer("Frais de mutuelle", "Payez 10€ de frais de mutuelle.", 10));
 		communauté.add(new CartePayer("Frais d'hospitalisation", "Payez 100€ de frais d'hospitalisation.", 100));
 		communauté.add(new CartePayer("Médecin", "Visite chez le médecin : payez 25€.", 25));
-		communauté.add(new CartePayer("Campagne de publicité", "Pour lancer votre nouveau produit vous devez payez 30€.", 30));
+		communauté.add(new CartePayer("Campagne de publicité", "Pour lancer votre nouveau produit vous\ndevez payez 30€.", 30));
 		communauté.add(new CartePayer("Erreur de la Banque", "Erreur de la Banque en votre défaveur. \n Remboursez 150€.", 150));
 		communauté.add(new CarteRecevoirArgent("Remboursement", "Les impôts vous remboursent 20€.", 20));
 		communauté.add(new CarteRecevoirArgent("Assurance vie", "Votre assurance vie vous rapporte 100€.", 100));
 		communauté.add(new CarteRecevoirArgent("Promotion", "Vous venez d'être promu, félicitations ! \n La banque vous donne 50", 50));
 		communauté.add(new CartePayer("Audit", "Vous avez fait une erreur, les auditeurs vous pénalise. \n Donnez leur 50€.", 50));
 		communauté.add(new CarteRecevoirArgent("Nuit de l'info", "Bravo: Vous avez gagné le premier prix de la Nuit de l'Info. \nRecevez 100€.", 100));
-		communauté.add(new CarteRecevoirArgent("Nouveau produit", "La vente de votre nouveau produit vous rapporte 150€.", 150));
+		communauté.add(new CarteRecevoirArgent("Nouveau produit", "La vente de votre nouveau produit\nvous rapporte 150€.", 150));
 		communauté.add(new CarteRecevoirArgent("Hackathon", "Bravo: Vous avez gagné votre premier hackaton. \nRecevez 200€.", 200));
 		communauté.add(new CarteRecevoirArgent("Héritage", "Vous héritez de 100€.", 100));
 		communauté.add(new CarteRecevoirArgent("Placement", "Votre placement vous rapporte. \nRecevez 100€.", 100));
 		communauté.add(new CarteRecevoirArgent("Erreur de la Banque", "Erreur de la Banque en votre faveur. \nRecevez 200€.", 200));
-		communauté.add(new CarteDeplacement("Arret Maladie", "Allez en arret maladie. \n Allez sur la case arret maladie sans passez par la case départ. Vous ne recevez pas 200€.", 10, false));
+		communauté.add(new CarteDeplacement("Arret Maladie", "Allez en arret maladie. \n Allez sur la case arret maladie sans passez\npar la case départ. \nVous ne recevez pas 200€.", 10, false));
 		communauté.add(new CarteSortirArretMaladie("Guérison anticipée", "Vous êtes guéri. \n Vous conservez cette carte."));
 
 		//utilisé pour mélanger les cartes

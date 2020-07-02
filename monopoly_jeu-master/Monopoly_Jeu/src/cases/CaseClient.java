@@ -170,8 +170,8 @@ public class CaseClient extends Case {
 
 	@Override
 	public String descriptionPoste() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Dès qu’une entreprise effectue des prestations de services pour un client, elle\ndoit formaliser ses interventions dans un contrat de prestations de services.\n" + 
+				"Ce contrat est utilisé dans de nombreux domaines d’activité.\nIl prévoit la nature des prestations délivrées par le prestataire et le prix à payer par\nle client en contrepartie, puis encadre les relations entre les parties.";
 	}
 
 	

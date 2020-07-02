@@ -66,7 +66,7 @@ public class CaseEntreprise extends Case {
 			joueur.retirerArgent(this.getPrix());
 			joueur.setNbEntreprises(joueur.getNbEntreprises() + 1);
 
-			System.out.println(" > " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
+			System.out.println("-> " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
 			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
@@ -174,8 +174,8 @@ public class CaseEntreprise extends Case {
 
 	@Override
 	public String descriptionPoste() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "Tout projet d’acquisition, de rachat d’une entreprise ou de branches d’activité,\ns’inscrit dans une stratégie de développement globale." ;
 	}
 
 
