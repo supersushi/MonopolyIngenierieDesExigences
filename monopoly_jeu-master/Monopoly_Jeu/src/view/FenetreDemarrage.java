@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- * Fenêtre à afficher au démarrage d'une nouvelle {@link jeu.Partie}, permettant de sélectionner le nombre de joueur.
+ * Fenêtre à afficher au démarrage d'une nouvelle partie, permettant de sélectionner le nombre de joueur.
  */
 public class FenetreDemarrage {
 

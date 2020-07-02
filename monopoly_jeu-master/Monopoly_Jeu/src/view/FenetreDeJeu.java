@@ -346,7 +346,7 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Méthode plaçant un SignetPatron désignant le propriétaire du Salarie quand le joueur achète le Salarie.
+	 * Méthode plaçant un SignetPatron désignant le patron du Salarie 
 	 * @param joueur JoueurMonopoly
 	 * @param cells Case
 	 * @see JoueurMonopoly
@@ -369,13 +369,13 @@ public class FenetreDeJeu {
         			if(cells.getSignetPatron().getPoints().isEmpty())
         				cells.getSignetPatron().getPoints().addAll(new Double[] {0.,0.,0.,12.,12.,12.});
         			x = 517 - ((pos-1) * 54);
-        			y = 642;
+        			y = 633;
         		}
         		else if(pos > 10 && pos < 20) {
         			if(cells.getSignetPatron().getPoints().isEmpty())
         				cells.getSignetPatron().getPoints().addAll(new Double[] {0.,12.,12.,12.,12.,0.});
-        			x = 51;
-        			y = 558 - ((pos-11) * 54);
+        			x = 53;
+        			y = 555 - ((pos-11) * 54);
         		}
         		else if(pos > 20 && pos < 30) {
         			if(cells.getSignetPatron().getPoints().isEmpty())
@@ -386,7 +386,7 @@ public class FenetreDeJeu {
         		else if(pos > 30 && pos < 40) {
         				if(cells.getSignetPatron().getPoints().isEmpty())
         			cells.getSignetPatron().getPoints().addAll(new Double[] {0.,0.,12.,0.,0.,12.});
-        			x = 592;
+        			x = 585;
         			y = 85 + ((pos-31) * 54);
         		}
 
@@ -404,9 +404,8 @@ public class FenetreDeJeu {
 	}
 
 	/**
-	 * Méthode ajoutant un salarie dans la fenêtre principale en fonction de la case passée en paramètre.
+	 * Méthode ajoutant une competence a un salarie .
 	 * @param cells Case
-	 * @see Case
 	 */
 	public void setCompetence(CaseSalarie cells){
 
@@ -460,7 +459,6 @@ public class FenetreDeJeu {
 	/**
 	 * Afficher les images des dés dans la FenetreDeJeu.
 	 * @param pm PlateauMonopoly
-	 * @see PlateauMonopoly
 	 */
 	public void afficherDes(PlateauMonopoly pm) {
 		Platform.runLater(new Runnable() {
@@ -482,7 +480,6 @@ public class FenetreDeJeu {
 	/**
 	 * Déplace le pion du joueur actif en fonction de la position sur le plateau de joueur passé en paramètre.
 	 * @param joueur JoueurMonopoly
-	 * @see JoueurMonopoly
 	 */
 	public void deplacerPion(JoueurMonopoly joueur){
 
@@ -557,7 +554,6 @@ public class FenetreDeJeu {
 	/**
 	 * Affiche le vainqueur de la partie. Ajoute également le bouton newPartie à la fenêtre princiaple.
 	 * @param pm PlateauMonopoly
-	 * @see PlateauMonopoly
 	 */
 	public void afficherVainqueur(PlateauMonopoly pm) {
 
@@ -607,7 +603,6 @@ public class FenetreDeJeu {
 	/**
 	 * Évènement lorque l'on appuie sur le bouton newPartie : la fenètre principale se ferme, les éléments graphiques sont
 	 * réinitialisés, la StackPane root est redéfinie et on réaffiche la fenêtre de démarrage.
-	 * @see FenetreDemarrage
 	 */
 	private class EvtNewPartie implements EventHandler<ActionEvent> {
 
@@ -627,8 +622,7 @@ public class FenetreDeJeu {
 	 * en fonction des coordonnées du pointeurs, on peux obtenir la position de la case visée. <br>
 	 * Si cette position est une position valide (càd que l'on clic sur une {@link CaseSalarie} qui appartient au joueur dont
 	 * c'est le tour), alors on peut déclencher l'affichage d'une {@link FenetreEmbaucheSalarie} avec en paramètre la position cliquée.
-	 * @see CaseSalarie
-	 * @see FenetreEmbaucheSalarie
+	 *
 	 */
 	private class EvtClicRoot implements EventHandler<MouseEvent> {
 
