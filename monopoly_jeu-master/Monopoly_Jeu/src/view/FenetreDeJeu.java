@@ -45,7 +45,7 @@ public class FenetreDeJeu {
 	private Button tourSuivant = new Button("  Tour \nsuivant");
 	private Button newPartie = new Button("Nouvelle partie");
 	public Random rand = new Random();
-	public Color[] Couleurs = new Color[] {Color.RED, Color.BLUE, Color.ORANGE, Color.GREEN};
+	public Color[] Couleurs = new Color[] {Color.MAGENTA, Color.GREY, Color.BLUE, Color.ORANGE};
 	private FenetreDemarrage fd = new FenetreDemarrage(this);
 	private FenetreCarteChance fch = new FenetreCarteChance(this);
 	private FenetreCarteCommunaute fco = new FenetreCarteCommunaute(this);
@@ -67,7 +67,7 @@ public class FenetreDeJeu {
 		
 		initRoot();
 
-		Scene scene = new Scene(root,655,655);
+		Scene scene = new Scene(root,1000,655);
 		stage.setScene(scene);
 		stage.setTitle("Monopoly - Ingenierie des exigences");
 
@@ -99,14 +99,14 @@ public class FenetreDeJeu {
 		l_OpenSpace.setTranslateY(68);
 		root.getChildren().add(l_OpenSpace);
 
-		l_Message.setFont(Font.font("Arial", 16));
+		l_Message.setFont(Font.font("Calibri Light", 16));
 		l_Message.setTranslateX(95);
-		l_Message.setTranslateY(480);
+		l_Message.setTranslateY(20);
 		l_Message.setMaxWidth(470);
 		root.getChildren().add(l_Message);
 
 		tourSuivant.setTranslateX(470);
-		tourSuivant.setTranslateY(310);
+		tourSuivant.setTranslateY(210);
 		tourSuivant.setOnAction(new EvtTourSuivant());
 		tourSuivant.setDefaultButton(true);
 		tourSuivant.setStyle(" -fx-background-color:#090a0c,\n" + 
@@ -117,7 +117,7 @@ public class FenetreDeJeu {
 				"    -fx-background-insets: 0,1,2,0;\n" + 
 				"    -fx-text-fill: white;\n" + 
 				"    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );\n" + 
-				"    -fx-font-family: \"Arial\";\n" + 
+				"    -fx-font-family: \"Calibri Light\";\n" + 
 				"    -fx-text-fill: linear-gradient(white, #d0d0d0);\n" + 
 				"    -fx-font-size: 12px;\n" + 
 				"    -fx-padding: 10 20 10 20;");
@@ -169,23 +169,54 @@ public class FenetreDeJeu {
 
 		partie = new Partie(nbJoueurs, nomsDesJoueurs, this);
 
-		for(int i=0; i<nbJoueurs; i++) {
+		for(int i=0; i<2; i++) {
 			Label l_nomJoueur = new Label(partie.getPM().getJoueur(i).getNom());
 			l_nomJoueur.setTextFill(Couleurs[i]);
-			l_nomJoueur.setTranslateX(95+i*120);
+			l_nomJoueur.setTranslateX(700+i*150);
 			l_nomJoueur.setTranslateY(100);
 			root.getChildren().add(l_nomJoueur);
 
 			l_Joueurs.add(new Label(""+partie.getPM().getJoueur(i).getArgent()+"€"));
-			l_Joueurs.get(i).setTranslateX(95+i*120);
+			l_Joueurs.get(i).setTranslateX(700+i*150);
 			l_Joueurs.get(i).setTranslateY(120);
-			l_Joueurs.get(i).setFont(Font.font("Arial", 12));
+			l_Joueurs.get(i).setFont(Font.font("Calibri Light", 12));
 			root.getChildren().add(l_Joueurs.get(i));
 
 			l_ListeSalaries.add(new Label("\n"));
-			l_ListeSalaries.get(i).setTranslateX(95+i*120);
+			l_ListeSalaries.get(i).setTranslateX(700+i*150);
 			l_ListeSalaries.get(i).setTranslateY(140);
-			l_ListeSalaries.get(i).setMaxWidth(110);
+			l_ListeSalaries.get(i).setMaxWidth(170);
+			root.getChildren().add(l_ListeSalaries.get(i));
+
+			l_Pions.add(new Circle(7));
+			l_Pions.get(i).setFill(Couleurs[i]);
+			if(i<2) {
+				l_Pions.get(i).setTranslateX(598 + i*15);
+				l_Pions.get(i).setTranslateY(605);
+			}
+			else {
+				l_Pions.get(i).setTranslateX(598 + (i-2)*15);
+				l_Pions.get(i).setTranslateY(620);
+			}
+			root.getChildren().add(l_Pions.get(i));
+		}
+		for(int i=2; i<nbJoueurs; i++) {
+			Label l_nomJoueur = new Label(partie.getPM().getJoueur(i).getNom());
+			l_nomJoueur.setTextFill(Couleurs[i]);
+			l_nomJoueur.setTranslateX(400+i*150);
+			l_nomJoueur.setTranslateY(300);
+			root.getChildren().add(l_nomJoueur);
+
+			l_Joueurs.add(new Label(""+partie.getPM().getJoueur(i).getArgent()+"€"));
+			l_Joueurs.get(i).setTranslateX(400+i*150);
+			l_Joueurs.get(i).setTranslateY(320);
+			l_Joueurs.get(i).setFont(Font.font("Calibri Light", 12));
+			root.getChildren().add(l_Joueurs.get(i));
+
+			l_ListeSalaries.add(new Label("\n"));
+			l_ListeSalaries.get(i).setTranslateX(400+i*150);
+			l_ListeSalaries.get(i).setTranslateY(340);
+			l_ListeSalaries.get(i).setMaxWidth(170);
 			root.getChildren().add(l_ListeSalaries.get(i));
 
 			l_Pions.add(new Circle(7));
@@ -216,15 +247,15 @@ public class FenetreDeJeu {
 
             	l_Message.setTextFill(Couleurs[getPartie().getPM().getJoueurActifID()]);
             	l_Message.setText(msg);
-            	l_Message.setTranslateX(90);
-            	l_Message.setTranslateY(540);
+            	l_Message.setTranslateX(100);
+            	l_Message.setTranslateY(140);
             	
             }
         });
 	}
 
 	/**
-	 * Cette méthode est appelé à chaque fois qu'un rafrichissement des labels est nécessaire. Elle va chercher les informations dans
+	 * Cette méthode est appelé à chaque fois qu'un rafraichissement des labels est nécessaire. Elle va chercher les informations dans
 	 * les champs de la partie pour mettre à jours les labels.
 	 * @param pm PlateauMonopoly
 	 * @see PlateauMonopoly
@@ -476,7 +507,7 @@ public class FenetreDeJeu {
 				x = 16;
 				y = 644;
 			}
-			else /* idJoueur == 2 ou 3*/ {
+			else  {
 				x = 48;
 				y = 628;
 			}
@@ -535,7 +566,7 @@ public class FenetreDeJeu {
 
             	Label vainqueur = new Label("Le vainqueur est "+pm.estVainqueur().getNom()+" !");
             	vainqueur.setTextFill(l_Pions.get(pm.estVainqueur().getID()).getFill());
-            	vainqueur.setFont(Font.font("Arial", 26));
+            	vainqueur.setFont(Font.font("Calibri Light", 26));
             	vainqueur.setTranslateX(145);
             	vainqueur.setTranslateY(525);
 

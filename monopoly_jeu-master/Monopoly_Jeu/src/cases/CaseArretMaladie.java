@@ -58,7 +58,7 @@ public class CaseArretMaladie extends Case {
 			}
 			else{
 				if(joueur.getToursEnArretMaladie() > 2) {
-					es.println("NON : " + joueur.getNom() + " est a son 3e tour en arret maladie, il est guéri et paye 25€.");
+					es.println("NON : " + joueur.getNom() + " est a son 3e tour en arret maladie, \nil est guéri et paye 25€.");
 					joueur.retirerArgent(25);
 					joueur.setEstMalade(false);
 					joueur.setToursEnArretMaladie(1);
@@ -68,7 +68,7 @@ public class CaseArretMaladie extends Case {
 					if(fjeu!=null) actionSortieArretMaladie(plateau, joueur, fjeu);
 				}
 				else{
-					es.println("NON : " + joueur.getNom() + " (tour " + joueur.getToursEnArretMaladie() + ") décide de ne pas payer et lance ses dés...");
+					//es.println("NON : " + joueur.getNom() + " (tour " + joueur.getToursEnArretMaladie() + ") décide de ne pas payer et lance ses dés...");
 					if(d1 == d2){
 						es.println("  [" + d1 + "][" + d2 + "] Gagné! " + joueur.getNom() + " est soigné sans payer!");
 						joueur.setEstMalade(false);
@@ -148,16 +148,16 @@ public class CaseArretMaladie extends Case {
 		c.actionCase(j, p, null);
 
 		j.setEstMalade(true);
-		System.out.println("\n Joueur malade mais veut se soigner : " + j.toString()+" \n");
+		System.out.println("\nJoueur malade mais veut se soigner : " + j.toString()+" \n");
 		c.setRep(true);
 		System.out.println(c.toString()+"\n");
 		c.actionCase(j, p, null);
 
-		System.out.println("\n Joueur en visite de controle : " + j.toString()+" \n");
+		System.out.println("\nJoueur en visite de controle : " + j.toString()+" \n");
 		System.out.println(c.toString()+"\n");
 		c.actionCase(j, p, null);
 
-		System.out.println("\n Joueur après avoir ete en arret maladie : " + j.toString());
+		System.out.println("\nJoueur après avoir été en arret maladie : " + j.toString());
 	}
 
 

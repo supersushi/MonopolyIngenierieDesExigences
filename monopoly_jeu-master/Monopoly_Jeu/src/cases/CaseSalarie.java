@@ -92,7 +92,7 @@ public class CaseSalarie extends Case {
 			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
 			System.out.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
-			if(fp!=null) fp.afficherMessage(joueur.getNom() + " embauche" + this.getNom() + " pour " + this.getPrix() + "€");
+			if(fp!=null) fp.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
