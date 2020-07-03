@@ -58,11 +58,11 @@ public class CaseSalarie extends Case {
 		if(this.getPatron() == null) {
 			if(getRep()) {
 				if(embaucherSalarie(joueur, fp))
-					fp.setSignetPatron(joueur, this);
+					if(fp != null) fp.setSignetPatron(joueur, this);
 			}
 			else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas embaucher le salarié.");
-				fp.afficherMessage(joueur.getNom() + " décide de ne pas embaucher le salarié.");
+				if(fp != null) fp.afficherMessage(joueur.getNom() + " décide de ne pas embaucher le salarié.");
 			}
 		}
 

@@ -37,11 +37,11 @@ public class CaseEntreprise extends Case {
 		if(this.getPatron() == null) {
 			if(getRep()) {
 				if(EmbaucheSalarie(joueur, fjeu))
-					fjeu.setSignetPatron(joueur, this);
+					if( fjeu != null) fjeu.setSignetPatron(joueur, this);
 			}
 			else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas acheter cette entreprise.");
-				fjeu.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
+				if(fjeu != null) fjeu.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
 			}
 		}
 
