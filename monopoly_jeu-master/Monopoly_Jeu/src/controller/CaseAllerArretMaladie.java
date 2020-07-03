@@ -1,8 +1,9 @@
-package cases;
+package controller;
 
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
+import model.Case;
 import view.FenetreDeJeu;
 
 /**
@@ -50,22 +51,7 @@ public class CaseAllerArretMaladie extends Case {
 	public void fenetreAction(FenetreDeJeu fjeu) {
 		fjeu.getPartie().reprendrePartie();
 	}
-
-	public static void main(String[] args){
-
-		System.out.println("TEST DE LA CLASSE : CaseAllerArretMaladie \n");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-
-		CaseAllerArretMaladie c = (CaseAllerArretMaladie) p.getCase(30);
-		j.setPosition(30);
-		System.out.println("\n Le joueur est sur la case "+ c.toString()+"\n");
-		c.actionCase(j, p, null);
-		System.out.println("\n Le joueur est sur la case "+ p.getCase(j.getPosition()).toString()+" et est en arret maladie\n");
-		System.out.println(j.toString());
-	}
 	
-
 	@Override
 	public JoueurMonopoly getPatron() {
 		return null;

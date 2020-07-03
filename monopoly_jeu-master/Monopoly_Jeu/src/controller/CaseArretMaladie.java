@@ -1,4 +1,4 @@
-package cases;
+package controller;
 
 import view.FenetreDeJeu;
 
@@ -7,6 +7,7 @@ import java.util.Random;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
+import model.Case;
 
 /**
  * Crée l'action de la case Arret Maladie
@@ -132,34 +133,6 @@ public class CaseArretMaladie extends Case {
 
 		plateau.getCase(joueur.getPosition()).actionCase(joueur, plateau, fjeu);
 	}
-
-	public static void main(String[] args){
-
-		System.out.println("TEST DE LA CLASSE : CasearretMaladie \n");
-		JoueurMonopoly j = new JoueurMonopoly("Yann", 0, 1000);
-		PlateauMonopoly p = new PlateauMonopoly(4);
-
-		CaseArretMaladie c = (CaseArretMaladie) p.getCase(10);
-
-		j.setPosition(10);
-		j.setEstMalade(true);
-		System.out.println("Joueur malade mais veut se soigner : " + j.toString()+" \n");
-		System.out.println(c.toString()+" \n");
-		c.actionCase(j, p, null);
-
-		j.setEstMalade(true);
-		System.out.println("\nJoueur malade mais veut se soigner : " + j.toString()+" \n");
-		c.setRep(true);
-		System.out.println(c.toString()+"\n");
-		c.actionCase(j, p, null);
-
-		System.out.println("\nJoueur en visite de controle : " + j.toString()+" \n");
-		System.out.println(c.toString()+"\n");
-		c.actionCase(j, p, null);
-
-		System.out.println("\nJoueur après avoir été en arret maladie : " + j.toString());
-	}
-
 
 	@Override
 	public JoueurMonopoly getPatron() {
