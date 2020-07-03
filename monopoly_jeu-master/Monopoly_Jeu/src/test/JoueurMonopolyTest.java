@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import cases.Case;
-import cases.CaseSalarie;
+import controller.CaseSalarie;
 import jeu.JoueurMonopoly;
+import model.Case;
 
 /**
  * Teste la classe JoueurMonopoly

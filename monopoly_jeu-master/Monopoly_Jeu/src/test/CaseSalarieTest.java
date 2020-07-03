@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import cases.CaseSalarie;
+import controller.CaseSalarie;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 

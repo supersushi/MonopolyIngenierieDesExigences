@@ -1,9 +1,10 @@
-package cases;
+package controller;
 
 import application.Clavier;
-import cartes.Carte;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
+import model.Carte;
+import model.Case;
 import view.FenetreDeJeu;
 
 /**

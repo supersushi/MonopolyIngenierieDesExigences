@@ -1,8 +1,6 @@
-package jeu;
+package model;
 
 import java.util.ArrayList;
-
-import cases.Case;
 
 /**
  * Cette classe représente le plateau du jeu Monopoly

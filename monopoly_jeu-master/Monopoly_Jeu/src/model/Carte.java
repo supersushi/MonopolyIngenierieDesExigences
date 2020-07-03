@@ -1,4 +1,4 @@
-package cartes;
+package model;
 
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;

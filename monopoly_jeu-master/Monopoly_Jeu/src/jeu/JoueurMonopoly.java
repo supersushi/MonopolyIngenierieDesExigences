@@ -2,9 +2,10 @@ package jeu;
 
 import java.util.ArrayList;
 
-import cases.Case;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import model.Case;
+import model.Joueur;
 
 /**
  * Définit un joueur et ses données dans le jeu du Monopoly : compétences, entreprises possédées etc

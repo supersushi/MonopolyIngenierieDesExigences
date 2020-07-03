@@ -1,8 +1,9 @@
-package cartes;
+package controller;
 
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
+import model.Carte;
 import view.FenetreDeJeu;
 
 /**

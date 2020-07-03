@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import cases.CaseImpots;
-import cases.CaseOpenSpace;
+import controller.CaseImpots;
+import controller.CaseOpenSpace;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 

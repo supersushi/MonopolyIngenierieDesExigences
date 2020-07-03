@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import cases.CaseDepart;
+import controller.CaseDepart;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 

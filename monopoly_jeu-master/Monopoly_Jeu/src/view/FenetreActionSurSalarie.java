@@ -1,7 +1,6 @@
 package view;
 
-import cases.Case;
-import cases.CaseSalarie;
+import controller.CaseSalarie;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.Case;
 
 /**
  * Fenêtre d'affichage lors du clique sur une compétence.

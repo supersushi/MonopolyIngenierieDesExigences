@@ -3,24 +3,30 @@ package jeu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import cartes.*;
-import cases.Case;
-import cases.CaseAllerArretMaladie;
-import cases.CaseArretMaladie;
-import cases.CaseChance;
-import cases.CaseCommunaute;
-import cases.CaseDepart;
-import cases.CaseEntreprise;
-import cases.CaseClient;
-import cases.CaseImpots;
-import cases.CaseOpenSpace;
-import cases.CaseSalarie;
+
+import controller.CarteDeplacement;
+import controller.CartePayer;
+import controller.CarteRecevoirArgent;
+import controller.CarteSortirArretMaladie;
+import controller.CaseAllerArretMaladie;
+import controller.CaseArretMaladie;
+import controller.CaseChance;
+import controller.CaseClient;
+import controller.CaseCommunaute;
+import controller.CaseDepart;
+import controller.CaseEntreprise;
+import controller.CaseImpots;
+import controller.CaseOpenSpace;
+import controller.CaseSalarie;
+import model.Carte;
+import model.Case;
+import model.Joueur;
 
 /**
  * Initialise le plateau du monopoly avec toutes ses cases
 *@author  Massourang Jugurtha Lina Emma
 */
-public class PlateauMonopoly extends jeu.Plateau {
+public class PlateauMonopoly extends model.Plateau {
 
 	private ArrayList<JoueurMonopoly> joueurs = new ArrayList<JoueurMonopoly>();
 	private ArrayList<Carte> chance = new ArrayList<Carte>();

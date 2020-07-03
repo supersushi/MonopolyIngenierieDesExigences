@@ -3,8 +3,7 @@ package view;
 import java.util.ArrayList;
 import java.util.Random;
 
-import cases.Case;
-import cases.CaseSalarie;
+import controller.CaseSalarie;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -26,6 +25,7 @@ import javafx.util.Duration;
 import jeu.JoueurMonopoly;
 import jeu.Partie;
 import jeu.PlateauMonopoly;
+import model.Case;
 
 /**
  * Fenêtre javafx principale pour l'affichage du jeu de Monopoly.

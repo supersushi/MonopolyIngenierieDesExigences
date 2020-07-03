@@ -3,10 +3,10 @@ package jeu;
 import java.util.ArrayList;
 
 import application.Clavier;
-import cases.Case;
 import view.FenetreDeJeu;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import model.Case;
 
 /**
  * Lance la partie

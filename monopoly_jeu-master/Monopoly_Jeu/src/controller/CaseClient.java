@@ -1,10 +1,11 @@
-package cases;
+package controller;
 
 import java.util.Random;
 
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
+import model.Case;
 import view.FenetreDeJeu;
 
 /**
