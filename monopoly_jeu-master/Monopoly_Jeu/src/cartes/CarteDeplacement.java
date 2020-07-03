@@ -71,7 +71,7 @@ public class CarteDeplacement extends Carte {
 		}
 		else {
 			es.println("-> "+joueur.getNom()+" atterit sur "+plateau.getCaseActive().getNom());
-			if(fjeu != null)
+			if(fjeu != null) {
 				fjeu.afficherMessage(joueur.getNom()+" atterit sur "+plateau.getCaseActive().getNom());
 			
 			try {
@@ -87,6 +87,7 @@ public class CarteDeplacement extends Carte {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} }
+			}
 			plateau.getCase(joueur.getPosition()).actionCase(joueur, plateau, fjeu);
 		}
 		
