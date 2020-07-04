@@ -192,4 +192,6 @@ public abstract class Case {
 
 	public abstract String descriptionPoste();
 
+	public abstract ArrayList<String> getCompetences();
+
 }

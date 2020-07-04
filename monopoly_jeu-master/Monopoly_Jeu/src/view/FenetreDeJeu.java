@@ -232,7 +232,7 @@ public class FenetreDeJeu extends Fenetre {
 			l_ListeSalaries.get(i).setTranslateY(340);
 			l_ListeSalaries.get(i).setMaxWidth(170);
 			root.getChildren().add(l_ListeSalaries.get(i));
-
+			
 			l_Pions.add(new Circle(7));
 			l_Pions.get(i).setFill(Couleurs[i]);
 			if (i < 2) {

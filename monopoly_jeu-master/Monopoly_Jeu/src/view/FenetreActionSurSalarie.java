@@ -1,17 +1,20 @@
 package view;
 
 import controller.ActionSurSalarieAcquerirController;
+import controller.ActionSurSalarieAjoutCompetenceController;
 import controller.ActionSurSalarieQuitterController;
 import controller.ActionSurSalarieRevendreController;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -31,6 +34,12 @@ public class FenetreActionSurSalarie extends Fenetre {
 	private Label txt;
 	private Label errorTxt;
 	private Button acqComp;
+	private CheckBox competence;
+	private CheckBox comp1;
+	private CheckBox comp2;
+	private CheckBox comp3;
+	private CheckBox comp4;
+	private CheckBox comp5;
 	private Button revendreComp;
 
 	/**
@@ -98,21 +107,49 @@ public class FenetreActionSurSalarie extends Fenetre {
 		txt = new Label("Quelle action voulez-vous faire pour ce salarié "
 				+ fenetreDeJeu.getPartie().getPM().getCase(position).getNom() + " ?");
 		aside.getChildren().add(txt);
+		VBox checkboxes = new VBox();
+//		buttons_horiz.setSpacing(10);
+		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28) {
+			for(int i = 0; i < fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().size(); i++) {
+				competence = new CheckBox();
+				competence.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(i) +" (" + fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
+				checkboxes.getChildren().add(competence);
+				competence.setOnAction(new ActionSurSalarieAjoutCompetenceController(this, fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(i)));
+			}
+//			comp1 = new CheckBox();
+//			comp1.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(0));
+//			comp2 = new CheckBox();
+//			comp2.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(1));
+//			comp3 = new CheckBox();
+//			comp3.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(2));
+//			comp4= new CheckBox();
+//			comp4.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(3));
+//			comp5 = new CheckBox();
+//			comp5.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(4));
+//			
+//			checkboxes.getChildren().add(comp1);
+//			checkboxes.getChildren().add(comp2);
+//			checkboxes.getChildren().add(comp3);
+//			checkboxes.getChildren().add(comp4);
+//			checkboxes.getChildren().add(comp5);
+			
+			revendreComp = new Button("Licencier le salarié");
+		}
+		else {
+			revendreComp = new Button("Mettre fin au contrat avec le client");
+		}
+//		acqComp = new Button("Monter en competence ("
+//				+ fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
+//		acqComp.setOnAction(new ActionSurSalarieAcquerirController(this));
+//		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28)
+//			buttons_horiz.getChildren().add(acqComp);
 
-		HBox buttons_horiz = new HBox();
-		buttons_horiz.setSpacing(10);
-
-		acqComp = new Button("Monter en competence ("
-				+ fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
-		acqComp.setOnAction(new ActionSurSalarieAcquerirController(this));
-		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28)
-			buttons_horiz.getChildren().add(acqComp);
-
-		revendreComp = new Button("Licencier le salarié");
+		HBox button_licenciement = new HBox();
 		revendreComp.setOnAction(new ActionSurSalarieRevendreController(this));
-		buttons_horiz.getChildren().add(revendreComp);
+		button_licenciement.getChildren().add(revendreComp);
 
-		aside.getChildren().add(buttons_horiz);
+		aside.getChildren().add(checkboxes);
+		aside.getChildren().add(button_licenciement);
 
 		errorTxt = new Label("");
 		errorTxt.setTextFill(Color.BLACK);
@@ -139,7 +176,7 @@ public class FenetreActionSurSalarie extends Fenetre {
 		root = new HBox();
 		initRoot();
 
-		Scene scene = new Scene(root, 470, 130);
+		Scene scene = new Scene(root, 470, 180);
 		stage.setScene(scene);
 		stage.show();
 	}

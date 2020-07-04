@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import application.Clavier;
@@ -174,6 +175,12 @@ public class CaseClientController extends Case implements DefaultControllerInter
 	public String descriptionPoste() {
 		return "Dès qu’une entreprise effectue des prestations de services pour un client, elle\ndoit formaliser ses interventions dans un contrat de prestations de services.\n"
 				+ "Ce contrat est utilisé dans de nombreux domaines d’activité.\nIl prévoit la nature des prestations délivrées par le prestataire et le prix à payer par\nle client en contrepartie, puis encadre les relations entre les parties.";
+	}
+
+	@Override
+	public ArrayList<String> getCompetences() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -16,7 +16,7 @@ public class ActionSurSalarieAcquerirController implements EventHandler<ActionEv
 		CaseSalarieController c = (CaseSalarieController) fenetreActionSurSalarie.getFenetreDeJeu().getPartie().getPM()
 				.getCase(fenetreActionSurSalarie.getPosition());
 		if (c.getPeutMonterEnCompetence()) {
-			c.monterEnCompetence(fenetreActionSurSalarie.getFenetreDeJeu());
+			c.monterEnCompetence(fenetreActionSurSalarie.getFenetreDeJeu(), null);
 			fenetreActionSurSalarie.getFenetreDeJeu().setCompetence(c);
 			fenetreActionSurSalarie.getStage().close();
 		} else {
