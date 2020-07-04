@@ -25,13 +25,13 @@ import javafx.util.Duration;
 import jeu.JoueurMonopoly;
 import jeu.Partie;
 import jeu.PlateauMonopoly;
-import model.Case;
-import model.View;
+import model.CaseModel;
+import model.ViewModel;
 
 /**
  * Fenêtre javafx principale pour l'affichage du jeu de Monopoly.
  */
-public class MonopolyView extends View {
+public class MonopolyView extends ViewModel {
 
 	private Stage stage;
 	private StackPane root;
@@ -388,9 +388,9 @@ public class MonopolyView extends View {
 	 * @param joueur JoueurMonopoly
 	 * @param cells  Case
 	 * @see JoueurMonopoly
-	 * @see Case
+	 * @see CaseModel
 	 */
-	public void setSignetPatron(JoueurMonopoly joueur, Case cells) {
+	public void setSignetPatron(JoueurMonopoly joueur, CaseModel cells) {
 
 		Platform.runLater(new Runnable() {
 			@Override

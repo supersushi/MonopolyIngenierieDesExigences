@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 import view.EmbaucheSalarieView;
 
@@ -56,7 +56,7 @@ public class JeuClicRootController implements EventHandler<MouseEvent> {
 			CasesInterdites.add(i);
 		}
 		CasesInterdites.add(-1);
-		for (Case t : monopolyView.getPartie().getPM().getJoueurActif().getListeSalaries()) {
+		for (CaseModel t : monopolyView.getPartie().getPM().getJoueurActif().getListeSalaries()) {
 			CasesInterdites.remove((Object) (t.getId()));
 		}
 

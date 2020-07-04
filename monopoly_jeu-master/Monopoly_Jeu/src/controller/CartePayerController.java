@@ -3,14 +3,14 @@ package controller;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Carte;
+import model.CarteModel;
 import view.MonopolyView;
 
 /**
  * Cette classe permet a un joueur de se voir retirer un certain montant pour
  * certaines action (amende, achat...)
  */
-public class CartePayerController extends Carte implements DefaultControllerInterface {
+public class CartePayerController extends CarteModel implements DefaultControllerInterface {
 
 	private int montant;
 

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
-import model.Case;
-import model.Joueur;
+import model.CaseModel;
+import model.JoueurModel;
 
 /**
  * Définit un joueur et ses données dans le jeu du Monopoly : compétences,
@@ -14,7 +14,7 @@ import model.Joueur;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public class JoueurMonopoly extends Joueur {
+public class JoueurMonopoly extends JoueurModel {
 
 	private int argent = 1000;
 	private boolean estFauche = false;
@@ -23,7 +23,7 @@ public class JoueurMonopoly extends Joueur {
 	private boolean possedeCarteSortieArretMaladie = false;
 	private int nombreEntreprisesPossedees = 0;
 	private int nombreServicesPossedes = 0;
-	private ArrayList<Case> Salaries = new ArrayList<Case>();
+	private ArrayList<CaseModel> Salaries = new ArrayList<CaseModel>();
 	private ArrayList<String> couleurs = new ArrayList<String>();
 
 	/* CONSTRUCTEUR */
@@ -114,7 +114,7 @@ public class JoueurMonopoly extends Joueur {
 	 * 
 	 * @param CaseSalarie
 	 */
-	public void ajouterSalarie(Case Salarie) {
+	public void ajouterSalarie(CaseModel Salarie) {
 		this.Salaries.add(Salarie);
 	}
 
@@ -125,7 +125,7 @@ public class JoueurMonopoly extends Joueur {
 	 */
 	public String getListeStringSalaries() {
 		String s = "";
-		for (Case t : this.Salaries) {
+		for (CaseModel t : this.Salaries) {
 			s += (t.getNom() + ",");
 		}
 		return s;
@@ -136,7 +136,7 @@ public class JoueurMonopoly extends Joueur {
 	 * 
 	 * @return Salaries
 	 */
-	public ArrayList<Case> getListeSalaries() {
+	public ArrayList<CaseModel> getListeSalaries() {
 		return this.Salaries;
 	}
 
@@ -151,7 +151,7 @@ public class JoueurMonopoly extends Joueur {
 
 		int brun = 0, turquoise = 0, mauve = 0, orange = 0, rouge = 0, jaune = 0, vert = 0, bleu = 0;
 
-		for (Case t : this.getListeSalaries()) {
+		for (CaseModel t : this.getListeSalaries()) {
 
 			if (t.getCouleur() == "brun")
 				brun += 1;
@@ -254,11 +254,11 @@ public class JoueurMonopoly extends Joueur {
 	/**
 	 * Supprime le Signet de possession d'un Salarie
 	 * 
-	 * @see Case
+	 * @see CaseModel
 	 */
 	public void clearSignets() {
 
-		for (Case t : getListeSalaries()) {
+		for (CaseModel t : getListeSalaries()) {
 			t.setPatron(null);
 
 			Platform.runLater(new Runnable() {

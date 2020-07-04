@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -13,7 +13,7 @@ import view.MonopolyView;
  * 
  * @author Massourang Jugurtha Lina Emma
  */
-public class CaseOpenSpaceController extends Case implements DefaultControllerInterface {
+public class CaseOpenSpaceController extends CaseModel implements DefaultControllerInterface {
 
 	/**
 	 * Indique le nom de la case et initialise sa valeur

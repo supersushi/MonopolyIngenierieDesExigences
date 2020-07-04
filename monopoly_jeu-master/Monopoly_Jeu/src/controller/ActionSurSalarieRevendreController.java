@@ -3,7 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
-import model.Case;
+import model.CaseModel;
 import view.ActionSurSalarieView;
 import view.MonopolyView;
 
@@ -30,7 +30,7 @@ public class ActionSurSalarieRevendreController implements EventHandler<ActionEv
 		fenetreDeJeu.getPartie().getPM().getCase(position).setPatron(null);
 		fenetreDeJeu.getPartie().getPM().getCase(position).getSignetPatron().setFill(Color.TRANSPARENT);
 		fenetreDeJeu.getPartie().getPM().getJoueurActif().getListeCouleur();
-		Case c = fenetreDeJeu.getPartie().getPM().getCase(position);
+		CaseModel c = fenetreDeJeu.getPartie().getPM().getCase(position);
 
 		if (c.getId() == 5 || c.getId() == 15 || c.getId() == 25 || c.getId() == 35) {
 			fenetreDeJeu.getPartie().getPM().getJoueurActif()

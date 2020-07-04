@@ -15,9 +15,9 @@ public abstract class Plateau {
 	private int nombreDeCases = 20;
 	private int nombreDeTours = 1;
 
-	private ArrayList<Case> cases = new ArrayList<Case>();
+	private ArrayList<CaseModel> cases = new ArrayList<CaseModel>();
 
-	public Des des = new Des();
+	public DesModel des = new DesModel();
 
 	/**
 	 * Création d'un plateau en fonction du nombre de joueur et nombre de cases
@@ -41,7 +41,7 @@ public abstract class Plateau {
 	 * @param i int
 	 * @return case
 	 */
-	public Case getCase(int i) {
+	public CaseModel getCase(int i) {
 		return this.cases.get(i);
 	}
 
@@ -51,7 +51,7 @@ public abstract class Plateau {
 	 * @param i     int
 	 * @param cells Case
 	 */
-	public void setCase(int i, Case cells) {
+	public void setCase(int i, CaseModel cells) {
 		this.cases.set(i, cells);
 		cases.get(i).setId(i);
 	}
@@ -121,6 +121,6 @@ public abstract class Plateau {
 	 * 
 	 * @return joueur
 	 */
-	public abstract Joueur estVainqueur();
+	public abstract JoueurModel estVainqueur();
 
 }

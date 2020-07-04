@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Carte;
-import model.Case;
+import model.CarteModel;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -15,7 +15,7 @@ import view.MonopolyView;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public class CaseCommunauteController extends Case implements DefaultControllerInterface {
+public class CaseCommunauteController extends CaseModel implements DefaultControllerInterface {
 
 	/**
 	 * Indique le nom de la case
@@ -39,7 +39,7 @@ public class CaseCommunauteController extends Case implements DefaultControllerI
 
 		Clavier es = new Clavier();
 
-		Carte carte = monopolyView.getPartie().getPM().tirerCarteCommunauté();
+		CarteModel carte = monopolyView.getPartie().getPM().tirerCarteCommunauté();
 		es.println("-> " + monopolyView.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
 		monopolyView.afficherMessage(monopolyView.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
 

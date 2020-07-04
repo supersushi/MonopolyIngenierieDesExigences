@@ -3,7 +3,7 @@ package controller;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Carte;
+import model.CarteModel;
 import view.MonopolyView;
 
 /**
@@ -13,7 +13,7 @@ import view.MonopolyView;
  * @param deplacementRelatif boolean : true si le d�placement depend de la
  *                           position
  */
-public class CarteDeplacementController extends Carte implements DefaultControllerInterface {
+public class CarteDeplacementController extends CarteModel implements DefaultControllerInterface {
 
 	private int position;
 	private boolean deplacementRelatif;

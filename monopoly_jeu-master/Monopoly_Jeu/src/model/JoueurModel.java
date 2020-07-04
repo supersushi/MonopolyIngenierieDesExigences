@@ -6,7 +6,7 @@ package model;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public abstract class Joueur {
+public abstract class JoueurModel {
 
 	private String nom;
 	private int id;
@@ -18,7 +18,7 @@ public abstract class Joueur {
 	 * @param nom String
 	 * @param id  int
 	 */
-	public Joueur(String nom, int id) {
+	public JoueurModel(String nom, int id) {
 		setNom(nom);
 		setID(id);
 	}

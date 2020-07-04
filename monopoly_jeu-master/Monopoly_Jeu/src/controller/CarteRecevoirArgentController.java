@@ -3,14 +3,14 @@ package controller;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Carte;
+import model.CarteModel;
 import view.MonopolyView;
 
 /**
  * Cette classe permet a un joueur de se voir cr�diter un certain montant pour
  * certaines action (passage a la case d�part etc)
  */
-public class CarteRecevoirArgentController extends Carte implements DefaultControllerInterface {
+public class CarteRecevoirArgentController extends CarteModel implements DefaultControllerInterface {
 
 	private int montant;
 

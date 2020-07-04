@@ -8,7 +8,7 @@ import java.util.Random;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public class Des {
+public class DesModel {
 
 	private int de1;
 	private int de2;

@@ -10,7 +10,7 @@ import view.MonopolyView;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public abstract class Carte {
+public abstract class CarteModel {
 
 	private String intitule;
 	private String description;
@@ -21,7 +21,7 @@ public abstract class Carte {
 	 * @param Intitule    String
 	 * @param description String
 	 */
-	public Carte(String intitule, String description) {
+	public CarteModel(String intitule, String description) {
 		this.intitule = intitule;
 		this.description = description;
 	}

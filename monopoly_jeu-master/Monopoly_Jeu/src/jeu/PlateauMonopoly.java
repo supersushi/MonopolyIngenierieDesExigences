@@ -18,9 +18,9 @@ import controller.CaseEntrepriseController;
 import controller.CaseImpotsController;
 import controller.CaseOpenSpaceController;
 import controller.CaseSalarieController;
-import model.Carte;
-import model.Case;
-import model.Joueur;
+import model.CarteModel;
+import model.CaseModel;
+import model.JoueurModel;
 
 /**
  * Initialise le plateau du monopoly avec toutes ses cases
@@ -30,8 +30,8 @@ import model.Joueur;
 public class PlateauMonopoly extends model.Plateau {
 
 	private ArrayList<JoueurMonopoly> joueurs = new ArrayList<JoueurMonopoly>();
-	private ArrayList<Carte> chance = new ArrayList<Carte>();
-	private ArrayList<Carte> communauté = new ArrayList<Carte>();
+	private ArrayList<CarteModel> chance = new ArrayList<CarteModel>();
+	private ArrayList<CarteModel> communauté = new ArrayList<CarteModel>();
 
 	/**
 	 * Crée un plateau avec un nombre de joueur
@@ -263,7 +263,7 @@ public class PlateauMonopoly extends model.Plateau {
 	 * @return joueur
 	 */
 	@Override
-	public Joueur estVainqueur() {
+	public JoueurModel estVainqueur() {
 		int res = 0;
 		for (int i = 0; i < joueurs.size(); i++) {
 			if (getJoueur(i).getArgent() > getJoueur(res).getArgent())
@@ -279,7 +279,7 @@ public class PlateauMonopoly extends model.Plateau {
 	 * 
 	 * @return Case
 	 */
-	public Case getCaseActive() {
+	public CaseModel getCaseActive() {
 		return getCase(getJoueurActif().getPosition());
 	}
 
@@ -305,8 +305,8 @@ public class PlateauMonopoly extends model.Plateau {
 	 * 
 	 * @return c
 	 */
-	public Carte tirerCarteChance() {
-		Carte c = chance.remove(0);
+	public CarteModel tirerCarteChance() {
+		CarteModel c = chance.remove(0);
 		if (!c.getNom().equals("Sortie"))
 			chance.add(c);
 		return c;
@@ -317,8 +317,8 @@ public class PlateauMonopoly extends model.Plateau {
 	 * 
 	 * @return c
 	 */
-	public Carte tirerCarteCommunauté() {
-		Carte c = communauté.remove(0);
+	public CarteModel tirerCarteCommunauté() {
+		CarteModel c = communauté.remove(0);
 		if (!c.getNom().equals("Sortie"))
 			communauté.add(c);
 		return c;
@@ -331,7 +331,7 @@ public class PlateauMonopoly extends model.Plateau {
 	public void remettreCarteSortieArretMaladie() {
 
 		boolean carteDansPaquetChance = false;
-		for (Carte c : chance) {
+		for (CarteModel c : chance) {
 			if (c.getNom().equals("Sortie"))
 				carteDansPaquetChance = true;
 		}

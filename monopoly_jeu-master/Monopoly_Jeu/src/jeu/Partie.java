@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import application.Clavier;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -57,7 +57,7 @@ public class Partie {
 
 						JoueurMonopoly joueur;
 						int lancé;
-						Case cells;
+						CaseModel cells;
 
 						while (!pm.finPartie() && pm.getNbTours() <= 100) {
 

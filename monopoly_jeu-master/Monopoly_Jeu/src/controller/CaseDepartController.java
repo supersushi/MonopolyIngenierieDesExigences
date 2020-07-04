@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -14,7 +14,7 @@ import view.MonopolyView;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public class CaseDepartController extends Case implements DefaultControllerInterface {
+public class CaseDepartController extends CaseModel implements DefaultControllerInterface {
 
 	/**
 	 * Indique le nom de la case
@@ -26,7 +26,7 @@ public class CaseDepartController extends Case implements DefaultControllerInter
 	/**
 	 * Crédite le joueur de 200 lors de son passage par la case départ
 	 * 
-	 * @see Case
+	 * @see CaseModel
 	 */
 	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 

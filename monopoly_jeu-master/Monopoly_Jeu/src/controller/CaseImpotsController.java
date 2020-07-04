@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -13,7 +13,7 @@ import view.MonopolyView;
  * 
  * @author Massourang Jugurtha Lina Emma
  */
-public class CaseImpotsController extends Case implements DefaultControllerInterface {
+public class CaseImpotsController extends CaseModel implements DefaultControllerInterface {
 
 	/**
 	 * @param nom    String : Intitulé de la case

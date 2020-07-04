@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
  * Crée l'action pour aller en arret maladie
  * 
  * @author Massourang Jugurtha Lina Emma
- * @see Case
+ * @see CaseModel
  */
-public class CaseAllerArretMaladieController extends Case implements DefaultControllerInterface {
+public class CaseAllerArretMaladieController extends CaseModel implements DefaultControllerInterface {
 
 	private boolean reponseQuestion = false;
 
@@ -29,7 +29,7 @@ public class CaseAllerArretMaladieController extends Case implements DefaultCont
 	 * Méthode permettant de gérer l'action quand le joueur tombe sur la case
 	 * AllerArretMaladie
 	 * 
-	 * @see Case
+	 * @see CaseModel
 	 */
 	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 

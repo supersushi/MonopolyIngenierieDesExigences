@@ -15,13 +15,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.View;
+import model.ViewModel;
 
 /**
  * Fenêtre à afficher lorqu'un joueur est en arret maladie. Choix : - Payer pour
  * en sortir - Rester et jouer sa guerison aux dés
  */
-public class SortirArretMaladieView extends View {
+public class SortirArretMaladieView extends ViewModel {
 
 	private MonopolyView monopolyView;
 	private Stage stage;

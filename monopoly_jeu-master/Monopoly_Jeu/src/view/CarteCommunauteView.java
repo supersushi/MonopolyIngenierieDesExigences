@@ -13,12 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.View;
+import model.ViewModel;
 
 /**
  * View à afficher lorqu'on atterit sur une CaseCommunaute.
  */
-public class CarteCommunauteView extends View {
+public class CarteCommunauteView extends ViewModel {
 
 	private MonopolyView monopolyView;
 	private Stage stage;

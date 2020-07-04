@@ -6,7 +6,7 @@ import java.util.Random;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -15,7 +15,7 @@ import view.MonopolyView;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public class CaseSalarieController extends Case implements DefaultControllerInterface {
+public class CaseSalarieController extends CaseModel implements DefaultControllerInterface {
 
 	private JoueurMonopoly Patron;
 	private ArrayList<Integer> Salaire = new ArrayList<Integer>();

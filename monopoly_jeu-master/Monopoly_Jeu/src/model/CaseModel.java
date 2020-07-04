@@ -13,7 +13,7 @@ import view.MonopolyView;
  * @author Massourang Jugurtha Lina Emma
  */
 
-public abstract class Case {
+public abstract class CaseModel {
 
 	private String nom;
 	private int id = 0;
@@ -27,7 +27,7 @@ public abstract class Case {
 	 * @param nom    String
 	 * @param valeur int
 	 */
-	public Case(String nom, int valeur) {
+	public CaseModel(String nom, int valeur) {
 		this.nom = nom;
 		this.valeur = valeur;
 

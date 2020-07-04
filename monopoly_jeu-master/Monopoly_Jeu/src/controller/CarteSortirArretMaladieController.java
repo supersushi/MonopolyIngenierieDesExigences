@@ -3,14 +3,14 @@ package controller;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Carte;
+import model.CarteModel;
 import view.MonopolyView;
 
 /**
  * Carte permettant d'�tre gu�ri, et donc de ne plus �tre en arr�t maladie.
  * Carte conserv�e par le joueur.
  */
-public class CarteSortirArretMaladieController extends Carte implements DefaultControllerInterface {
+public class CarteSortirArretMaladieController extends CarteModel implements DefaultControllerInterface {
 
 	/**
 	 * Constructeur

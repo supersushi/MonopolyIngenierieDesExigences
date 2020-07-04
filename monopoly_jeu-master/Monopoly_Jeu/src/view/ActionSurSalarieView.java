@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.View;
+import model.ViewModel;
 
 /**
  * Vue permettant d'effectuer des actions sur les salariés
@@ -26,7 +26,7 @@ import model.View;
  * @author Massourang Jugurtha Lina Emma
  *
  */
-public class ActionSurSalarieView extends View {
+public class ActionSurSalarieView extends ViewModel {
 
 	private MonopolyView monopolyView;
 	private Stage stage;

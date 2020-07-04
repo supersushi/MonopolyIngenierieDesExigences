@@ -6,7 +6,7 @@ import java.util.Random;
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import model.Case;
+import model.CaseModel;
 import view.MonopolyView;
 
 /**
@@ -14,7 +14,7 @@ import view.MonopolyView;
  * 
  * @author Massourang Jugurtha Lina Emma
  */
-public class CaseArretMaladieController extends Case implements DefaultControllerInterface {
+public class CaseArretMaladieController extends CaseModel implements DefaultControllerInterface {
 
 	private boolean rep = false;
 
@@ -31,7 +31,7 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 	 * double au lancé de dés, il est guéri - Si un joueur possède une carte 'Sortir
 	 * d'arret maladie' et qu'il l'utilise, il est guéri
 	 * 
-	 * @see Case
+	 * @see CaseModel
 	 */
 	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
