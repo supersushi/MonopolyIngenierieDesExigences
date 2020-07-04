@@ -2,20 +2,20 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-import view.FenetreActionSurSalarie;
+import view.ActionSurSalarieView;
 
 public class ActionSurSalarieQuitterController implements EventHandler<WindowEvent> {
 
-	private FenetreActionSurSalarie fenetreActionSurSalarie;
+	private ActionSurSalarieView actionSurSalarieView;
 
-	public ActionSurSalarieQuitterController(FenetreActionSurSalarie fenetreActionSurSalarie) {
-		this.fenetreActionSurSalarie = fenetreActionSurSalarie;
+	public ActionSurSalarieQuitterController(ActionSurSalarieView actionSurSalarieView) {
+		this.actionSurSalarieView = actionSurSalarieView;
 	}
 
 	@Override
 	public void handle(WindowEvent event) {
-		fenetreActionSurSalarie.getFenetreDeJeu()
-				.refreshLabels(fenetreActionSurSalarie.getFenetreDeJeu().getPartie().getPM());
+		actionSurSalarieView.getFenetreDeJeu()
+				.refreshLabels(actionSurSalarieView.getFenetreDeJeu().getPartie().getPM());
 		event.consume();
 	}
 }

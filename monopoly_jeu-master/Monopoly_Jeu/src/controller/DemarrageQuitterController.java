@@ -2,19 +2,19 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-import view.FenetreDemarrage;
+import view.MonopolyDemarrageView;
 
 public class DemarrageQuitterController implements EventHandler<WindowEvent> {
 
-	private FenetreDemarrage fenetreDemarrage;
+	private MonopolyDemarrageView monopolyDemarrageView;
 
-	public DemarrageQuitterController(FenetreDemarrage fenetreDemarrage) {
-		this.fenetreDemarrage = fenetreDemarrage;
+	public DemarrageQuitterController(MonopolyDemarrageView monopolyDemarrageView) {
+		this.monopolyDemarrageView = monopolyDemarrageView;
 	}
 
 	@Override
 	public void handle(WindowEvent event) {
-		if (fenetreDemarrage.getChoix() == 0)
+		if (monopolyDemarrageView.getChoix() == 0)
 			System.exit(0);
 		event.consume();
 

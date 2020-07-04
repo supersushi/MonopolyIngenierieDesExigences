@@ -22,9 +22,9 @@ import model.Fenetre;
  * Fenêtre d'affichage lors du clique sur une compétence. Actions : - Embaucher
  * un salarié - Licencier un salarié - Faire monter en compétence le salarié
  */
-public class FenetreActionSurSalarie extends Fenetre {
+public class ActionSurSalarieView extends Fenetre {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView fenetreDeJeu;
 	private Stage stage;
 	private HBox root;
 	private int position;
@@ -37,9 +37,9 @@ public class FenetreActionSurSalarie extends Fenetre {
 	 * Constructeur
 	 * 
 	 * @param fjeu FenetreDeJeu
-	 * @see FenetreDeJeu
+	 * @see MonopolyView
 	 */
-	public FenetreActionSurSalarie(FenetreDeJeu fenetreDeJeu) {
+	public ActionSurSalarieView(MonopolyView fenetreDeJeu) {
 
 		this.fenetreDeJeu = fenetreDeJeu;
 
@@ -153,11 +153,11 @@ public class FenetreActionSurSalarie extends Fenetre {
 		return stage;
 	}
 
-	public FenetreDeJeu getFenetreDeJeu() {
+	public MonopolyView getFenetreDeJeu() {
 		return fenetreDeJeu;
 	}
 
-	public void setFenetreDeJeu(FenetreDeJeu fenetreDeJeu) {
+	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 	}
 

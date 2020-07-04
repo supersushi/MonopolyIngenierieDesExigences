@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import model.Case;
-import view.FenetreDeJeu;
-import view.FenetreEmbaucheSalarie;
+import view.MonopolyView;
+import view.EmbaucheSalarieView;
 
 public class JeuClicRootController implements EventHandler<MouseEvent> {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView monopolyView;
 
-	public JeuClicRootController(FenetreDeJeu fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public JeuClicRootController(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
 	/**
@@ -21,7 +21,7 @@ public class JeuClicRootController implements EventHandler<MouseEvent> {
 	 * du pointeurs, on peux obtenir la position de la case visée. <br>
 	 * Si cette position est une position valide (càd que l'on clic sur une
 	 * {@link CaseSalarieController} qui appartient au joueur dont c'est le tour), alors on
-	 * peut déclencher l'affichage d'une {@link FenetreEmbaucheSalarie} avec en
+	 * peut déclencher l'affichage d'une {@link EmbaucheSalarieView} avec en
 	 * paramètre la position cliquée.
 	 *
 	 */
@@ -56,12 +56,12 @@ public class JeuClicRootController implements EventHandler<MouseEvent> {
 			CasesInterdites.add(i);
 		}
 		CasesInterdites.add(-1);
-		for (Case t : fenetreDeJeu.getPartie().getPM().getJoueurActif().getListeSalaries()) {
+		for (Case t : monopolyView.getPartie().getPM().getJoueurActif().getListeSalaries()) {
 			CasesInterdites.remove((Object) (t.getId()));
 		}
 
 		if (!CasesInterdites.contains(pos)) {
-			fenetreDeJeu.getFenetreActionSurSalarie().afficherFenetre(pos);
+			monopolyView.getFenetreActionSurSalarie().afficherFenetre(pos);
 		}
 	}
 }

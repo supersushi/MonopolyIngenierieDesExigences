@@ -18,9 +18,9 @@ import model.Fenetre;
 /**
  * Fenêtre lors du passage sur une carte chance.
  */
-public class FenetreCarteChance extends Fenetre {
+public class CarteChanceView extends Fenetre {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView fenetreDeJeu;
 	private Stage stage;
 	private HBox root;
 	private VBox carte;
@@ -33,7 +33,7 @@ public class FenetreCarteChance extends Fenetre {
 	 * 
 	 * @param fjeu FenetreDeJeu
 	 */
-	public FenetreCarteChance(FenetreDeJeu fenetreDeJeu) {
+	public CarteChanceView(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 		this.stage = new Stage();
 		this.stage.setTitle("Carte Chance");
@@ -118,11 +118,11 @@ public class FenetreCarteChance extends Fenetre {
 		l_Description = new Label(description);
 	}
 
-	public FenetreDeJeu getFenetreDeJeu() {
+	public MonopolyView getFenetreDeJeu() {
 		return fenetreDeJeu;
 	}
 
-	public void setFenetreDeJeu(FenetreDeJeu fenetreDeJeu) {
+	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 	}
 

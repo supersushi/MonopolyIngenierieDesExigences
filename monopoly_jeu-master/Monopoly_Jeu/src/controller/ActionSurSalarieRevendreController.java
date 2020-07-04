@@ -4,21 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import model.Case;
-import view.FenetreActionSurSalarie;
-import view.FenetreDeJeu;
+import view.ActionSurSalarieView;
+import view.MonopolyView;
 
 public class ActionSurSalarieRevendreController implements EventHandler<ActionEvent> {
 
-	private FenetreActionSurSalarie fenetreActionSurSalarie;
+	private ActionSurSalarieView actionSurSalarieView;
 
-	public ActionSurSalarieRevendreController(FenetreActionSurSalarie fenetreActionSurSalarie) {
-		this.fenetreActionSurSalarie = fenetreActionSurSalarie;
+	public ActionSurSalarieRevendreController(ActionSurSalarieView actionSurSalarieView) {
+		this.actionSurSalarieView = actionSurSalarieView;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
-		FenetreDeJeu fenetreDeJeu = fenetreActionSurSalarie.getFenetreDeJeu();
-		int position = fenetreActionSurSalarie.getPosition();
+		MonopolyView fenetreDeJeu = actionSurSalarieView.getFenetreDeJeu();
+		int position = actionSurSalarieView.getPosition();
 		int prixRevente = fenetreDeJeu.getPartie().getPM().getCase(position).getPrix()
 				+ fenetreDeJeu.getPartie().getPM().getCase(position).getNbCompetence()
 						* fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence();
@@ -47,7 +47,7 @@ public class ActionSurSalarieRevendreController implements EventHandler<ActionEv
 			fenetreDeJeu.getPartie().getPM().getCase(position).Salaries.get(i).setFill(Color.TRANSPARENT);
 		}
 		fenetreDeJeu.getPartie().getPM().getJoueurActif().ajouterArgent(prixRevente);
-		fenetreActionSurSalarie.getStage().close();
+		actionSurSalarieView.getStage().close();
 		event.consume();
 	}
 }

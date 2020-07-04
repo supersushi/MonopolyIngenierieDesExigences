@@ -4,7 +4,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Carte;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Carte permettant d'�tre gu�ri, et donc de ne plus �tre en arr�t maladie.
@@ -27,15 +27,15 @@ public class CarteSortirArretMaladieController extends Carte implements DefaultC
 	 * 
 	 * @param joueur  JoueurMonopoly
 	 * @param plateau PlateauMonopoly
-	 * @param fp      FenetreDeJeu
+	 * @param monopolyView      FenetreDeJeu
 	 */
 	@Override
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 		es.println("-> " + joueur.getNom() + " recoit la carte 'Sortir d arret maladie' !");
-		if (fp != null)
-			fp.afficherMessage(joueur.getNom() + " recoit la carte 'Sortir d arret maladie' !");
+		if (monopolyView != null)
+			monopolyView.afficherMessage(joueur.getNom() + " recoit la carte 'Sortir d arret maladie' !");
 
 		joueur.setCarteSortieArretMaladie(true);
 	}

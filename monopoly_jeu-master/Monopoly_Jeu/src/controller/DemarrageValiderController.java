@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
-import view.FenetreDeJeu;
-import view.FenetreDemarrage;
+import view.MonopolyView;
+import view.MonopolyDemarrageView;
 
 public class DemarrageValiderController implements EventHandler<ActionEvent> {
 
 	private ArrayList<TextField> listePlayer = new ArrayList<TextField>();
-	private FenetreDemarrage fenetreDemarrage;
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyDemarrageView monopolyDemarrageView;
+	private MonopolyView monopolyView;
 
-	public DemarrageValiderController(FenetreDemarrage fenetreDemarrage) {
-		this.fenetreDemarrage = fenetreDemarrage;
-		this.fenetreDeJeu = fenetreDemarrage.getFenetreDeJeu();
-		this.listePlayer = fenetreDemarrage.getListePlayer();
+	public DemarrageValiderController(MonopolyDemarrageView monopolyDemarrageView) {
+		this.monopolyDemarrageView = monopolyDemarrageView;
+		this.monopolyView = monopolyDemarrageView.getFenetreDeJeu();
+		this.listePlayer = monopolyDemarrageView.getListePlayer();
 	}
 
 	@Override
@@ -28,10 +28,10 @@ public class DemarrageValiderController implements EventHandler<ActionEvent> {
 				champs.add(listePlayer.get(i).getText());
 		}
 		if (champs.size() >= 2) {
-			fenetreDemarrage.setChoix(1);
-			fenetreDeJeu.setPartie(champs.size(), champs);
-			fenetreDeJeu.getStage().show();
-			fenetreDemarrage.getStage().close();
+			monopolyDemarrageView.setChoix(1);
+			monopolyView.setPartie(champs.size(), champs);
+			monopolyView.getStage().show();
+			monopolyDemarrageView.getStage().close();
 		}
 		event.consume();
 	}

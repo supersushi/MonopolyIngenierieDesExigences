@@ -5,7 +5,7 @@ import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Carte;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action d'une case chance
@@ -29,7 +29,7 @@ public class CaseChanceController extends Case implements DefaultControllerInter
 	 * @param fp      FenetreDeJeu
 	 */
 	@Override
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 	}
 
 	@SuppressWarnings("static-access")
@@ -39,7 +39,7 @@ public class CaseChanceController extends Case implements DefaultControllerInter
 	 * 
 	 * @see Carte
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
+	public void fenetreAction(MonopolyView fjeu) {
 
 		Clavier es = new Clavier();
 

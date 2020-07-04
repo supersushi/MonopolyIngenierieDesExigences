@@ -2,20 +2,20 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import view.FenetreEmbaucheSalarie;
+import view.EmbaucheSalarieView;
 
 public class EmbaucheSalarieOuiController implements EventHandler<ActionEvent> {
 
-	private FenetreEmbaucheSalarie fenetreEmbaucheSalarie;
+	private EmbaucheSalarieView embaucheSalarieView;
 
-	public EmbaucheSalarieOuiController(FenetreEmbaucheSalarie fenetreEmbaucheSalarie) {
-		this.fenetreEmbaucheSalarie = fenetreEmbaucheSalarie;
+	public EmbaucheSalarieOuiController(EmbaucheSalarieView embaucheSalarieView) {
+		this.embaucheSalarieView = embaucheSalarieView;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
-		fenetreEmbaucheSalarie.getFenetreDeJeu().getPartie().getPM().getCaseActive().setRep(true);
-		fenetreEmbaucheSalarie.getStage().close();
+		embaucheSalarieView.getFenetreDeJeu().getPartie().getPM().getCaseActive().setRep(true);
+		embaucheSalarieView.getStage().close();
 		event.consume();
 	}
 }

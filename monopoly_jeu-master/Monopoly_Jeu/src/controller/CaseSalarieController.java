@@ -7,7 +7,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action de la case Salarie
@@ -55,39 +55,39 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	 */
 
 	@SuppressWarnings({ "unused", "static-access" })
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		if (this.getPatron() == null) {
 			if (getRep()) {
-				if (embaucherSalarie(joueur, fp))
-					if (fp != null)
-						fp.setSignetPatron(joueur, this);
+				if (embaucherSalarie(joueur, monopolyView))
+					if (monopolyView != null)
+						monopolyView.setSignetPatron(joueur, this);
 			} else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas embaucher le salarié.");
-				if (fp != null)
-					fp.afficherMessage(joueur.getNom() + " décide de ne pas embaucher le salarié.");
+				if (monopolyView != null)
+					monopolyView.afficherMessage(joueur.getNom() + " décide de ne pas embaucher le salarié.");
 			}
 		}
 
 		else if (this.getPatron() != joueur)
-			payerSalaire(joueur, fp);
+			payerSalaire(joueur, monopolyView);
 
 		else {
 			es.println("-> " + joueur.getNom() + " est le patron de ce salarié");
-			fp.afficherMessage(joueur.getNom() + " est le patron de ce salarié");
+			monopolyView.afficherMessage(joueur.getNom() + " est le patron de ce salarié");
 
-			if (this.getPeutMonterEnCompetence() && fp.getPartie().PARTIE_AUTO) {
-				this.monterEnCompetence(fp);
-				fp.setCompetence(this);
+			if (this.getPeutMonterEnCompetence() && monopolyView.getPartie().PARTIE_AUTO) {
+				this.monterEnCompetence(monopolyView);
+				monopolyView.setCompetence(this);
 				es.println("-> " + joueur.getNom() + " a fait monter en compétence " + getNbCompetence()
 						+ "fois ce salarié");
 			}
 		}
 	}
 
-	public boolean embaucherSalarie(JoueurMonopoly joueur, FenetreDeJeu fp) {
+	public boolean embaucherSalarie(JoueurMonopoly joueur, MonopolyView monopolyView) {
 		if ((joueur.getArgent() - this.getPrix()) <= 0) {
 			System.out.println("Vous n'avez pas assez d'argent!");
 			return false;
@@ -97,13 +97,13 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 			joueur.retirerArgent(this.getPrix());
 			System.out
 					.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
-			if (fp != null)
-				fp.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
 
-	public void payerSalaire(JoueurMonopoly joueur, FenetreDeJeu fp) {
+	public void payerSalaire(JoueurMonopoly joueur, MonopolyView monopolyView) {
 		String beneficiaire = "la Banque";
 
 		if (!this.getPatron().getEstMalade()) {
@@ -113,13 +113,13 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 				beneficiaire = this.getPatron().getNom();
 			}
 			System.out.println(" > " + joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
-			if (fp != null)
-				fp.afficherMessage(joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
 		} else {
 			System.out.println(
 					"-> Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
-			if (fp != null)
-				fp.afficherMessage(
+			if (monopolyView != null)
+				monopolyView.afficherMessage(
 						"Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
@@ -127,23 +127,23 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	/**
 	 * Permet l'ajout de compétence sur un salarié
 	 * 
-	 * @param fp FenetrePrincipale
+	 * @param monopolyView FenetrePrincipale
 	 */
-	public void monterEnCompetence(FenetreDeJeu fp) {
+	public void monterEnCompetence(MonopolyView monopolyView) {
 
 		nbCompetence++;
 		Patron.retirerArgent(this.getPrixCompetence());
 
 		if (this.nbCompetence <= 4) {
 			System.out.println("-> " + Patron.getNom() + " a fait monter en compétence l'employé " + getNom() + " !");
-			if (fp != null)
-				fp.afficherMessage(
+			if (monopolyView != null)
+				monopolyView.afficherMessage(
 						"-> " + Patron.getNom() + " a fait monter en compétence l'employé " + getNom() + " !");
 		} else {
 			System.out.println("-> " + Patron.getNom() + " a obtenu un grade " + getNom()
 					+ " et ne peut plus monter en compétence!");
-			if (fp != null)
-				fp.afficherMessage("-> " + Patron.getNom() + " a obtenu un grade " + getNom()
+			if (monopolyView != null)
+				monopolyView.afficherMessage("-> " + Patron.getNom() + " a obtenu un grade " + getNom()
 						+ " et ne peut plus monter en compétence!");
 		}
 	}
@@ -152,17 +152,17 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	 * Méthode permettant l'affichage d'une fenêtre lors de l'embauche d'un salarie
 	 */
 	@SuppressWarnings("static-access")
-	public void fenetreAction(FenetreDeJeu fp) {
+	public void fenetreAction(MonopolyView monopolyView) {
 
-		if (fp.getPartie().PARTIE_AUTO) {
+		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
 			if (rand.nextBoolean())
 				Rep = true;
-			fp.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 		} else if (this.getPatron() == null)
-			fp.afficherFenetreEmbaucherSalarie();
+			monopolyView.afficherFenetreEmbaucherSalarie();
 		else
-			fp.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 	}
 
 	/*

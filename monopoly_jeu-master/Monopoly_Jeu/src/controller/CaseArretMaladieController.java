@@ -6,7 +6,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action de la case Arret Maladie
@@ -32,7 +32,7 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 	 * 
 	 * @see Case
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
@@ -42,8 +42,8 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 
 		if (joueur.getEstMalade() == true) {
 
-			if (fjeu != null)
-				fjeu.afficherDes(plateau);
+			if (monopolyView != null)
+				monopolyView.afficherDes(plateau);
 
 			es.println("Voulez vous payer 25€ pour etre soigné ? ");
 
@@ -58,8 +58,8 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 						+ " !");
 				es.println("" + joueur.getNom() + " avance de " + lancé + " cases et atterit sur "
 						+ plateau.getCaseActive().getNom());
-				if (fjeu != null)
-					actionSortieArretMaladie(plateau, joueur, fjeu);
+				if (monopolyView != null)
+					actionSortieArretMaladie(plateau, joueur, monopolyView);
 			} else {
 				if (joueur.getToursEnArretMaladie() > 2) {
 					es.println("NON : " + joueur.getNom()
@@ -72,8 +72,8 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 							+ lancé + " !");
 					es.println("" + joueur.getNom() + " avance de " + lancé + " cases et atterit sur "
 							+ plateau.getCaseActive().getNom());
-					if (fjeu != null)
-						actionSortieArretMaladie(plateau, joueur, fjeu);
+					if (monopolyView != null)
+						actionSortieArretMaladie(plateau, joueur, monopolyView);
 				} else {
 					// es.println("NON : " + joueur.getNom() + " (tour " +
 					// joueur.getToursEnArretMaladie() + ") décide de ne pas payer et lance ses
@@ -85,8 +85,8 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 						plateau.deplacerJoueur(joueur, lancé);
 						es.println("" + joueur.getNom() + " avance de " + lancé + " cases et atterit sur "
 								+ plateau.getCaseActive().getNom());
-						if (fjeu != null)
-							actionSortieArretMaladie(plateau, joueur, fjeu);
+						if (monopolyView != null)
+							actionSortieArretMaladie(plateau, joueur, monopolyView);
 					} else {
 						es.println("  [" + d1 + "][" + d2 + "] Perdu!");
 						joueur.setToursEnArretMaladie(joueur.getToursEnArretMaladie() + 1);
@@ -95,8 +95,8 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 			}
 		} else {
 			es.println("- Le joueur fait une simple visite au médecin du travail -");
-			if (fjeu != null)
-				fjeu.afficherMessage("- Le joueur fait une simple visite au médecin du travail -");
+			if (monopolyView != null)
+				monopolyView.afficherMessage("- Le joueur fait une simple visite au médecin du travail -");
 		}
 
 	}
@@ -106,21 +106,21 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 	/**
 	 * Reprend le cours de la partie
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
+	public void fenetreAction(MonopolyView monopolyView) {
 
-		if (fjeu.getPartie().PARTIE_AUTO) {
+		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
 			if (rand.nextBoolean())
 				rep = true;
-			fjeu.getPartie().reprendrePartie();
-		} else if (fjeu.getPartie().getPM().getJoueurActif().getEstMalade())
-			fjeu.afficherFenetreArretMaladie();
+			monopolyView.getPartie().reprendrePartie();
+		} else if (monopolyView.getPartie().getPM().getJoueurActif().getEstMalade())
+			monopolyView.afficherFenetreArretMaladie();
 		else
-			fjeu.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 	}
 
 	@SuppressWarnings("static-access")
-	public void actionSortieArretMaladie(PlateauMonopoly plateau, JoueurMonopoly joueur, FenetreDeJeu fjeu) {
+	public void actionSortieArretMaladie(PlateauMonopoly plateau, JoueurMonopoly joueur, MonopolyView monopolyView) {
 
 		try {
 			Thread.sleep(800);
@@ -129,10 +129,10 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 			e.printStackTrace();
 		}
 
-		plateau.getCase(joueur.getPosition()).fenetreAction(fjeu);
-		fjeu.deplacerPion(joueur);
-		fjeu.getPartie().pausePartie();
-		while (fjeu.getPartie().getPausePartie() && !fjeu.getPartie().PARTIE_AUTO) {
+		plateau.getCase(joueur.getPosition()).fenetreAction(monopolyView);
+		monopolyView.deplacerPion(joueur);
+		monopolyView.getPartie().pausePartie();
+		while (monopolyView.getPartie().getPausePartie() && !monopolyView.getPartie().PARTIE_AUTO) {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
@@ -141,7 +141,7 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 			}
 		}
 
-		plateau.getCase(joueur.getPosition()).action(joueur, plateau, fjeu);
+		plateau.getCase(joueur.getPosition()).action(joueur, plateau, monopolyView);
 	}
 
 	@Override

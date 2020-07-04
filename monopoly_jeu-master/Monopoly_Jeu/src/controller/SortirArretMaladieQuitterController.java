@@ -2,19 +2,19 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-import view.FenetreSortirArretMaladie;
+import view.SortirArretMaladieView;
 
 public class SortirArretMaladieQuitterController implements EventHandler<WindowEvent> {
 
-	private FenetreSortirArretMaladie fenetreSortirArretMaladie;
+	private SortirArretMaladieView sortirArretMaladieView;
 
-	public SortirArretMaladieQuitterController(FenetreSortirArretMaladie fenetreSortirArretMaladie) {
-		this.fenetreSortirArretMaladie = fenetreSortirArretMaladie;
+	public SortirArretMaladieQuitterController(SortirArretMaladieView sortirArretMaladieView) {
+		this.sortirArretMaladieView = sortirArretMaladieView;
 	}
 
 	@Override
 	public void handle(WindowEvent event) {
-		fenetreSortirArretMaladie.getFenetreDeJeu().getPartie().reprendrePartie();
+		sortirArretMaladieView.getFenetreDeJeu().getPartie().reprendrePartie();
 		event.consume();
 	}
 }

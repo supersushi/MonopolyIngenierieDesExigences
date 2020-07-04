@@ -6,7 +6,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action de la case Service Public
@@ -34,34 +34,34 @@ public class CaseEntrepriseController extends Case implements DefaultControllerI
 	 * changement du Salaire en fonction du nombre d'entreprise possédé par un
 	 * joueur
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		if (this.getPatron() == null) {
 			if (getRep()) {
-				if (EmbaucheSalarie(joueur, fjeu))
-					if (fjeu != null)
-						fjeu.setSignetPatron(joueur, this);
+				if (EmbaucheSalarie(joueur, monopolyView))
+					if (monopolyView != null)
+						monopolyView.setSignetPatron(joueur, this);
 			} else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas acheter cette entreprise.");
-				if (fjeu != null)
-					fjeu.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
+				if (monopolyView != null)
+					monopolyView.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
 			}
 		}
 
 		else if (this.getPatron() != joueur)
-			payerSalaire(joueur, plateau, fjeu);
+			payerSalaire(joueur, plateau, monopolyView);
 
 		else {
 			es.println(" > " + joueur.getNom() + " possède l'entreprise.");
-			if (fjeu != null)
-				fjeu.afficherMessage(
+			if (monopolyView != null)
+				monopolyView.afficherMessage(
 						"Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
-	public boolean EmbaucheSalarie(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
+	public boolean EmbaucheSalarie(JoueurMonopoly joueur, MonopolyView monopolyView) {
 		if ((joueur.getArgent() - this.getPrix()) <= 0) {
 			System.out.println("Vous n'avez pas assez d'argent!");
 			return false;
@@ -72,21 +72,21 @@ public class CaseEntrepriseController extends Case implements DefaultControllerI
 			joueur.setNbEntreprises(joueur.getNbEntreprises() + 1);
 
 			System.out.println("-> " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
-			if (fjeu != null)
-				fjeu.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
 
-	public void payerSalaire(JoueurMonopoly joueur, PlateauMonopoly pm, FenetreDeJeu fjeu) {
+	public void payerSalaire(JoueurMonopoly joueur, PlateauMonopoly pm, MonopolyView monopolyView) {
 		String beneficiaire = "la Banque";
 
 		if (!this.getPatron().getEstMalade()) {
 
 			int Salaire = pm.des.lancerDes();
-			if (fjeu != null) {
-				fjeu.effacerDes();
-				fjeu.afficherDes(pm);
+			if (monopolyView != null) {
+				monopolyView.effacerDes();
+				monopolyView.afficherDes(pm);
 			}
 
 			if (this.getPatron().getNbEntreprises() == 2)
@@ -103,12 +103,12 @@ public class CaseEntrepriseController extends Case implements DefaultControllerI
 				beneficiaire = this.getPatron().getNom();
 			}
 			System.out.println("-> " + joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
-			if (fjeu != null)
-				fjeu.afficherMessage(joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
 		} else {
 			System.out.println("-> Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
-			if (fjeu != null)
-				fjeu.afficherMessage(
+			if (monopolyView != null)
+				monopolyView.afficherMessage(
 						"Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
@@ -118,17 +118,17 @@ public class CaseEntrepriseController extends Case implements DefaultControllerI
 	/**
 	 * Affiche une fenêtre pour l'achat de la case concernée
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
+	public void fenetreAction(MonopolyView monopolyView) {
 
-		if (fjeu.getPartie().PARTIE_AUTO) {
+		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
 			if (rand.nextBoolean())
 				reponseQuestion = true;
-			fjeu.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 		} else if (this.getPatron() == null)
-			fjeu.afficherFenetreEmbaucherSalarie();
+			monopolyView.afficherFenetreEmbaucherSalarie();
 		else
-			fjeu.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 	}
 
 	@Override

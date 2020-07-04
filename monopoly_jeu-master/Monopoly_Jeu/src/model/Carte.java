@@ -2,7 +2,7 @@ package model;
 
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Classe abstraite représentant une carte du Monopoly
@@ -51,7 +51,7 @@ public abstract class Carte {
 	 * @param plateau PlateauMonopoly
 	 * @param fjeu    FenetreDeJeu
 	 */
-	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu);
+	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView fjeu);
 
 	@Override
 	public String toString() {

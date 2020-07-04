@@ -4,7 +4,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action pour aller en arret maladie
@@ -29,22 +29,22 @@ public class CaseAllerArretMaladieController extends Case implements DefaultCont
 	 * 
 	 * @see Case
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		if (joueur.getCarteSortieArretMaladie()) {
 			es.println(" -> " + joueur.getNom() + " utilise sa carte et évite l arret maladie !");
-			if (fjeu != null)
-				fjeu.afficherMessage(joueur.getNom() + " utilise sa carte et évite l arret maladie !");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " utilise sa carte et évite l arret maladie !");
 			joueur.setCarteSortieArretMaladie(false);
 			plateau.remettreCarteSortieArretMaladie();
 		} else {
 			joueur.setEstMalade(true);
 			joueur.setPosition(10);
 			es.println("-> " + joueur.getNom() + " est mis en arret maladie!");
-			if (fjeu != null)
-				fjeu.afficherMessage(joueur.getNom() + " est mis en arret maladie!");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " est mis en arret maladie!");
 		}
 	}
 
@@ -52,8 +52,8 @@ public class CaseAllerArretMaladieController extends Case implements DefaultCont
 	/**
 	 * Cette méthode permet de reprendre une partie en cours
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
-		fjeu.getPartie().reprendrePartie();
+	public void fenetreAction(MonopolyView monopolyView) {
+		monopolyView.getPartie().reprendrePartie();
 	}
 
 	@Override

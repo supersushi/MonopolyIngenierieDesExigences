@@ -22,9 +22,9 @@ import model.Fenetre;
  * Fenêtre à afficher au démarrage d'une nouvelle partie, permettant de
  * sélectionner le nombre de joueur.
  */
-public class FenetreDemarrage extends Fenetre {
+public class MonopolyDemarrageView extends Fenetre {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView fenetreDeJeu;
 	private Stage stage;
 	private VBox root;
 	private Label lab;
@@ -38,7 +38,7 @@ public class FenetreDemarrage extends Fenetre {
 	 * 
 	 * @param fjeu FenetreDeJeu
 	 */
-	public FenetreDemarrage(FenetreDeJeu fjeu) {
+	public MonopolyDemarrageView(MonopolyView fjeu) {
 
 		this.fenetreDeJeu = fjeu;
 
@@ -132,11 +132,11 @@ public class FenetreDemarrage extends Fenetre {
 		return stage;
 	}
 
-	public FenetreDeJeu getFenetreDeJeu() {
+	public MonopolyView getFenetreDeJeu() {
 		return fenetreDeJeu;
 	}
 
-	public void setFenetreDeJeu(FenetreDeJeu fenetreDeJeu) {
+	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 	}
 

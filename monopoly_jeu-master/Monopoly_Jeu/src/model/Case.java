@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.shape.Polygon;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Classe abstraite représentant une case du Monopoly
@@ -174,7 +174,7 @@ public abstract class Case {
 	 * 
 	 * @param fjeu : fenetre de la partie en cours
 	 */
-	public abstract void fenetreAction(FenetreDeJeu fjeu);
+	public abstract void fenetreAction(MonopolyView fjeu);
 
 	/**
 	 * Action de la case lorsqu'un joueur atteri dessus
@@ -183,7 +183,7 @@ public abstract class Case {
 	 * @param plateau PlateauMonopoly
 	 * @param fjeu    FenetreDeJeu
 	 */
-	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu);
+	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView fjeu);
 
 	@Override
 	public String toString() {
