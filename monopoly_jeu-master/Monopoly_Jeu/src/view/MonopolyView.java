@@ -26,12 +26,12 @@ import jeu.JoueurMonopoly;
 import jeu.Partie;
 import jeu.PlateauMonopoly;
 import model.Case;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre javafx principale pour l'affichage du jeu de Monopoly.
  */
-public class MonopolyView extends Fenetre {
+public class MonopolyView extends View {
 
 	private Stage stage;
 	private StackPane root;

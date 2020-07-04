@@ -16,13 +16,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre à afficher au démarrage d'une nouvelle partie, permettant de
  * sélectionner le nombre de joueur.
  */
-public class MonopolyDemarrageView extends Fenetre {
+public class MonopolyDemarrageView extends View {
 
 	private MonopolyView fenetreDeJeu;
 	private Stage stage;

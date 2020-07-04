@@ -16,13 +16,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre d'affichage lors du clique sur une compétence. Actions : - Embaucher
  * un salarié - Licencier un salarié - Faire monter en compétence le salarié
  */
-public class ActionSurSalarieView extends Fenetre {
+public class ActionSurSalarieView extends View {
 
 	private MonopolyView fenetreDeJeu;
 	private Stage stage;

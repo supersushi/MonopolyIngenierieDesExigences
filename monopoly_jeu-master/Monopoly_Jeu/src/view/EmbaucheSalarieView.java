@@ -15,13 +15,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre à afficher lorqu'on atterit sur un salarié sans Patron. Action
  * réalisable : l'embaucher
  */
-public class EmbaucheSalarieView extends Fenetre {
+public class EmbaucheSalarieView extends View {
 
 	private MonopolyView fenetreDeJeu;
 	private Stage stage;

@@ -13,12 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre lors du passage sur une carte chance.
  */
-public class CarteChanceView extends Fenetre {
+public class CarteChanceView extends View {
 
 	private MonopolyView fenetreDeJeu;
 	private Stage stage;
