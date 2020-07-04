@@ -10,44 +10,46 @@ import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case Client
-*@author  Massourang Jugurtha Lina Emma
-*/
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
 
-public class CaseClient extends Case {
+public class CaseClientController extends Case implements DefaultControllerInterface {
 
 	private JoueurMonopoly Patron;
 	private boolean reponseQuestion = false;
 
 	/**
 	 * Indique le nom et ajoute le prix d'une Client
+	 * 
 	 * @param nom String
 	 */
-	public CaseClient(String nom) {
+	public CaseClientController(String nom) {
 		super(nom, 200);
 	}
 
 	@Override
 	/**
 	 * Méthode gérant l'appropriation d'une Client à un joueur <br />
-	 * Gère le changement du Salaire en fonction du nombre de Client possédé par un joueur
+	 * Gère le changement du Salaire en fonction du nombre de Client possédé par un
+	 * joueur
+	 * 
 	 * @see Joueur
 	 * @see Case
 	 */
-	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
 		Clavier es = new Clavier();
 
-		if(this.getPatron() == null) {
-			if(getRep()) {
-				if(EmbaucheSalarie(joueur, fjeu))
+		if (this.getPatron() == null) {
+			if (getRep()) {
+				if (EmbaucheSalarie(joueur, fjeu))
 					fjeu.setSignetPatron(joueur, this);
-			}
-			else {
+			} else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas faire affaire avec ce client.");
 				fjeu.afficherMessage(joueur.getNom() + " décide de ne pas faire affaire avec ce client");
 			}
-		}
-		else if(this.getPatron() != joueur)
+		} else if (this.getPatron() != joueur)
 			payerSalaire(joueur, fjeu);
 
 		else {
@@ -56,20 +58,20 @@ public class CaseClient extends Case {
 		}
 	}
 
-
 	public boolean EmbaucheSalarie(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
-		if((joueur.getArgent() - this.getPrix()) <= 0) {
+		if ((joueur.getArgent() - this.getPrix()) <= 0) {
 			System.out.println("Vous n'avez pas assez d'argent!");
 			return false;
-		}
-		else {
+		} else {
 			setPatron(joueur);
 			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
 			joueur.setNbEntreprises(joueur.getNbEntreprises() + 1);
 
-			System.out.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+			System.out
+					.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+			if (fjeu != null)
+				fjeu.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
@@ -77,23 +79,23 @@ public class CaseClient extends Case {
 	public void payerSalaire(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
 		String beneficiaire = "la Banque";
 
-		if(!this.getPatron().getEstMalade()) {
+		if (!this.getPatron().getEstMalade()) {
 
 			joueur.retirerArgent(getSalaire());
 
-			if(!this.getPatron().getEstFauche()) {
+			if (!this.getPatron().getEstFauche()) {
 				this.getPatron().ajouterArgent(getSalaire());
 				beneficiaire = this.getPatron().getNom();
 			}
 			System.out.println("-> " + joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
-		}
-		else {
+			if (fjeu != null)
+				fjeu.afficherMessage(joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
+		} else {
 			System.out.println("-> Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
-			if(fjeu!=null) fjeu.afficherMessage("Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if (fjeu != null)
+				fjeu.afficherMessage("Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
-
 
 	@SuppressWarnings("static-access")
 	@Override
@@ -102,22 +104,21 @@ public class CaseClient extends Case {
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 
-		if(fjeu.getPartie().PARTIE_AUTO) {
+		if (fjeu.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
-			if(rand.nextBoolean())
+			if (rand.nextBoolean())
 				reponseQuestion = true;
 			fjeu.getPartie().reprendrePartie();
-		}
-		else if(this.getPatron() == null)
+		} else if (this.getPatron() == null)
 			fjeu.afficherFenetreEmbaucherSalarie();
 		else
 			fjeu.getPartie().reprendrePartie();
 	}
 
-
-	/* ===========================
-	   Méthodes abstraites de Case
-	   =========================== */
+	/*
+	 * =========================== Méthodes abstraites de Case
+	 * ===========================
+	 */
 
 	@Override
 	public JoueurMonopoly getPatron() {
@@ -166,14 +167,13 @@ public class CaseClient extends Case {
 
 	@Override
 	public String toString() {
-		return "CaseClient [" + super.toString() + ", Patron=" + (Patron==null?"null":Patron.getNom()) + "]";
+		return "CaseClient [" + super.toString() + ", Patron=" + (Patron == null ? "null" : Patron.getNom()) + "]";
 	}
 
 	@Override
 	public String descriptionPoste() {
-		return "Dès qu’une entreprise effectue des prestations de services pour un client, elle\ndoit formaliser ses interventions dans un contrat de prestations de services.\n" + 
-				"Ce contrat est utilisé dans de nombreux domaines d’activité.\nIl prévoit la nature des prestations délivrées par le prestataire et le prix à payer par\nle client en contrepartie, puis encadre les relations entre les parties.";
+		return "Dès qu’une entreprise effectue des prestations de services pour un client, elle\ndoit formaliser ses interventions dans un contrat de prestations de services.\n"
+				+ "Ce contrat est utilisé dans de nombreux domaines d’activité.\nIl prévoit la nature des prestations délivrées par le prestataire et le prix à payer par\nle client en contrepartie, puis encadre les relations entre les parties.";
 	}
 
-	
 }

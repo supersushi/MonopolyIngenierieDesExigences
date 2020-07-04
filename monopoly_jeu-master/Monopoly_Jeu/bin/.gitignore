@@ -1,10 +1,7 @@
 /application/
-/cartes/
-/cases/
+/controller/
 /images/
 /jeu/
+/model/
 /test/
 /view/
-/controller/
-/Model/
-/model/

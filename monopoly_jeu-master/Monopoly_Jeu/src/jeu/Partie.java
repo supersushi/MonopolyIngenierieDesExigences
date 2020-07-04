@@ -3,15 +3,16 @@ package jeu;
 import java.util.ArrayList;
 
 import application.Clavier;
-import view.FenetreDeJeu;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import model.Case;
+import view.FenetreDeJeu;
 
 /**
  * Lance la partie
-*@author  Massourang Jugurtha Lina Emma
-*/
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
 
 public class Partie {
 
@@ -25,14 +26,15 @@ public class Partie {
 
 	/**
 	 * Créé une partie en fonction du nombre de joueurs
+	 * 
 	 * @param nombreDeJoueurs int
-	 * @param fjeu FenetreDeJeu
+	 * @param fjeu            FenetreDeJeu
 	 */
 	public Partie(int nombreDeJoueurs, ArrayList<String> nomsDesJoueurs, FenetreDeJeu fjeu) {
 		this.pm = new PlateauMonopoly(nombreDeJoueurs);
 		this.fjeu = fjeu;
 
-		for(int i=0; i<nombreDeJoueurs; i++) {
+		for (int i = 0; i < nombreDeJoueurs; i++) {
 			pm.getJoueur(i).setNom(nomsDesJoueurs.get(i));
 		}
 	}
@@ -44,93 +46,99 @@ public class Partie {
 
 		final Service<Void> partieService = new Service<Void>() {
 
-            @Override
-            protected Task<Void> createTask() {
-                return new Task<Void>() {
+			@Override
+			protected Task<Void> createTask() {
+				return new Task<Void>() {
 
-                    @Override
-                    protected Void call() throws Exception {
-                    	Clavier es = new Clavier();
-                    	es.println("La partie va commencer!");
+					@Override
+					protected Void call() throws Exception {
+						Clavier es = new Clavier();
+						es.println("La partie va commencer!");
 
-                		JoueurMonopoly joueur;
-                		int lancé;
-                		Case cells;
+						JoueurMonopoly joueur;
+						int lancé;
+						Case cells;
 
-                		while(!pm.finPartie() && pm.getNbTours() <= 100) {
+						while (!pm.finPartie() && pm.getNbTours() <= 100) {
 
-                			joueur = pm.getJoueurActif();
+							joueur = pm.getJoueurActif();
 
-                			if(pm.getJoueurActifID() == 0)
-                				es.println("- Debut du tour " + pm.getNbTours() + " -");
+							if (pm.getJoueurActifID() == 0)
+								es.println("- Debut du tour " + pm.getNbTours() + " -");
 
-                			es.println("C'est au joueur: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
-                			fjeu.afficherMessage("C'est à: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
+							es.println("C'est au joueur: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
+							fjeu.afficherMessage("C'est à: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
 
-                			if(!joueur.getEstFauche()) {
-                				Thread.sleep(VITESSE_PARTIE);
+							if (!joueur.getEstFauche()) {
+								Thread.sleep(VITESSE_PARTIE);
 
-                				lancé = pm.des.lancerDes();
+								lancé = pm.des.lancerDes();
 
-                				if(!joueur.getEstMalade()) {
+								if (!joueur.getEstMalade()) {
 
-                    				fjeu.afficherDes(pm);
-                					es.println("" + joueur.getNom() + " lance les Des... [" + pm.des.getDe1() + "][" + pm.des.getDe2() + "]... et obtient un " + lancé + " !");
-                					pm.deplacerJoueur(joueur, lancé);
-                					fjeu.deplacerPion(joueur);
+									fjeu.afficherDes(pm);
+									es.println("" + joueur.getNom() + " lance les Des... [" + pm.des.getDe1() + "]["
+											+ pm.des.getDe2() + "]... et obtient un " + lancé + " !");
+									pm.deplacerJoueur(joueur, lancé);
+									fjeu.deplacerPion(joueur);
 
-                					cells = pm.getCase(joueur.getPosition());
-                					es.println("" + joueur.getNom() + " avance de " + lancé + " cases et atterit sur " + cells.getNom());
-                				}
-                				else {
-                					es.println("Le joueur est en arret maladie.");
+									cells = pm.getCase(joueur.getPosition());
+									es.println("" + joueur.getNom() + " avance de " + lancé + " cases et atterit sur "
+											+ cells.getNom());
+								} else {
+									es.println("Le joueur est en arret maladie.");
 
-                					cells = pm.getCase(joueur.getPosition());
-                				}
-            					Thread.sleep(VITESSE_PARTIE);
+									cells = pm.getCase(joueur.getPosition());
+								}
+								Thread.sleep(VITESSE_PARTIE);
 
-                				pausePartie = true;
-            					cells.fenetreAction(fjeu);
+								pausePartie = true;
+								cells.fenetreAction(fjeu);
 
-                    			while(pausePartie && !PARTIE_AUTO){ Thread.sleep(200); }
+								while (pausePartie && !PARTIE_AUTO) {
+									Thread.sleep(200);
+								}
 
-                				cells.actionCase(joueur, pm, fjeu);
+								cells.action(joueur, pm, fjeu);
 
-                				es.println("" + joueur.getNom() + " possède à la fin du tour " + joueur.getArgent() + "€");
-                				System.out.println("et les salariés :\n" + joueur.getListeStringSalaries());
-                			}
-                			else {
-                				es.println("" + pm.getJoueurActif().getNom() + " est fauché, il ne joue pas.");
-                			}
+								es.println(
+										"" + joueur.getNom() + " possède à la fin du tour " + joueur.getArgent() + "€");
+								System.out.println("et les salariés :\n" + joueur.getListeStringSalaries());
+							} else {
+								es.println("" + pm.getJoueurActif().getNom() + " est fauché, il ne joue pas.");
+							}
 
-                			Thread.sleep(400);
-                			fjeu.deplacerPion(joueur);
-                			fjeu.refreshLabels(pm);
+							Thread.sleep(400);
+							fjeu.deplacerPion(joueur);
+							fjeu.refreshLabels(pm);
 
-                			pausePartie = !joueur.getEstFauche();
-                			while(pausePartie && !PARTIE_AUTO){ Thread.sleep(200); }
+							pausePartie = !joueur.getEstFauche();
+							while (pausePartie && !PARTIE_AUTO) {
+								Thread.sleep(200);
+							}
 
-                			es.println("");
-                			fjeu.effacerDes();
-                			pm.setJoueurSuivant();
+							es.println("");
+							fjeu.effacerDes();
+							pm.setJoueurSuivant();
 
-                		}
+						}
 
-                		es.println("- La partie est terminée -");
-                		es.println(" Le gagnant est " + pm.estVainqueur().getNom() + " !");
+						es.println("- La partie est terminée -");
+						es.println(" Le gagnant est " + pm.estVainqueur().getNom() + " !");
 
-                		fjeu.afficherVainqueur(pm);
+						fjeu.afficherVainqueur(pm);
 
-                		return null;
-                    }
-                };
-            }
-        };
-        partieService.start();
+						return null;
+					}
+				};
+			}
+		};
+		partieService.start();
 	}
 
 	/**
 	 * Renvoie le plateau du Monopoly
+	 * 
 	 * @return pm
 	 */
 	public PlateauMonopoly getPM() {
@@ -143,14 +151,15 @@ public class Partie {
 	public void reprendrePartie() {
 		this.pausePartie = false;
 	}
-	public void pausePartie(){
+
+	public void pausePartie() {
 		this.pausePartie = true;
 	}
-	public boolean getPausePartie(){
+
+	public boolean getPausePartie() {
 		return this.pausePartie;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Partie [plateauM=" + pm.toString() + "]";

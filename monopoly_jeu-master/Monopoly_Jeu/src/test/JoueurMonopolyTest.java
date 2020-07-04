@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseSalarie;
+import controller.CaseSalarieController;
 import jeu.JoueurMonopoly;
 import model.Case;
 
@@ -39,7 +39,7 @@ class JoueurMonopolyTest {
 	 * Permet de vérifier la méthode d'ajout de salarié chez un joueur
 	 */
 	void ajouterSalarieTest() {
-		caseSalarie = new CaseSalarie("salarié 1", 500, null, 50, 1, "mauve", "description salarié");
+		caseSalarie = new CaseSalarieController("salarié 1", 500, null, 50, 1, "mauve", "description salarié");
 		joueur.ajouterSalarie(caseSalarie);
 		for (Case salarie : joueur.getListeSalaries()) {
 			assertEquals("mauve", salarie.getCouleur());
