@@ -2,8 +2,9 @@ package model;
 
 /**
  * Cette classe represente un joueur
-*@author  Massourang Jugurtha Lina Emma
-*/
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
 
 public abstract class Joueur {
 
@@ -12,9 +13,10 @@ public abstract class Joueur {
 	private int position = 0;
 
 	/**
-	 * Définition  d'un joueur 
+	 * Définition d'un joueur
+	 * 
 	 * @param nom String
-	 * @param id int
+	 * @param id  int
 	 */
 	public Joueur(String nom, int id) {
 		setNom(nom);
@@ -23,6 +25,7 @@ public abstract class Joueur {
 
 	/**
 	 * Retourne le nom du joueur
+	 * 
 	 * @return nom
 	 */
 	public String getNom() {
@@ -31,15 +34,18 @@ public abstract class Joueur {
 
 	/**
 	 * Définit le nom d'un joueur, il ne peut pas être null.
+	 * 
 	 * @param nom String
 	 */
 	public void setNom(String nom) {
-		if(nom == null || nom.isEmpty())
+		if (nom == null || nom.isEmpty())
 			throw new IllegalArgumentException("Le nom du joueur est obligatoire!");
 		this.nom = nom;
 	}
+
 	/**
 	 * Retourne l'id du joueur
+	 * 
 	 * @return id
 	 */
 	public int getID() {
@@ -48,6 +54,7 @@ public abstract class Joueur {
 
 	/**
 	 * Définit l'id d'un joueur
+	 * 
 	 * @param id int
 	 */
 	public void setID(int id) {
@@ -56,6 +63,7 @@ public abstract class Joueur {
 
 	/**
 	 * Retourne la position du pion d'un joueur
+	 * 
 	 * @return position
 	 */
 	public int getPosition() {
@@ -64,6 +72,7 @@ public abstract class Joueur {
 
 	/**
 	 * Définit la position du pion d'un joueur
+	 * 
 	 * @param pos int
 	 */
 	public void setPosition(int pos) {

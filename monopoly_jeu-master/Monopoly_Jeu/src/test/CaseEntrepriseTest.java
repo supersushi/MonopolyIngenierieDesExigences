@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseEntreprise;
+import controller.CaseEntrepriseController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -19,7 +19,7 @@ class CaseEntrepriseTest {
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1500);
 	JoueurMonopoly joueur2 = new JoueurMonopoly("Marc", 2, 1000);
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseEntreprise caseEnt = new CaseEntreprise("Or");
+	CaseEntrepriseController caseEnt = new CaseEntrepriseController("Or");
 
 	@Test
 	/**

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CartePayer;
+import controller.CartePayerController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -18,7 +18,7 @@ class CartePayerTest {
 
 	JoueurMonopoly joueur =  new JoueurMonopoly("Alice", 1, 1000);
 	PlateauMonopoly plateau = new PlateauMonopoly(3);
-	CartePayer cartePayer;
+	CartePayerController cartePayer;
 	
 	@Test
 	/**
@@ -27,7 +27,7 @@ class CartePayerTest {
 	 * donc le joueur 0 donne 10€ à tous les autres joueurs
 	 */
 	void carteActionPresidentTest() {
-		cartePayer = new CartePayer("Président du conseil d'administration", "description", 10);
+		cartePayer = new CartePayerController("Président du conseil d'administration", "description", 10);
 		cartePayer.actionCarte(plateau.getJoueur(0), plateau, null);
 		assertEquals(980, plateau.getJoueur(0).getArgent());
 		assertEquals(1010, plateau.getJoueur(1).getArgent());
@@ -40,7 +40,7 @@ class CartePayerTest {
 	 * donc l'argent du joueur baisse du prix de la carte et le prix dans la case OpenSpace augmente du prix de la carte
 	 */
 	void carteActionTest() {
-		cartePayer = new CartePayer("Carte Payer", "description", 30);
+		cartePayer = new CartePayerController("Carte Payer", "description", 30);
 		cartePayer.actionCarte(joueur, plateau, null);
 		assertEquals(970, joueur.getArgent());
 		assertEquals(30, plateau.getCase(20).getPrix());

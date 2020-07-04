@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseImpots;
-import controller.CaseOpenSpace;
+import controller.CaseImpotsController;
+import controller.CaseOpenSpaceController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -20,8 +20,8 @@ class CaseImpotsTest {
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1000);
 	JoueurMonopoly joueur2 = new JoueurMonopoly("Marc", 2, 100);
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseImpots caseImp = new CaseImpots("Frais de mutuelle", 100);
-	CaseOpenSpace caseOpenSp = (CaseOpenSpace) plateau.getCase(20);
+	CaseImpotsController caseImp = new CaseImpotsController("Frais de mutuelle", 100);
+	CaseOpenSpaceController caseOpenSp = (CaseOpenSpaceController) plateau.getCase(20);
 
 	@Test
 	/**

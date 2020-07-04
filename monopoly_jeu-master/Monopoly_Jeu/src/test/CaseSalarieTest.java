@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseSalarie;
+import controller.CaseSalarieController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -21,14 +21,14 @@ class CaseSalarieTest {
 	
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1000);
 	JoueurMonopoly joueur2 = new JoueurMonopoly("Marc", 2, 100);
-	CaseSalarie caseSal = new CaseSalarie("Chef de projet", 100, new ArrayList<Integer>(Arrays.asList(15, 30, 60, 120, 240, 480)), 80, 0, "turquoise", "description poste");
+	CaseSalarieController caseSal = new CaseSalarieController("Chef de projet", 100, new ArrayList<Integer>(Arrays.asList(15, 30, 60, 120, 240, 480)), 80, 0, "turquoise", "description poste");
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseSalarie caseSal1 = new CaseSalarie("Salarié 1", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "description salarié 1");
+	CaseSalarieController caseSal1 = new CaseSalarieController("Salarié 1", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "description salarié 1");
 //	CaseSalarie caseSal1 = (CaseSalarie) plateau.getCase(6);
-	CaseSalarie caseSal2 = new CaseSalarie("Salarié 2", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "description salarié 2");
+	CaseSalarieController caseSal2 = new CaseSalarieController("Salarié 2", 100, new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise", "description salarié 2");
 //	CaseSalarie caseSal2 = (CaseSalarie) plateau.getCase(8);
 //	CaseSalarie caseSal3 = (CaseSalarie) plateau.getCase(9);
-	CaseSalarie caseSal3 = new CaseSalarie("Salarié 3", 120, new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise", "description salarié 3");
+	CaseSalarieController caseSal3 = new CaseSalarieController("Salarié 3", 120, new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise", "description salarié 3");
 	
 	
 	@Test

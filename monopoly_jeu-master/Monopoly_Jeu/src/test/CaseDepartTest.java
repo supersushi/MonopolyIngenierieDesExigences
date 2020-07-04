@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseDepart;
+import controller.CaseDepartController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -18,7 +18,7 @@ class CaseDepartTest {
 
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1000);
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseDepart caseDep = new CaseDepart();
+	CaseDepartController caseDep = new CaseDepartController();
 	
 	@Test
 	/**

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CarteRecevoirArgent;
+import controller.CarteRecevoirArgentController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -18,7 +18,7 @@ class CarteRecevoirArgentTest {
 	
 	JoueurMonopoly joueur =  new JoueurMonopoly("Alice", 1, 1000);
 	PlateauMonopoly plateau = new PlateauMonopoly(3);
-	CarteRecevoirArgent carteArgent;
+	CarteRecevoirArgentController carteArgent;
 
 	@Test
 	/**
@@ -27,7 +27,7 @@ class CarteRecevoirArgentTest {
 	 * donc tous les joueurs donnent 20€ au joueur (0 ici) qui a tiré la carte
 	 */
 	void actionCarteAnniversaireTest() {
-		carteArgent = new CarteRecevoirArgent("Anniversaire", "description", 50);
+		carteArgent = new CarteRecevoirArgentController("Anniversaire", "description", 50);
 		carteArgent.actionCarte(plateau.getJoueur(0), plateau, null);
 		assertEquals(1040, plateau.getJoueur(0).getArgent());
 		assertEquals(980, plateau.getJoueur(1).getArgent());
@@ -40,7 +40,7 @@ class CarteRecevoirArgentTest {
 	 * donc l'argent du joueur augmente du prix de la carte
 	 */
 	void actionCarteTest() {
-		carteArgent = new CarteRecevoirArgent("Recevoir argent", "description", 60);
+		carteArgent = new CarteRecevoirArgentController("Recevoir argent", "description", 60);
 		carteArgent.actionCarte(joueur, null, null);
 		assertEquals(1060, joueur.getArgent());
 	}

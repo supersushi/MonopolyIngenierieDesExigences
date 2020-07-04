@@ -3,9 +3,10 @@ package model;
 import java.util.Random;
 
 /**
- * Cette classe represente un dé. Sa valeur est généré de manière aléatoire 
-*@author  Massourang Jugurtha Lina Emma
-*/
+ * Cette classe represente un dé. Sa valeur est généré de manière aléatoire
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
 
 public class Des {
 
@@ -15,6 +16,7 @@ public class Des {
 
 	/**
 	 * Renvoie la somme des 2 dés obtenue aléatoirement
+	 * 
 	 * @return nombreLancé
 	 */
 	public int getDes() {
@@ -23,22 +25,25 @@ public class Des {
 
 	/**
 	 * Renvoie le chiffre obtenu par le dé 1
+	 * 
 	 * @return de1
 	 */
-	public int getDe1(){
+	public int getDe1() {
 		return this.de1;
 	}
 
 	/**
 	 * Renvoie le chiffre obtenu par le dé 2
+	 * 
 	 * @return de2
 	 */
-	public int getDe2(){
+	public int getDe2() {
 		return this.de2;
 	}
 
 	/**
 	 * Attribue un nombre aléatoire aux 2 dés puis les additionne
+	 * 
 	 * @return nombreDés
 	 */
 	public int lancerDes() {

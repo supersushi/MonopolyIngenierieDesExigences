@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseAllerArretMaladie;
+import controller.CaseAllerArretMaladieController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -20,7 +20,7 @@ class CaseAllerArretMaladieTest {
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1000);
 	JoueurMonopoly joueur2 = new JoueurMonopoly("Marc", 2, 100);
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseAllerArretMaladie caseArretMal = new CaseAllerArretMaladie();
+	CaseAllerArretMaladieController caseArretMal = new CaseAllerArretMaladieController();
 
 	@Test
 	/**

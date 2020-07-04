@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CarteSortirArretMaladie;
+import controller.CarteSortirArretMaladieController;
 import jeu.JoueurMonopoly;
 
 /**
@@ -16,7 +16,7 @@ import jeu.JoueurMonopoly;
 class CarteSortirArretMaladieTest {
 	
 	JoueurMonopoly joueur =  new JoueurMonopoly("Alice", 1, 1000);
-	CarteSortirArretMaladie carteSortie = new CarteSortirArretMaladie("Sortie", "Description");
+	CarteSortirArretMaladieController carteSortie = new CarteSortirArretMaladieController("Sortie", "Description");
 
 	@Test
 	/**

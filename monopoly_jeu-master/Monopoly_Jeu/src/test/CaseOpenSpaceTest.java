@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CaseOpenSpace;
+import controller.CaseOpenSpaceController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -18,7 +18,7 @@ class CaseOpenSpaceTest {
 	
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1000);
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseOpenSpace caseOpenSp = new CaseOpenSpace();
+	CaseOpenSpaceController caseOpenSp = new CaseOpenSpaceController();
 
 	@Test
 	/**

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import controller.CarteDeplacement;
+import controller.CarteDeplacementController;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 
@@ -18,7 +18,7 @@ class CarteDeplacementTest {
 	
 	JoueurMonopoly joueur1 =  new JoueurMonopoly("Alice", 1, 1000);
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CarteDeplacement carteDep;
+	CarteDeplacementController carteDep;
 
 	@Test
 	/**
@@ -27,7 +27,7 @@ class CarteDeplacementTest {
 	 * donc le joueur1 change de position et gagne 200€ 
 	 */
 	void actionCarteDepRelatifTest() {
-		carteDep = new CarteDeplacement("déplacement", "relatif", 23, true);
+		carteDep = new CarteDeplacementController("déplacement", "relatif", 23, true);
 		joueur1.setPosition(24);
 		carteDep.actionCarte(joueur1, plateau, null);
 		assertEquals(7, joueur1.getPosition());
@@ -41,7 +41,7 @@ class CarteDeplacementTest {
 	 * donc le joueur1 perd sa carte de sortie maladie
 	 */
 	void actionCarteDepArretMalTest() {
-		carteDep = new CarteDeplacement("ArretMaladie", "non relatif", 13, false);
+		carteDep = new CarteDeplacementController("ArretMaladie", "non relatif", 13, false);
 		joueur1.setCarteSortieArretMaladie(true);
 		carteDep.actionCarte(joueur1, plateau, null);
 		assertFalse(joueur1.getCarteSortieArretMaladie());
@@ -54,7 +54,7 @@ class CarteDeplacementTest {
 	 * donc le joueur tombe malade et se déplace sur la case de la carte
 	 */
 	void actionCarteMaladeTest() {
-		carteDep = new CarteDeplacement("ArretMaladie", "non relatif", 13, false);
+		carteDep = new CarteDeplacementController("ArretMaladie", "non relatif", 13, false);
 		joueur1.setPosition(3);
 		carteDep.actionCarte(joueur1, plateau, null);
 		assertTrue(joueur1.getEstMalade());
