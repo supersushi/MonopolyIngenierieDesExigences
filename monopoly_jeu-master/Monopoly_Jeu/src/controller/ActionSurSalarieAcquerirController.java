@@ -21,13 +21,10 @@ public class ActionSurSalarieAcquerirController implements EventHandler<ActionEv
 		CaseSalarieController c = (CaseSalarieController) actionSurSalarieView.getMonopolyView().getPartie().getPM()
 				.getCase(actionSurSalarieView.getPosition());
 		if (c.getPeutMonterEnCompetence()) {
-<<<<<<< HEAD
-			c.monterEnCompetence(actionSurSalarieView.getMonopolyView());
+			c.monterEnCompetence(actionSurSalarieView.getMonopolyView(), null);
 			actionSurSalarieView.getMonopolyView().setCompetence(c);
-=======
-			c.monterEnCompetence(actionSurSalarieView.getFenetreDeJeu(), null);
-			actionSurSalarieView.getFenetreDeJeu().setCompetence(c);
->>>>>>> branch 'master' of https://github.com/supersushi/MonopolyIngenierieDesExigences.git
+			c.monterEnCompetence(actionSurSalarieView.getMonopolyView(), null);
+			actionSurSalarieView.getMonopolyView().setCompetence(c);
 			actionSurSalarieView.getStage().close();
 		} else {
 			actionSurSalarieView.getErrorTxt().setText("Impossible d'obtenir une compétence.");

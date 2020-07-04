@@ -15,11 +15,11 @@ public class ActionSurSalarieAjoutCompetenceController implements EventHandler<A
 
 	@Override
 	public void handle(ActionEvent event) {
-		CaseSalarieController c = (CaseSalarieController) actionSurSalarieView.getFenetreDeJeu().getPartie().getPM()
+		CaseSalarieController c = (CaseSalarieController) actionSurSalarieView.getMonopolyView().getPartie().getPM()
 				.getCase(actionSurSalarieView.getPosition());
 		if (c.getPeutMonterEnCompetence()) {
-			c.monterEnCompetence(actionSurSalarieView.getFenetreDeJeu(), competence);
-			actionSurSalarieView.getFenetreDeJeu().setCompetence(c);
+			c.monterEnCompetence(actionSurSalarieView.getMonopolyView(), competence);
+			actionSurSalarieView.getMonopolyView().setCompetence(c);
 			actionSurSalarieView.getStage().close();
 		} else {
 			actionSurSalarieView.getErrorTxt().setText("Impossible d'obtenir une compétence.");
