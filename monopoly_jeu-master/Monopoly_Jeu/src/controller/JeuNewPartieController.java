@@ -4,24 +4,24 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 public class JeuNewPartieController implements EventHandler<ActionEvent> {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView monopolyView;
 
-	public JeuNewPartieController(FenetreDeJeu fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public JeuNewPartieController(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
-		fenetreDeJeu.getStage().close();
-		fenetreDeJeu.resetElementsGraphiques();
-		fenetreDeJeu.setRoot(new StackPane());
-		fenetreDeJeu.initRoot();
-		Scene scene = new Scene(fenetreDeJeu.getRoot(), 655, 655);
-		fenetreDeJeu.getStage().setScene(scene);
-		fenetreDeJeu.getFenetreDemarrage().getStage().show();
+		monopolyView.getStage().close();
+		monopolyView.resetElementsGraphiques();
+		monopolyView.setRoot(new StackPane());
+		monopolyView.initRoot();
+		Scene scene = new Scene(monopolyView.getRoot(), 655, 655);
+		monopolyView.getStage().setScene(scene);
+		monopolyView.getFenetreDemarrage().getStage().show();
 	}
 }

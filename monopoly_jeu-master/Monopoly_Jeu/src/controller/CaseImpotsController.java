@@ -6,7 +6,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action d'une case impôt ou d'une taxe de luxe
@@ -26,13 +26,13 @@ public class CaseImpotsController extends Case implements DefaultControllerInter
 	/**
 	 * Cette méthode débite le joueur et crédite l'Open Space
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		es.println(" -> " + joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
-		if (fjeu != null)
-			fjeu.afficherMessage(joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
+		if (monopolyView != null)
+			monopolyView.afficherMessage(joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
 
 		joueur.retirerArgent(this.getPrix());
 
@@ -44,8 +44,8 @@ public class CaseImpotsController extends Case implements DefaultControllerInter
 	/**
 	 * Reprend le cours de la partie
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
-		fjeu.getPartie().reprendrePartie();
+	public void fenetreAction(MonopolyView monopolyView) {
+		monopolyView.getPartie().reprendrePartie();
 	}
 
 	@Override

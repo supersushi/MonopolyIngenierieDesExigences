@@ -6,7 +6,7 @@ import application.Clavier;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Lance la partie
@@ -17,7 +17,7 @@ import view.FenetreDeJeu;
 public class Partie {
 
 	private PlateauMonopoly pm;
-	private FenetreDeJeu fjeu;
+	private MonopolyView fjeu;
 	private boolean pausePartie = false;
 	public final static long VITESSE_PARTIE = 1000;
 	public final static boolean PARTIE_AUTO = false;
@@ -30,7 +30,7 @@ public class Partie {
 	 * @param nombreDeJoueurs int
 	 * @param fjeu            FenetreDeJeu
 	 */
-	public Partie(int nombreDeJoueurs, ArrayList<String> nomsDesJoueurs, FenetreDeJeu fjeu) {
+	public Partie(int nombreDeJoueurs, ArrayList<String> nomsDesJoueurs, MonopolyView fjeu) {
 		this.pm = new PlateauMonopoly(nombreDeJoueurs);
 		this.fjeu = fjeu;
 

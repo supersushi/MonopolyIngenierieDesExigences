@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 public class Main extends Application {
 
@@ -29,7 +29,7 @@ public class Main extends Application {
 		mediaPlayer.setVolume(10);*/
 
 		try { 
-			new FenetreDeJeu(primaryStage); 
+			new MonopolyView(primaryStage); 
 		} 
 		catch(Exception e) {e.printStackTrace();}
 		}

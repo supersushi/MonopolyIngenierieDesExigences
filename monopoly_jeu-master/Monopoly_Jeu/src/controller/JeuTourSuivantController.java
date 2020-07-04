@@ -2,18 +2,18 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 public class JeuTourSuivantController implements EventHandler<ActionEvent> {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView monopolyView;
 
-	public JeuTourSuivantController(FenetreDeJeu fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public JeuTourSuivantController(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
-		fenetreDeJeu.getPartie().reprendrePartie();
+		monopolyView.getPartie().reprendrePartie();
 	}
 }

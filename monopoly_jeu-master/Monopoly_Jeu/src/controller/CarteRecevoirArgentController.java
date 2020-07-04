@@ -4,7 +4,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Carte;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Cette classe permet a un joueur de se voir cr�diter un certain montant pour
@@ -31,13 +31,13 @@ public class CarteRecevoirArgentController extends Carte implements DefaultContr
 	/**
 	 * M�thode d�finissant l'action de la carte.
 	 * 
-	 * @param joueur  JoueurMonopoly
-	 * @param plateau PlateauMonopoly
-	 * @param fp      FenetreDeJeu
+	 * @param joueur       JoueurMonopoly
+	 * @param plateau      PlateauMonopoly
+	 * @param monopolyView FenetreDeJeu
 	 */
 
 	@Override
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
@@ -48,9 +48,9 @@ public class CarteRecevoirArgentController extends Carte implements DefaultContr
 					joueur.ajouterArgent(20);
 				}
 			}
-			es.println("-> " + joueur.getNom() + " re�oit 20� de chaque joueur.");
-			if (fp != null)
-				fp.afficherMessage(joueur.getNom() + " re�oit 20� de chaque joueur.");
+			es.println("-> " + joueur.getNom() + " reçoit 20� de chaque joueur.");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " reçoit 20� de chaque joueur.");
 		}
 
 		else {

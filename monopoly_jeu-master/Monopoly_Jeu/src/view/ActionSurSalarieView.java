@@ -14,41 +14,34 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre d'affichage lors du clique sur une compétence. Actions : - Embaucher
  * un salarié - Licencier un salarié - Faire monter en compétence le salarié
  */
-public class FenetreActionSurSalarie extends Fenetre {
+public class ActionSurSalarieView extends View {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView fenetreDeJeu;
 	private Stage stage;
 	private HBox root;
 	private int position;
 	private Label txt;
 	private Label errorTxt;
-	private Button acqComp;
 	private CheckBox competence;
-	private CheckBox comp1;
-	private CheckBox comp2;
-	private CheckBox comp3;
-	private CheckBox comp4;
-	private CheckBox comp5;
 	private Button revendreComp;
 
 	/**
 	 * Constructeur
 	 * 
 	 * @param fjeu FenetreDeJeu
-	 * @see FenetreDeJeu
+	 * @see MonopolyView
 	 */
-	public FenetreActionSurSalarie(FenetreDeJeu fenetreDeJeu) {
+	public ActionSurSalarieView(MonopolyView fenetreDeJeu) {
 
 		this.fenetreDeJeu = fenetreDeJeu;
 
@@ -107,8 +100,8 @@ public class FenetreActionSurSalarie extends Fenetre {
 		txt = new Label("Quelle action voulez-vous faire pour ce salarié "
 				+ fenetreDeJeu.getPartie().getPM().getCase(position).getNom() + " ?");
 		aside.getChildren().add(txt);
+
 		VBox checkboxes = new VBox();
-//		buttons_horiz.setSpacing(10);
 		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28) {
 			for(int i = 0; i < fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().size(); i++) {
 				competence = new CheckBox();
@@ -116,33 +109,12 @@ public class FenetreActionSurSalarie extends Fenetre {
 				checkboxes.getChildren().add(competence);
 				competence.setOnAction(new ActionSurSalarieAjoutCompetenceController(this, fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(i)));
 			}
-//			comp1 = new CheckBox();
-//			comp1.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(0));
-//			comp2 = new CheckBox();
-//			comp2.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(1));
-//			comp3 = new CheckBox();
-//			comp3.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(2));
-//			comp4= new CheckBox();
-//			comp4.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(3));
-//			comp5 = new CheckBox();
-//			comp5.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(4));
-//			
-//			checkboxes.getChildren().add(comp1);
-//			checkboxes.getChildren().add(comp2);
-//			checkboxes.getChildren().add(comp3);
-//			checkboxes.getChildren().add(comp4);
-//			checkboxes.getChildren().add(comp5);
 			
 			revendreComp = new Button("Licencier le salarié");
 		}
 		else {
 			revendreComp = new Button("Mettre fin au contrat avec le client");
 		}
-//		acqComp = new Button("Monter en competence ("
-//				+ fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
-//		acqComp.setOnAction(new ActionSurSalarieAcquerirController(this));
-//		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28)
-//			buttons_horiz.getChildren().add(acqComp);
 
 		HBox button_licenciement = new HBox();
 		revendreComp.setOnAction(new ActionSurSalarieRevendreController(this));
@@ -157,8 +129,8 @@ public class FenetreActionSurSalarie extends Fenetre {
 
 		root.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
 			if (ev.getCode() == KeyCode.ENTER) {
-				if (acqComp.isFocused())
-					acqComp.fire();
+				if (competence.isFocused())
+					competence.fire();
 				else
 					revendreComp.fire();
 				ev.consume();
@@ -190,11 +162,11 @@ public class FenetreActionSurSalarie extends Fenetre {
 		return stage;
 	}
 
-	public FenetreDeJeu getFenetreDeJeu() {
+	public MonopolyView getFenetreDeJeu() {
 		return fenetreDeJeu;
 	}
 
-	public void setFenetreDeJeu(FenetreDeJeu fenetreDeJeu) {
+	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 	}
 

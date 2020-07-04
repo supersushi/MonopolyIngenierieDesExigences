@@ -15,15 +15,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre à afficher lorqu'un joueur est en arret maladie. Choix : - Payer pour
  * en sortir - Rester et jouer sa guerison aux dés
  */
-public class FenetreSortirArretMaladie extends Fenetre {
+public class SortirArretMaladieView extends View {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView fenetreDeJeu;
 	private Stage stage;
 	private HBox root;
 	private Label l_Texte;
@@ -35,7 +35,7 @@ public class FenetreSortirArretMaladie extends Fenetre {
 	 * 
 	 * @param fjeu FenetreDeJeu
 	 */
-	public FenetreSortirArretMaladie(FenetreDeJeu fjeu) {
+	public SortirArretMaladieView(MonopolyView fjeu) {
 
 		this.fenetreDeJeu = fjeu;
 
@@ -112,11 +112,11 @@ public class FenetreSortirArretMaladie extends Fenetre {
 		return stage;
 	}
 
-	public FenetreDeJeu getFenetreDeJeu() {
+	public MonopolyView getFenetreDeJeu() {
 		return fenetreDeJeu;
 	}
 
-	public void setFenetreDeJeu(FenetreDeJeu fenetreDeJeu) {
+	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 	}
 

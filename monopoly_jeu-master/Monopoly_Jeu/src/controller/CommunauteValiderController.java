@@ -2,19 +2,19 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import view.FenetreCarteCommunaute;
+import view.CarteCommunauteView;
 
 public class CommunauteValiderController implements EventHandler<ActionEvent> {
 
-	private FenetreCarteCommunaute fenetreCarteCommunaute;
+	private CarteCommunauteView carteCommunauteView;
 
-	public CommunauteValiderController(FenetreCarteCommunaute fenetreCarteCommunaute) {
-		this.fenetreCarteCommunaute = fenetreCarteCommunaute;
+	public CommunauteValiderController(CarteCommunauteView carteCommunauteView) {
+		this.carteCommunauteView = carteCommunauteView;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
-		fenetreCarteCommunaute.getStage().close();
+		carteCommunauteView.getStage().close();
 		event.consume();
 	}
 }

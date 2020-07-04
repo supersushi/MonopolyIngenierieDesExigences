@@ -6,7 +6,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action d'une case départ
@@ -28,22 +28,22 @@ public class CaseDepartController extends Case implements DefaultControllerInter
 	 * 
 	 * @see Case
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		joueur.ajouterArgent(200);
 		es.println("-> " + joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€  !");
-		if (fjeu != null)
-			fjeu.afficherMessage(joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€ !");
+		if (monopolyView != null)
+			monopolyView.afficherMessage(joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€ !");
 	}
 
 	@Override
 	/**
 	 * Reprend la partie
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
-		fjeu.getPartie().reprendrePartie();
+	public void fenetreAction(MonopolyView monopolyView) {
+		monopolyView.getPartie().reprendrePartie();
 	}
 
 	@Override

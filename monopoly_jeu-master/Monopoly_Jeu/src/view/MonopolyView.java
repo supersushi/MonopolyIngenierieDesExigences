@@ -26,12 +26,12 @@ import jeu.JoueurMonopoly;
 import jeu.Partie;
 import jeu.PlateauMonopoly;
 import model.Case;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre javafx principale pour l'affichage du jeu de Monopoly.
  */
-public class FenetreDeJeu extends Fenetre {
+public class MonopolyView extends View {
 
 	private Stage stage;
 	private StackPane root;
@@ -47,12 +47,12 @@ public class FenetreDeJeu extends Fenetre {
 	private Button newPartie = new Button("Nouvelle partie");
 	public Random rand = new Random();
 	public Color[] Couleurs = new Color[] { Color.MAGENTA, Color.GREY, Color.BLUE, Color.ORANGE };
-	private FenetreDemarrage fenetreDemarrage = new FenetreDemarrage(this);
-	private FenetreCarteChance fch = new FenetreCarteChance(this);
-	private FenetreCarteCommunaute fco = new FenetreCarteCommunaute(this);
-	private FenetreEmbaucheSalarie fat = new FenetreEmbaucheSalarie(this);
-	private FenetreSortirArretMaladie farretmaladie = new FenetreSortirArretMaladie(this);
-	private FenetreActionSurSalarie fenetreActionSurSalarie = new FenetreActionSurSalarie(this);
+	private MonopolyDemarrageView fenetreDemarrage = new MonopolyDemarrageView(this);
+	private CarteChanceView fch = new CarteChanceView(this);
+	private CarteCommunauteView fco = new CarteCommunauteView(this);
+	private EmbaucheSalarieView fat = new EmbaucheSalarieView(this);
+	private SortirArretMaladieView farretmaladie = new SortirArretMaladieView(this);
+	private ActionSurSalarieView fenetreActionSurSalarie = new ActionSurSalarieView(this);
 	private Partie partie;
 
 	/**
@@ -62,7 +62,7 @@ public class FenetreDeJeu extends Fenetre {
 	 * @param primaryStage Stage
 	 */
 
-	public FenetreDeJeu(Stage primaryStage) {
+	public MonopolyView(Stage primaryStage) {
 		this.stage = primaryStage;
 		root = new StackPane();
 		root.setOnMouseClicked(new JeuClicRootController(this));
@@ -165,11 +165,11 @@ public class FenetreDeJeu extends Fenetre {
 		return partie;
 	}
 
-	public FenetreActionSurSalarie getFenetreActionSurSalarie() {
+	public ActionSurSalarieView getFenetreActionSurSalarie() {
 		return fenetreActionSurSalarie;
 	}
 
-	public void setFenetreActionSurSalarie(FenetreActionSurSalarie fenetreActionSurSalarie) {
+	public void setFenetreActionSurSalarie(ActionSurSalarieView fenetreActionSurSalarie) {
 		this.fenetreActionSurSalarie = fenetreActionSurSalarie;
 	}
 
@@ -232,7 +232,7 @@ public class FenetreDeJeu extends Fenetre {
 			l_ListeSalaries.get(i).setTranslateY(340);
 			l_ListeSalaries.get(i).setMaxWidth(170);
 			root.getChildren().add(l_ListeSalaries.get(i));
-			
+
 			l_Pions.add(new Circle(7));
 			l_Pions.get(i).setFill(Couleurs[i]);
 			if (i < 2) {
@@ -249,11 +249,11 @@ public class FenetreDeJeu extends Fenetre {
 		partie.demarrerLaPartie();
 	}
 
-	public FenetreDemarrage getFenetreDemarrage() {
+	public MonopolyDemarrageView getFenetreDemarrage() {
 		return fenetreDemarrage;
 	}
 
-	public void setFenetreDemarrage(FenetreDemarrage fenetreDemarrage) {
+	public void setFenetreDemarrage(MonopolyDemarrageView fenetreDemarrage) {
 		this.fenetreDemarrage = fenetreDemarrage;
 	}
 
@@ -309,7 +309,7 @@ public class FenetreDeJeu extends Fenetre {
 	/**
 	 * Affiche la fenêtre FenetreEmbaucheSalarie
 	 * 
-	 * @see FenetreEmbaucheSalarie
+	 * @see EmbaucheSalarieView
 	 */
 	public void afficherFenetreEmbaucherSalarie() {
 
@@ -325,7 +325,7 @@ public class FenetreDeJeu extends Fenetre {
 	/**
 	 * Affiche la fenêtre FenetreSortirArretMaladie
 	 * 
-	 * @see FenetreSortirArretMaladie
+	 * @see SortirArretMaladieView
 	 */
 	public void afficherFenetreArretMaladie() {
 
@@ -345,7 +345,7 @@ public class FenetreDeJeu extends Fenetre {
 	 * 
 	 * @param Intitule    String
 	 * @param description String
-	 * @see FenetreCarteChance
+	 * @see CarteChanceView
 	 */
 	public void afficherFenetreCarteChance(String Intitule, String description) {
 
@@ -361,13 +361,13 @@ public class FenetreDeJeu extends Fenetre {
 	}
 
 	/**
-	 * Affiche la fenêtre {@link FenetreCarteCommunaute}. <br>
+	 * Affiche la fenêtre {@link CarteCommunauteView}. <br>
 	 * Les paramètres String Intitule et String description passés seront utilisés
 	 * dans la fenêtre pour indiquer qu'elle carte on a tiré.
 	 * 
 	 * @param Intitule    String
 	 * @param description String
-	 * @see FenetreCarteCommunaute
+	 * @see CarteCommunauteView
 	 */
 	public void afficherFenetreCarteCommunauté(String Intitule, String description) {
 
@@ -599,7 +599,7 @@ public class FenetreDeJeu extends Fenetre {
 	 */
 	public void afficherVainqueur(PlateauMonopoly pm) {
 
-		FenetreDeJeu nouvelleFenetreDeJeu = this;
+		MonopolyView nouvelleFenetreDeJeu = this;
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {

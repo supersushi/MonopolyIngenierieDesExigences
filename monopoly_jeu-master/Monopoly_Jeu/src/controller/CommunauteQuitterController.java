@@ -2,19 +2,19 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-import view.FenetreCarteCommunaute;
+import view.CarteCommunauteView;
 
 public class CommunauteQuitterController implements EventHandler<WindowEvent> {
 
-	private FenetreCarteCommunaute fenetreCarteCommunaute;
+	private CarteCommunauteView carteCommunauteView;
 
-	public CommunauteQuitterController(FenetreCarteCommunaute fenetreCarteCommunaute) {
-		this.fenetreCarteCommunaute = fenetreCarteCommunaute;
+	public CommunauteQuitterController(CarteCommunauteView carteCommunauteView) {
+		this.carteCommunauteView = carteCommunauteView;
 	}
 
 	@Override
 	public void handle(WindowEvent event) {
-		fenetreCarteCommunaute.getFenetreDeJeu().getPartie().reprendrePartie();
+		carteCommunauteView.getFenetreDeJeu().getPartie().reprendrePartie();
 		event.consume();
 	}
 }

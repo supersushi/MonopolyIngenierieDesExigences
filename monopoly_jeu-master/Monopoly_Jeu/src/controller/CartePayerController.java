@@ -4,7 +4,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Carte;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Cette classe permet a un joueur de se voir retirer un certain montant pour
@@ -31,10 +31,10 @@ public class CartePayerController extends Carte implements DefaultControllerInte
 	 * 
 	 * @param joueur  JoueurMonopoly
 	 * @param plateau PlateauMonopoly
-	 * @param fp      FenetreDeJeu
+	 * @param monopolyView      FenetreDeJeu
 	 */
 	@Override
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fp) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
@@ -46,14 +46,14 @@ public class CartePayerController extends Carte implements DefaultControllerInte
 				}
 			}
 			es.println("-> " + joueur.getNom() + " verse 10� � chaque joueur.");
-			if (fp != null)
-				fp.afficherMessage(joueur.getNom() + " verse 10� � chaque joueur.");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " verse 10� � chaque joueur.");
 		} else {
 			joueur.retirerArgent(montant);
 			plateau.getCase(20).setPrix(plateau.getCase(20).getPrix() + montant);
 			es.println("-> " + joueur.getNom() + " d�pose " + montant + "� dans l'open space");
-			if (fp != null)
-				fp.afficherMessage(joueur.getNom() + " d�pose " + montant + "� dans l'open space");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " d�pose " + montant + "� dans l'open space");
 		}
 	}
 

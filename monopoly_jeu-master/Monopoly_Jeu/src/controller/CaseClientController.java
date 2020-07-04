@@ -7,7 +7,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action d'une case Client
@@ -38,28 +38,28 @@ public class CaseClientController extends Case implements DefaultControllerInter
 	 * @see Joueur
 	 * @see Case
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		if (this.getPatron() == null) {
 			if (getRep()) {
-				if (EmbaucheSalarie(joueur, fjeu))
-					fjeu.setSignetPatron(joueur, this);
+				if (EmbaucheSalarie(joueur, monopolyView))
+					monopolyView.setSignetPatron(joueur, this);
 			} else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas faire affaire avec ce client.");
-				fjeu.afficherMessage(joueur.getNom() + " décide de ne pas faire affaire avec ce client");
+				monopolyView.afficherMessage(joueur.getNom() + " décide de ne pas faire affaire avec ce client");
 			}
 		} else if (this.getPatron() != joueur)
-			payerSalaire(joueur, fjeu);
+			payerSalaire(joueur, monopolyView);
 
 		else {
 			es.println("-> " + joueur.getNom() + " fait deja affaire avec ce client.");
-			fjeu.afficherMessage(joueur.getNom() + " ait deja affaire avec ce client.");
+			monopolyView.afficherMessage(joueur.getNom() + " ait deja affaire avec ce client.");
 		}
 	}
 
-	public boolean EmbaucheSalarie(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
+	public boolean EmbaucheSalarie(JoueurMonopoly joueur, MonopolyView fjeu) {
 		if ((joueur.getArgent() - this.getPrix()) <= 0) {
 			System.out.println("Vous n'avez pas assez d'argent!");
 			return false;
@@ -77,7 +77,7 @@ public class CaseClientController extends Case implements DefaultControllerInter
 		}
 	}
 
-	public void payerSalaire(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
+	public void payerSalaire(JoueurMonopoly joueur, MonopolyView fjeu) {
 		String beneficiaire = "la Banque";
 
 		if (!this.getPatron().getEstMalade()) {
@@ -103,17 +103,17 @@ public class CaseClientController extends Case implements DefaultControllerInter
 	/**
 	 * Affiche une fenêtre pour embaucher un salarié
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
+	public void fenetreAction(MonopolyView monopolyView) {
 
-		if (fjeu.getPartie().PARTIE_AUTO) {
+		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
 			if (rand.nextBoolean())
 				reponseQuestion = true;
-			fjeu.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 		} else if (this.getPatron() == null)
-			fjeu.afficherFenetreEmbaucherSalarie();
+			monopolyView.afficherFenetreEmbaucherSalarie();
 		else
-			fjeu.getPartie().reprendrePartie();
+			monopolyView.getPartie().reprendrePartie();
 	}
 
 	/*

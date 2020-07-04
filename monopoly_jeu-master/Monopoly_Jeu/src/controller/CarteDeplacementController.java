@@ -4,7 +4,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Carte;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Carte de d�placement
@@ -37,11 +37,11 @@ public class CarteDeplacementController extends Carte implements DefaultControll
 	 * 
 	 * @param joueur       JoueurMonopoly
 	 * @param plateau      PlateauMonopoly
-	 * @param fenetreDeJeu FenetreDeJeu
+	 * @param monopolyView FenetreDeJeu
 	 */
 	@SuppressWarnings("static-access")
 	@Override
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fenetreDeJeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 		/*
@@ -54,8 +54,8 @@ public class CarteDeplacementController extends Carte implements DefaultControll
 			if (getNom().equals("ArretMaladie")) {
 				if (joueur.getCarteSortieArretMaladie()) {
 					es.println("-> " + joueur.getNom() + " utilise sa carte et �vite l'arret maladie !");
-					if (fenetreDeJeu != null)
-						fenetreDeJeu.afficherMessage(joueur.getNom() + " utilise sa carte et �vite l'arret maladie !");
+					if (monopolyView != null)
+						monopolyView.afficherMessage(joueur.getNom() + " utilise sa carte et �vite l'arret maladie !");
 					joueur.setCarteSortieArretMaladie(false);
 					plateau.remettreCarteSortieArretMaladie();
 				} else {
@@ -72,22 +72,22 @@ public class CarteDeplacementController extends Carte implements DefaultControll
 
 		if (getNom().equals("Arret maladie")) {
 			es.println("-> " + joueur.getNom() + " est mis en arret maladie.");
-			if (fenetreDeJeu != null)
-				fenetreDeJeu.afficherMessage(joueur.getNom() + " est mis en arret maladie.");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(joueur.getNom() + " est mis en arret maladie.");
 		} else {
 			es.println("-> " + joueur.getNom() + " atterit sur " + plateau.getCaseActive().getNom());
-			if (fenetreDeJeu != null) {
-				fenetreDeJeu.afficherMessage(joueur.getNom() + " atterit sur " + plateau.getCaseActive().getNom());
+			if (monopolyView != null) {
+				monopolyView.afficherMessage(joueur.getNom() + " atterit sur " + plateau.getCaseActive().getNom());
 
 				try {
 					Thread.sleep(800);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				plateau.getCase(joueur.getPosition()).fenetreAction(fenetreDeJeu);
-				fenetreDeJeu.deplacerPion(joueur);
-				fenetreDeJeu.getPartie().pausePartie();
-				while (fenetreDeJeu.getPartie().getPausePartie() && !fenetreDeJeu.getPartie().PARTIE_AUTO) {
+				plateau.getCase(joueur.getPosition()).fenetreAction(monopolyView);
+				monopolyView.deplacerPion(joueur);
+				monopolyView.getPartie().pausePartie();
+				while (monopolyView.getPartie().getPausePartie() && !monopolyView.getPartie().PARTIE_AUTO) {
 					try {
 						Thread.sleep(200);
 					} catch (InterruptedException e) {
@@ -95,7 +95,7 @@ public class CarteDeplacementController extends Carte implements DefaultControll
 					}
 				}
 			}
-			plateau.getCase(joueur.getPosition()).action(joueur, plateau, fenetreDeJeu);
+			plateau.getCase(joueur.getPosition()).action(joueur, plateau, monopolyView);
 		}
 
 	}

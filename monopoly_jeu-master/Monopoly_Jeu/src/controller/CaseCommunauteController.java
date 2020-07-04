@@ -7,7 +7,7 @@ import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Carte;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action d'une case communauté
@@ -25,7 +25,7 @@ public class CaseCommunauteController extends Case implements DefaultControllerI
 	}
 
 	@Override
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 	}
 
 	@SuppressWarnings("static-access")
@@ -35,20 +35,20 @@ public class CaseCommunauteController extends Case implements DefaultControllerI
 	 * 
 	 * @see Carte
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
+	public void fenetreAction(MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
-		Carte carte = fjeu.getPartie().getPM().tirerCarteCommunauté();
-		es.println("-> " + fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
-		fjeu.afficherMessage(fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
+		Carte carte = monopolyView.getPartie().getPM().tirerCarteCommunauté();
+		es.println("-> " + monopolyView.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
+		monopolyView.afficherMessage(monopolyView.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
 
-		carte.action(fjeu.getPartie().getPM().getJoueurActif(), fjeu.getPartie().getPM(), fjeu);
+		carte.action(monopolyView.getPartie().getPM().getJoueurActif(), monopolyView.getPartie().getPM(), monopolyView);
 
-		if (fjeu.getPartie().PARTIE_AUTO)
-			fjeu.getPartie().reprendrePartie();
+		if (monopolyView.getPartie().PARTIE_AUTO)
+			monopolyView.getPartie().reprendrePartie();
 		else
-			fjeu.afficherFenetreCarteCommunauté(carte.getNom(), carte.getDesc());
+			monopolyView.afficherFenetreCarteCommunauté(carte.getNom(), carte.getDesc());
 	}
 
 	@Override

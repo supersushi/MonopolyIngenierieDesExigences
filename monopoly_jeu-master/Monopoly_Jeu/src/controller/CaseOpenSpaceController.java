@@ -6,7 +6,7 @@ import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
 import model.Case;
-import view.FenetreDeJeu;
+import view.MonopolyView;
 
 /**
  * Crée l'action de la case Open Space
@@ -26,13 +26,13 @@ public class CaseOpenSpaceController extends Case implements DefaultControllerIn
 	 * Méthode permettant à un joueur de récupérer l'argent dans case Open Space
 	 * puis réinitialisation à 0
 	 */
-	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
 		es.println(" -> " + joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
-		if (fjeu != null)
-			fjeu.afficherMessage(joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
+		if (monopolyView != null)
+			monopolyView.afficherMessage(joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
 		joueur.ajouterArgent(this.getPrix());
 		this.setPrix(0);
 	}
@@ -41,8 +41,8 @@ public class CaseOpenSpaceController extends Case implements DefaultControllerIn
 	/**
 	 * Reprend le cours de la partie
 	 */
-	public void fenetreAction(FenetreDeJeu fjeu) {
-		fjeu.getPartie().reprendrePartie();
+	public void fenetreAction(MonopolyView monopolyView) {
+		monopolyView.getPartie().reprendrePartie();
 	}
 
 	@Override

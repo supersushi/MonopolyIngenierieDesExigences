@@ -2,19 +2,19 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-import view.FenetreCarteChance;
+import view.CarteChanceView;
 
 public class ChanceQuitterController implements EventHandler<WindowEvent> {
 
-	private FenetreCarteChance fenetreCarteChance;
+	private CarteChanceView carteChanceView;
 
-	public ChanceQuitterController(FenetreCarteChance fenetreCarteChance) {
-		this.fenetreCarteChance = fenetreCarteChance;
+	public ChanceQuitterController(CarteChanceView carteChanceView) {
+		this.carteChanceView = carteChanceView;
 	}
 
 	@Override
 	public void handle(WindowEvent event) {
-		fenetreCarteChance.getFenetreDeJeu().getPartie().reprendrePartie();
+		carteChanceView.getFenetreDeJeu().getPartie().reprendrePartie();
 		event.consume();
 	}
 }

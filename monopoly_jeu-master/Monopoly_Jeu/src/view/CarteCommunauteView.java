@@ -13,14 +13,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Fenetre;
+import model.View;
 
 /**
  * Fenêtre à afficher lorqu'on atterit sur une CaseCommunaute.
  */
-public class FenetreCarteCommunaute extends Fenetre {
+public class CarteCommunauteView extends View {
 
-	private FenetreDeJeu fenetreDeJeu;
+	private MonopolyView fenetreDeJeu;
 	private Stage stage;
 	private HBox root;
 	private VBox carte;
@@ -33,7 +33,7 @@ public class FenetreCarteCommunaute extends Fenetre {
 	 * 
 	 * @param fjeu FenetreDeJeu
 	 */
-	public FenetreCarteCommunaute(FenetreDeJeu fjeu) {
+	public CarteCommunauteView(MonopolyView fjeu) {
 
 		this.fenetreDeJeu = fjeu;
 
@@ -120,11 +120,11 @@ public class FenetreCarteCommunaute extends Fenetre {
 		l_Description = new Label(description);
 	}
 
-	public FenetreDeJeu getFenetreDeJeu() {
+	public MonopolyView getFenetreDeJeu() {
 		return fenetreDeJeu;
 	}
 
-	public void setFenetreDeJeu(FenetreDeJeu fenetreDeJeu) {
+	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
 		this.fenetreDeJeu = fenetreDeJeu;
 	}
 

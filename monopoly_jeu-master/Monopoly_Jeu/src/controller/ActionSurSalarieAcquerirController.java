@@ -2,25 +2,25 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import view.FenetreActionSurSalarie;
+import view.ActionSurSalarieView;
 
 public class ActionSurSalarieAcquerirController implements EventHandler<ActionEvent> {
-	private FenetreActionSurSalarie fenetreActionSurSalarie;
+	private ActionSurSalarieView actionSurSalarieView;
 
-	public ActionSurSalarieAcquerirController(FenetreActionSurSalarie fenetreActionSurSalarie) {
-		this.fenetreActionSurSalarie = fenetreActionSurSalarie;
+	public ActionSurSalarieAcquerirController(ActionSurSalarieView actionSurSalarieView) {
+		this.actionSurSalarieView = actionSurSalarieView;
 	}
 
 	@Override
 	public void handle(ActionEvent event) {
-		CaseSalarieController c = (CaseSalarieController) fenetreActionSurSalarie.getFenetreDeJeu().getPartie().getPM()
-				.getCase(fenetreActionSurSalarie.getPosition());
+		CaseSalarieController c = (CaseSalarieController) actionSurSalarieView.getFenetreDeJeu().getPartie().getPM()
+				.getCase(actionSurSalarieView.getPosition());
 		if (c.getPeutMonterEnCompetence()) {
-			c.monterEnCompetence(fenetreActionSurSalarie.getFenetreDeJeu(), null);
-			fenetreActionSurSalarie.getFenetreDeJeu().setCompetence(c);
-			fenetreActionSurSalarie.getStage().close();
+			c.monterEnCompetence(actionSurSalarieView.getFenetreDeJeu(), null);
+			actionSurSalarieView.getFenetreDeJeu().setCompetence(c);
+			actionSurSalarieView.getStage().close();
 		} else {
-			fenetreActionSurSalarie.getErrorTxt().setText("Impossible d'obtenir une compétence.");
+			actionSurSalarieView.getErrorTxt().setText("Impossible d'obtenir une compétence.");
 		}
 		event.consume();
 	}
