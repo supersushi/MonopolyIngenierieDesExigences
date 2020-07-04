@@ -20,7 +20,7 @@ import model.View;
  */
 public class CarteChanceView extends View {
 
-	private MonopolyView fenetreDeJeu;
+	private MonopolyView monopolyView;
 	private Stage stage;
 	private HBox root;
 	private VBox carte;
@@ -33,11 +33,11 @@ public class CarteChanceView extends View {
 	 * 
 	 * @param fjeu FenetreDeJeu
 	 */
-	public CarteChanceView(MonopolyView fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public CarteChanceView(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 		this.stage = new Stage();
 		this.stage.setTitle("Carte Chance");
-		this.stage.initOwner(fenetreDeJeu.getStage());
+		this.stage.initOwner(monopolyView.getStage());
 		this.stage.initModality(Modality.APPLICATION_MODAL);
 
 		root = new HBox();
@@ -119,11 +119,11 @@ public class CarteChanceView extends View {
 	}
 
 	public MonopolyView getFenetreDeJeu() {
-		return fenetreDeJeu;
+		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public void setFenetreDeJeu(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
 	/**

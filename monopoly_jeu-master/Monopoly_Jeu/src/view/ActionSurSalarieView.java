@@ -24,7 +24,7 @@ import model.View;
  */
 public class ActionSurSalarieView extends View {
 
-	private MonopolyView fenetreDeJeu;
+	private MonopolyView monopolyView;
 	private Stage stage;
 	private HBox root;
 	private int position;
@@ -39,13 +39,13 @@ public class ActionSurSalarieView extends View {
 	 * @param fjeu FenetreDeJeu
 	 * @see MonopolyView
 	 */
-	public ActionSurSalarieView(MonopolyView fenetreDeJeu) {
+	public ActionSurSalarieView(MonopolyView monopolyView) {
 
-		this.fenetreDeJeu = fenetreDeJeu;
+		this.monopolyView = monopolyView;
 
 		this.stage = new Stage();
 		this.stage.setTitle("Action sur le Salarie :");
-		this.stage.initOwner(fenetreDeJeu.getStage());
+		this.stage.initOwner(monopolyView.getStage());
 		this.stage.initModality(Modality.APPLICATION_MODAL);
 
 		stage.setOnHiding(new ActionSurSalarieQuitterController(this));
@@ -81,7 +81,7 @@ public class ActionSurSalarieView extends View {
 			i_Salarie = new Image("images/gold.png");
 			break;
 		default: {
-			String couleur = fenetreDeJeu.getPartie().getPM().getCase(position).getCouleur();
+			String couleur = monopolyView.getPartie().getPM().getCase(position).getCouleur();
 			i_Salarie = new Image("images/c_" + couleur + ".png");
 		}
 			;
@@ -96,14 +96,14 @@ public class ActionSurSalarieView extends View {
 		root.getChildren().add(aside);
 
 		txt = new Label("Quelle action voulez-vous faire pour ce salarié "
-				+ fenetreDeJeu.getPartie().getPM().getCase(position).getNom() + " ?");
+				+ monopolyView.getPartie().getPM().getCase(position).getNom() + " ?");
 		aside.getChildren().add(txt);
 
 		HBox buttons_horiz = new HBox();
 		buttons_horiz.setSpacing(10);
 
 		acqComp = new Button("Monter en competence ("
-				+ fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
+				+ monopolyView.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
 		acqComp.setOnAction(new ActionSurSalarieAcquerirController(this));
 		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28)
 			buttons_horiz.getChildren().add(acqComp);
@@ -153,12 +153,12 @@ public class ActionSurSalarieView extends View {
 		return stage;
 	}
 
-	public MonopolyView getFenetreDeJeu() {
-		return fenetreDeJeu;
+	public MonopolyView getMonopolyView() {
+		return monopolyView;
 	}
 
 	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+		this.monopolyView = fenetreDeJeu;
 	}
 
 	public int getPosition() {

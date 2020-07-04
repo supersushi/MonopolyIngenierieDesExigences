@@ -39,21 +39,21 @@ public class CaseChanceController extends Case implements DefaultControllerInter
 	 * 
 	 * @see Carte
 	 */
-	public void fenetreAction(MonopolyView fjeu) {
+	public void fenetreAction(MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 
-		Carte carte = fjeu.getPartie().getPM().tirerCarteChance();
-		es.println("-> " + fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
-		fjeu.afficherMessage(fjeu.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
+		Carte carte = monopolyView.getPartie().getPM().tirerCarteChance();
+		es.println("-> " + monopolyView.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
+		monopolyView.afficherMessage(monopolyView.getPartie().getPM().getJoueurActif().getNom() + " tire la carte " + carte.getNom());
 
-		if (fjeu.getPartie().PARTIE_AUTO)
-			fjeu.getPartie().reprendrePartie();
+		if (monopolyView.getPartie().PARTIE_AUTO)
+			monopolyView.getPartie().reprendrePartie();
 		else
-			fjeu.afficherFenetreCarteChance(carte.getNom(), carte.getDesc());
+			monopolyView.afficherCarteChanceView(carte.getNom(), carte.getDesc());
 
-		fjeu.getPartie().pausePartie();
-		while (fjeu.getPartie().getPausePartie() && !fjeu.getPartie().PARTIE_AUTO) {
+		monopolyView.getPartie().pausePartie();
+		while (monopolyView.getPartie().getPausePartie() && !monopolyView.getPartie().PARTIE_AUTO) {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
@@ -62,7 +62,7 @@ public class CaseChanceController extends Case implements DefaultControllerInter
 			}
 		}
 
-		carte.action(fjeu.getPartie().getPM().getJoueurActif(), fjeu.getPartie().getPM(), fjeu);
+		carte.action(monopolyView.getPartie().getPM().getJoueurActif(), monopolyView.getPartie().getPM(), monopolyView);
 	}
 
 	@Override

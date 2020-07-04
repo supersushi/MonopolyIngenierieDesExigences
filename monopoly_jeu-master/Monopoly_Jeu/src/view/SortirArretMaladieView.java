@@ -23,7 +23,7 @@ import model.View;
  */
 public class SortirArretMaladieView extends View {
 
-	private MonopolyView fenetreDeJeu;
+	private MonopolyView monopolyView;
 	private Stage stage;
 	private HBox root;
 	private Label l_Texte;
@@ -33,15 +33,15 @@ public class SortirArretMaladieView extends View {
 	/**
 	 * Constructeur
 	 * 
-	 * @param fjeu FenetreDeJeu
+	 * @param monopolyView FenetreDeJeu
 	 */
-	public SortirArretMaladieView(MonopolyView fjeu) {
+	public SortirArretMaladieView(MonopolyView monopolyView) {
 
-		this.fenetreDeJeu = fjeu;
+		this.monopolyView = monopolyView;
 
 		this.stage = new Stage();
 		this.stage.setTitle("Voulez vous etre guéri? ?");
-		this.stage.initOwner(fjeu.getStage());
+		this.stage.initOwner(monopolyView.getStage());
 		this.stage.initModality(Modality.APPLICATION_MODAL);
 
 		stage.setOnHiding(new SortirArretMaladieQuitterController(this));
@@ -113,11 +113,11 @@ public class SortirArretMaladieView extends View {
 	}
 
 	public MonopolyView getFenetreDeJeu() {
-		return fenetreDeJeu;
+		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public void setFenetreDeJeu(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
 }

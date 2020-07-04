@@ -110,7 +110,7 @@ public class CaseClientController extends Case implements DefaultControllerInter
 				reponseQuestion = true;
 			monopolyView.getPartie().reprendrePartie();
 		} else if (this.getPatron() == null)
-			monopolyView.afficherFenetreEmbaucherSalarie();
+			monopolyView.afficherEmbaucherSalarieView();
 		else
 			monopolyView.getPartie().reprendrePartie();
 	}

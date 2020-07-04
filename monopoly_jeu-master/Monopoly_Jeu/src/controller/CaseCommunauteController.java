@@ -46,7 +46,7 @@ public class CaseCommunauteController extends Case implements DefaultControllerI
 		if (monopolyView.getPartie().PARTIE_AUTO)
 			monopolyView.getPartie().reprendrePartie();
 		else
-			monopolyView.afficherFenetreCarteCommunauté(carte.getNom(), carte.getDesc());
+			monopolyView.afficherCarteCommunauteView(carte.getNom(), carte.getDesc());
 	}
 
 	@Override

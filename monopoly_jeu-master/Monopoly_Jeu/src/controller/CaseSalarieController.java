@@ -160,7 +160,7 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 				Rep = true;
 			monopolyView.getPartie().reprendrePartie();
 		} else if (this.getPatron() == null)
-			monopolyView.afficherFenetreEmbaucherSalarie();
+			monopolyView.afficherEmbaucherSalarieView();
 		else
 			monopolyView.getPartie().reprendrePartie();
 	}

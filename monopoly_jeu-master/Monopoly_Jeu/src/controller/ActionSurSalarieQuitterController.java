@@ -14,8 +14,8 @@ public class ActionSurSalarieQuitterController implements EventHandler<WindowEve
 
 	@Override
 	public void handle(WindowEvent event) {
-		actionSurSalarieView.getFenetreDeJeu()
-				.refreshLabels(actionSurSalarieView.getFenetreDeJeu().getPartie().getPM());
+		actionSurSalarieView.getMonopolyView()
+				.refreshLabels(actionSurSalarieView.getMonopolyView().getPartie().getPM());
 		event.consume();
 	}
 }

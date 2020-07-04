@@ -114,7 +114,7 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 				rep = true;
 			monopolyView.getPartie().reprendrePartie();
 		} else if (monopolyView.getPartie().getPM().getJoueurActif().getEstMalade())
-			monopolyView.afficherFenetreArretMaladie();
+			monopolyView.afficherArretMaladieView();
 		else
 			monopolyView.getPartie().reprendrePartie();
 	}

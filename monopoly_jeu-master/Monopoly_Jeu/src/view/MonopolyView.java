@@ -47,12 +47,12 @@ public class MonopolyView extends View {
 	private Button newPartie = new Button("Nouvelle partie");
 	public Random rand = new Random();
 	public Color[] Couleurs = new Color[] { Color.MAGENTA, Color.GREY, Color.BLUE, Color.ORANGE };
-	private MonopolyDemarrageView fenetreDemarrage = new MonopolyDemarrageView(this);
-	private CarteChanceView fch = new CarteChanceView(this);
-	private CarteCommunauteView fco = new CarteCommunauteView(this);
-	private EmbaucheSalarieView fat = new EmbaucheSalarieView(this);
-	private SortirArretMaladieView farretmaladie = new SortirArretMaladieView(this);
-	private ActionSurSalarieView fenetreActionSurSalarie = new ActionSurSalarieView(this);
+	private MonopolyDemarrageView demarrageView = new MonopolyDemarrageView(this);
+	private CarteChanceView carteChanceView = new CarteChanceView(this);
+	private CarteCommunauteView carteCommunauteView = new CarteCommunauteView(this);
+	private EmbaucheSalarieView embaucheSalarieView = new EmbaucheSalarieView(this);
+	private SortirArretMaladieView sortirArretMaladieView = new SortirArretMaladieView(this);
+	private ActionSurSalarieView actionSurSalarieView = new ActionSurSalarieView(this);
 	private Partie partie;
 
 	/**
@@ -73,7 +73,7 @@ public class MonopolyView extends View {
 		stage.setScene(scene);
 		stage.setTitle("Monopoly - Ingenierie des exigences");
 
-		fenetreDemarrage.getStage().show();
+		demarrageView.getStage().show();
 	}
 
 	/**
@@ -165,12 +165,12 @@ public class MonopolyView extends View {
 		return partie;
 	}
 
-	public ActionSurSalarieView getFenetreActionSurSalarie() {
-		return fenetreActionSurSalarie;
+	public ActionSurSalarieView getActionSurSalarieView() {
+		return actionSurSalarieView;
 	}
 
-	public void setFenetreActionSurSalarie(ActionSurSalarieView fenetreActionSurSalarie) {
-		this.fenetreActionSurSalarie = fenetreActionSurSalarie;
+	public void setActionSurSalarieView(ActionSurSalarieView fenetreActionSurSalarie) {
+		this.actionSurSalarieView = fenetreActionSurSalarie;
 	}
 
 	/**
@@ -249,12 +249,12 @@ public class MonopolyView extends View {
 		partie.demarrerLaPartie();
 	}
 
-	public MonopolyDemarrageView getFenetreDemarrage() {
-		return fenetreDemarrage;
+	public MonopolyDemarrageView getMonopolyDemarrageView() {
+		return demarrageView;
 	}
 
-	public void setFenetreDemarrage(MonopolyDemarrageView fenetreDemarrage) {
-		this.fenetreDemarrage = fenetreDemarrage;
+	public void setMonopolyDemarrageView(MonopolyDemarrageView demarrageView) {
+		this.demarrageView = demarrageView;
 	}
 
 	/**
@@ -282,22 +282,22 @@ public class MonopolyView extends View {
 	 * nécessaire. Elle va chercher les informations dans les champs de la partie
 	 * pour mettre à jours les labels.
 	 * 
-	 * @param pm PlateauMonopoly
+	 * @param plateau PlateauMonopoly
 	 * @see PlateauMonopoly
 	 */
-	public void refreshLabels(PlateauMonopoly pm) {
+	public void refreshLabels(PlateauMonopoly plateau) {
 
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
-				l_OpenSpace.setText("" + pm.getCase(20).getPrix() + "€");
+				l_OpenSpace.setText("" + plateau.getCase(20).getPrix() + "€");
 
-				for (int i = 0; i < pm.getNbJoueurs(); i++) {
-					l_Joueurs.get(i).setText("" + pm.getJoueur(i).getArgent() + "€ "
-							+ (pm.getJoueur(i).getCarteSortieArretMaladie() ? "[S]" : ""));
+				for (int i = 0; i < plateau.getNbJoueurs(); i++) {
+					l_Joueurs.get(i).setText("" + plateau.getJoueur(i).getArgent() + "€ "
+							+ (plateau.getJoueur(i).getCarteSortieArretMaladie() ? "[S]" : ""));
 
-					String listeSalaries = pm.getJoueur(i).getListeStringSalaries();
+					String listeSalaries = plateau.getJoueur(i).getListeStringSalaries();
 					listeSalaries = listeSalaries.replaceAll(",", "\n");
 					l_ListeSalaries.get(i).setText(listeSalaries);
 				}
@@ -311,13 +311,13 @@ public class MonopolyView extends View {
 	 * 
 	 * @see EmbaucheSalarieView
 	 */
-	public void afficherFenetreEmbaucherSalarie() {
+	public void afficherEmbaucherSalarieView() {
 
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
-				fat.afficherFenetre();
+				embaucheSalarieView.afficherFenetre();
 			}
 		});
 	}
@@ -327,13 +327,13 @@ public class MonopolyView extends View {
 	 * 
 	 * @see SortirArretMaladieView
 	 */
-	public void afficherFenetreArretMaladie() {
+	public void afficherArretMaladieView() {
 
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
-				farretmaladie.afficherFenetre();
+				sortirArretMaladieView.afficherFenetre();
 			}
 		});
 	}
@@ -347,15 +347,15 @@ public class MonopolyView extends View {
 	 * @param description String
 	 * @see CarteChanceView
 	 */
-	public void afficherFenetreCarteChance(String Intitule, String description) {
+	public void afficherCarteChanceView(String Intitule, String description) {
 
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
-				fch.setIntitule(Intitule);
-				fch.setDescription(description);
-				fch.afficherCarte();
+				carteChanceView.setIntitule(Intitule);
+				carteChanceView.setDescription(description);
+				carteChanceView.afficherCarte();
 			}
 		});
 	}
@@ -369,15 +369,15 @@ public class MonopolyView extends View {
 	 * @param description String
 	 * @see CarteCommunauteView
 	 */
-	public void afficherFenetreCarteCommunauté(String Intitule, String description) {
+	public void afficherCarteCommunauteView(String Intitule, String description) {
 
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
-				fco.setIntitule(Intitule);
-				fco.setDescription(description);
-				fco.afficherCarte();
+				carteCommunauteView.setIntitule(Intitule);
+				carteCommunauteView.setDescription(description);
+				carteCommunauteView.afficherCarte();
 			}
 		});
 	}
@@ -493,16 +493,16 @@ public class MonopolyView extends View {
 	/**
 	 * Afficher les images des dés dans la FenetreDeJeu.
 	 * 
-	 * @param pm PlateauMonopoly
+	 * @param plateau PlateauMonopoly
 	 */
-	public void afficherDes(PlateauMonopoly pm) {
+	public void afficherDes(PlateauMonopoly plateau) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
 				effacerDes();
-				Des.get(0).setImage(imageDes.get(pm.des.getDe1() - 1));
-				Des.get(1).setImage(imageDes.get(pm.des.getDe2() - 1));
+				Des.get(0).setImage(imageDes.get(plateau.des.getDe1() - 1));
+				Des.get(1).setImage(imageDes.get(plateau.des.getDe2() - 1));
 
 			}
 		});
@@ -595,17 +595,17 @@ public class MonopolyView extends View {
 	 * Affiche le vainqueur de la partie. Ajoute également le bouton newPartie à la
 	 * fenêtre princiaple.
 	 * 
-	 * @param pm PlateauMonopoly
+	 * @param plateau PlateauMonopoly
 	 */
-	public void afficherVainqueur(PlateauMonopoly pm) {
+	public void afficherVainqueur(PlateauMonopoly plateau) {
 
-		MonopolyView nouvelleFenetreDeJeu = this;
+		MonopolyView newMonopolyView = this;
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 
-				Label vainqueur = new Label("Le vainqueur est " + pm.estVainqueur().getNom() + " !");
-				vainqueur.setTextFill(l_Pions.get(pm.estVainqueur().getID()).getFill());
+				Label vainqueur = new Label("Le vainqueur est " + plateau.estVainqueur().getNom() + " !");
+				vainqueur.setTextFill(l_Pions.get(plateau.estVainqueur().getID()).getFill());
 				vainqueur.setFont(Font.font("Calibri Light", 26));
 				vainqueur.setTranslateX(145);
 				vainqueur.setTranslateY(525);
@@ -616,7 +616,7 @@ public class MonopolyView extends View {
 
 				newPartie.setTranslateX(463);
 				newPartie.setTranslateY(533);
-				newPartie.setOnAction(new JeuNewPartieController(nouvelleFenetreDeJeu));
+				newPartie.setOnAction(new JeuNewPartieController(newMonopolyView));
 				root.getChildren().add(newPartie);
 
 			}

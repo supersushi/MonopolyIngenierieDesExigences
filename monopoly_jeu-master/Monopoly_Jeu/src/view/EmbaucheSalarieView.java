@@ -23,7 +23,7 @@ import model.View;
  */
 public class EmbaucheSalarieView extends View {
 
-	private MonopolyView fenetreDeJeu;
+	private MonopolyView monopolyView;
 	private Stage stage;
 	private HBox root;
 	private Label l_Texte;
@@ -35,13 +35,13 @@ public class EmbaucheSalarieView extends View {
 	 * 
 	 * @param fp FenetreDeJeu
 	 */
-	public EmbaucheSalarieView(MonopolyView fenetreDeJeu) {
+	public EmbaucheSalarieView(MonopolyView monopolyView) {
 
-		this.fenetreDeJeu = fenetreDeJeu;
+		this.monopolyView = monopolyView;
 
 		this.stage = new Stage();
 		this.stage.setTitle("Embaucher un salarié");
-		this.stage.initOwner(fenetreDeJeu.getStage());
+		this.stage.initOwner(monopolyView.getStage());
 		this.stage.initModality(Modality.APPLICATION_MODAL);
 
 		stage.setOnHiding(new EmbaucheQuitterController(this));
@@ -58,7 +58,7 @@ public class EmbaucheSalarieView extends View {
 
 		Image i_Competence;
 
-		switch (fenetreDeJeu.getPartie().getPM().getCaseActive().getNom()) {
+		switch (monopolyView.getPartie().getPM().getCaseActive().getNom()) {
 		case "Client : Gestion d'actifs":
 			i_Competence = new Image("images/contest.png");
 			break;
@@ -78,7 +78,7 @@ public class EmbaucheSalarieView extends View {
 			i_Competence = new Image("images/computer.png");
 			break;
 		default: {
-			String couleur = fenetreDeJeu.getPartie().getPM().getCaseActive().getCouleur();
+			String couleur = monopolyView.getPartie().getPM().getCaseActive().getCouleur();
 			i_Competence = new Image("images/c_" + couleur + ".png");
 		}
 			;
@@ -92,9 +92,9 @@ public class EmbaucheSalarieView extends View {
 		aside.setSpacing(15);
 		root.getChildren().add(aside);
 
-		l_Texte = new Label("Voulez vous embaucher " + fenetreDeJeu.getPartie().getPM().getCaseActive().getNom()
-				+ " pour " + fenetreDeJeu.getPartie().getPM().getCaseActive().getPrix() + "€ ? \n \n"
-				+ fenetreDeJeu.getPartie().getPM().getCaseActive().descriptionPoste());
+		l_Texte = new Label("Voulez vous embaucher " + monopolyView.getPartie().getPM().getCaseActive().getNom()
+				+ " pour " + monopolyView.getPartie().getPM().getCaseActive().getPrix() + "€ ? \n \n"
+				+ monopolyView.getPartie().getPM().getCaseActive().descriptionPoste());
 		aside.getChildren().add(l_Texte);
 
 		HBox buttons_horiz = new HBox();
@@ -161,10 +161,10 @@ public class EmbaucheSalarieView extends View {
 	}
 
 	public MonopolyView getFenetreDeJeu() {
-		return fenetreDeJeu;
+		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public void setFenetreDeJeu(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 }

@@ -22,6 +22,6 @@ public class JeuNewPartieController implements EventHandler<ActionEvent> {
 		monopolyView.initRoot();
 		Scene scene = new Scene(monopolyView.getRoot(), 655, 655);
 		monopolyView.getStage().setScene(scene);
-		monopolyView.getFenetreDemarrage().getStage().show();
+		monopolyView.getMonopolyDemarrageView().getStage().show();
 	}
 }

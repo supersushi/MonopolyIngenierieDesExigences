@@ -17,7 +17,7 @@ public class ActionSurSalarieRevendreController implements EventHandler<ActionEv
 
 	@Override
 	public void handle(ActionEvent event) {
-		MonopolyView fenetreDeJeu = actionSurSalarieView.getFenetreDeJeu();
+		MonopolyView fenetreDeJeu = actionSurSalarieView.getMonopolyView();
 		int position = actionSurSalarieView.getPosition();
 		int prixRevente = fenetreDeJeu.getPartie().getPM().getCase(position).getPrix()
 				+ fenetreDeJeu.getPartie().getPM().getCase(position).getNbCompetence()

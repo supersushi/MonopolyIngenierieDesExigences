@@ -126,7 +126,7 @@ public class CaseEntrepriseController extends Case implements DefaultControllerI
 				reponseQuestion = true;
 			monopolyView.getPartie().reprendrePartie();
 		} else if (this.getPatron() == null)
-			monopolyView.afficherFenetreEmbaucherSalarie();
+			monopolyView.afficherEmbaucherSalarieView();
 		else
 			monopolyView.getPartie().reprendrePartie();
 	}

@@ -24,7 +24,7 @@ import model.View;
  */
 public class MonopolyDemarrageView extends View {
 
-	private MonopolyView fenetreDeJeu;
+	private MonopolyView monopolyView;
 	private Stage stage;
 	private VBox root;
 	private Label lab;
@@ -36,16 +36,16 @@ public class MonopolyDemarrageView extends View {
 	/**
 	 * Constructeur.
 	 * 
-	 * @param fjeu FenetreDeJeu
+	 * @param monopolyView FenetreDeJeu
 	 */
-	public MonopolyDemarrageView(MonopolyView fjeu) {
+	public MonopolyDemarrageView(MonopolyView monopolyView) {
 
-		this.fenetreDeJeu = fjeu;
+		this.monopolyView = monopolyView;
 
 		this.stage = new Stage();
 
 		this.stage.setTitle("Nouvelle partie Monopoly - Ingénierie des exigences");
-		this.stage.initOwner(fjeu.getStage());
+		this.stage.initOwner(monopolyView.getStage());
 		this.stage.initModality(Modality.APPLICATION_MODAL);
 
 		root = new VBox();
@@ -133,11 +133,11 @@ public class MonopolyDemarrageView extends View {
 	}
 
 	public MonopolyView getFenetreDeJeu() {
-		return fenetreDeJeu;
+		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
-		this.fenetreDeJeu = fenetreDeJeu;
+	public void setFenetreDeJeu(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
 	public ArrayList<TextField> getListePlayer() {

@@ -61,7 +61,7 @@ public class JeuClicRootController implements EventHandler<MouseEvent> {
 		}
 
 		if (!CasesInterdites.contains(pos)) {
-			monopolyView.getFenetreActionSurSalarie().afficherFenetre(pos);
+			monopolyView.getActionSurSalarieView().afficherFenetre(pos);
 		}
 	}
 }
