@@ -24,20 +24,18 @@ class CaseSalarieTest {
 	JoueurMonopoly joueur1 = new JoueurMonopoly("Alice", 1, 1000);
 	JoueurMonopoly joueur2 = new JoueurMonopoly("Marc", 2, 100);
 	CaseSalarieController caseSal = new CaseSalarieController("Chef de projet", 100,
-			new ArrayList<Integer>(Arrays.asList(15, 30, 60, 120, 240, 480)), 80, 0, "turquoise", "description poste");
+			new ArrayList<Integer>(Arrays.asList(15, 30, 60, 120, 240, 480)), 80, 0, "turquoise", "description poste", 
+			new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
 	CaseSalarieController caseSal1 = new CaseSalarieController("Salarié 1", 100,
 			new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise",
-			"description salarié 1");
-//	CaseSalarie caseSal1 = (CaseSalarie) plateau.getCase(6);
+			"description salarié 1", new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
 	CaseSalarieController caseSal2 = new CaseSalarieController("Salarié 2", 100,
 			new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise",
-			"description salarié 2");
-//	CaseSalarie caseSal2 = (CaseSalarie) plateau.getCase(8);
-//	CaseSalarie caseSal3 = (CaseSalarie) plateau.getCase(9);
+			"description salarié 2", new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
 	CaseSalarieController caseSal3 = new CaseSalarieController("Salarié 3", 120,
 			new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise",
-			"description salarié 3");
+			"description salarié 3", new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
 
 	@Test
 	/**
@@ -99,7 +97,7 @@ class CaseSalarieTest {
 	void monterEnCompetenceTest() {
 		caseSal.setPatron(joueur1);
 		assertEquals(0, caseSal.getNbCompetence());
-		caseSal.monterEnCompetence(null);
+		caseSal.monterEnCompetence(null, null);
 		assertEquals(1, caseSal.getNbCompetence());
 	}
 

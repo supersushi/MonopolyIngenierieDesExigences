@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import application.Clavier;
@@ -195,6 +196,12 @@ public class CaseArretMaladieController extends Case implements DefaultControlle
 
 	@Override
 	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getCompetences() {
 		// TODO Auto-generated method stub
 		return null;
 	}

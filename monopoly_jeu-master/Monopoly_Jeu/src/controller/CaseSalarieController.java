@@ -23,6 +23,7 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	private String descriptionPoste;
 	private int prixCompetence;
 	private int nbCompetence = 0;
+	private ArrayList<String> competences = new ArrayList<String>();
 	private boolean monterEnComptence = false;
 	private boolean Rep = false;
 
@@ -35,16 +36,18 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	 * @param Salaire        ArrayList
 	 * @param prixCompetence int
 	 * @param nbCompetence   int
+	 * @param competences	 ArrayList
 	 * @param couleur        String
 	 */
 	public CaseSalarieController(String nom, int valeur, ArrayList<Integer> Salaire, int prixCompetence,
-			int nbCompetence, String couleur, String descriptionPoste) {
+			int nbCompetence, String couleur, String descriptionPoste, ArrayList<String> competences) {
 		super(nom, valeur);
 		this.couleur = couleur;
 		this.Salaire = Salaire;
 		this.prixCompetence = prixCompetence;
 		this.nbCompetence = nbCompetence;
 		this.descriptionPoste = descriptionPoste;
+		this.competences = competences;
 	}
 
 	/**
@@ -79,7 +82,7 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 			monopolyView.afficherMessage(joueur.getNom() + " est le patron de ce salarié");
 
 			if (this.getPeutMonterEnCompetence() && monopolyView.getPartie().PARTIE_AUTO) {
-				this.monterEnCompetence(monopolyView);
+				this.monterEnCompetence(monopolyView, null);
 				monopolyView.setCompetence(this);
 				es.println("-> " + joueur.getNom() + " a fait monter en compétence " + getNbCompetence()
 						+ "fois ce salarié");
@@ -101,6 +104,15 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 				monopolyView.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
+	}
+
+
+	public ArrayList<String> getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(ArrayList<String> competences) {
+		this.competences = competences;
 	}
 
 	public void payerSalaire(JoueurMonopoly joueur, MonopolyView monopolyView) {
@@ -129,21 +141,28 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	 * 
 	 * @param monopolyView FenetrePrincipale
 	 */
-	public void monterEnCompetence(MonopolyView monopolyView) {
+	public void monterEnCompetence(MonopolyView monopolyView, String competence) {
 
 		nbCompetence++;
+		competences.remove(competence);
 		Patron.retirerArgent(this.getPrixCompetence());
 
 		if (this.nbCompetence <= 4) {
-			System.out.println("-> " + Patron.getNom() + " a fait monter en compétence l'employé " + getNom() + " !");
-			if (monopolyView != null)
+			System.out.println("-> " + Patron.getNom() + " a permis à l'employé " + getNom() + "\n d'intégrer une formation pour \n"+ competence + "!");
+			if (monopolyView != null) 
 				monopolyView.afficherMessage(
-						"-> " + Patron.getNom() + " a fait monter en compétence l'employé " + getNom() + " !");
-		} else {
-			System.out.println("-> " + Patron.getNom() + " a obtenu un grade " + getNom()
+						"-> " + Patron.getNom() + " a permis à l'employé " + getNom() + " d'intégrer une formation pour "+ competence + "!");
+		} else if(this.nbCompetence == 5) {
+			System.out.println(getNom() + " a 5 compétences! Il obtient un grade!");
+			if (monopolyView != null) { 
+				monopolyView.afficherMessage(
+						"-> " + getNom() + " obtient un grade!");
+			}
+		}else {
+			System.out.println("-> " + Patron.getNom() + " a obtenu un grade pour \n" + getNom()
 					+ " et ne peut plus monter en compétence!");
 			if (monopolyView != null)
-				monopolyView.afficherMessage("-> " + Patron.getNom() + " a obtenu un grade " + getNom()
+				monopolyView.afficherMessage("-> " + Patron.getNom() + " a obtenu un grade pour " + getNom()
 						+ " et ne peut plus monter en compétence!");
 		}
 	}
@@ -171,30 +190,39 @@ public class CaseSalarieController extends Case implements DefaultControllerInte
 	 */
 
 	public boolean getPeutMonterEnCompetence() {
-		if (Patron.getListeCouleur().contains(this.getCouleur())) {
-
-			ArrayList<Case> couleur = new ArrayList<Case>();
-			for (Case c : Patron.getListeSalaries())
-				if (c.getCouleur() == this.getCouleur() && c != this)
-					couleur.add(c);
-
-			this.monterEnComptence = true;
-			for (Case c : couleur) {
-				if (!(this.getNbCompetence() == c.getNbCompetence()
-						|| this.getNbCompetence() == c.getNbCompetence() - 1))
-					this.monterEnComptence = false;
-			}
-
-			if (Patron.getArgent() < this.getPrixCompetence()) {
-				this.monterEnComptence = false;
-				System.out.println("Vous n'avez pas assez monter en competence!");
-			}
-			if (getNbCompetence() == 5) {
-				this.monterEnComptence = false;
-				System.out.println("Vous ne pouvez pas avoir plus de compétence !");
-			}
-		} else
+//		if (Patron.getListeCouleur().contains(this.getCouleur())) {
+//
+//			ArrayList<Case> couleur = new ArrayList<Case>();
+//			for (Case c : Patron.getListeSalaries())
+//				if (c.getCouleur() == this.getCouleur() && c != this)
+//					couleur.add(c);
+//
+//			this.monterEnComptence = true;
+//			for (Case c : couleur) {
+//				if (!(this.getNbCompetence() == c.getNbCompetence()
+//						|| this.getNbCompetence() == c.getNbCompetence() - 1))
+//					this.monterEnComptence = false;
+//			}
+//
+//			if (Patron.getArgent() < this.getPrixCompetence()) {
+//				this.monterEnComptence = false;
+//				System.out.println("Vous n'avez pas assez monter en competence!");
+//			}
+//			if (getNbCompetence() == 5) {
+//				this.monterEnComptence = false;
+//				System.out.println("Vous ne pouvez pas avoir plus de compétence !");
+//			}
+//		} 
+		if (Patron.getArgent() < this.getPrixCompetence()) {
 			this.monterEnComptence = false;
+			System.out.println("Vous n'avez pas assez d'argent pour monter en compétence!");
+		}
+		if (getNbCompetence() == 5) {
+			this.monterEnComptence = false;
+			System.out.println("Vous ne pouvez pas avoir plus de compétence !");
+		}
+		else
+			this.monterEnComptence = true;
 
 		return this.monterEnComptence;
 	}

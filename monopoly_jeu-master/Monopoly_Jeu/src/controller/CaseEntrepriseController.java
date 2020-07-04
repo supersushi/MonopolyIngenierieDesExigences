@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import application.Clavier;
@@ -186,6 +187,12 @@ public class CaseEntrepriseController extends Case implements DefaultControllerI
 	public String descriptionPoste() {
 
 		return "Tout projet d’acquisition, de rachat d’une entreprise ou de branches d’activité,\ns’inscrit dans une stratégie de développement globale.";
+	}
+
+	@Override
+	public ArrayList<String> getCompetences() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

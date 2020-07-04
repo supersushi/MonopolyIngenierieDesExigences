@@ -1,11 +1,13 @@
 package view;
 
 import controller.ActionSurSalarieAcquerirController;
+import controller.ActionSurSalarieAjoutCompetenceController;
 import controller.ActionSurSalarieQuitterController;
 import controller.ActionSurSalarieRevendreController;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,7 +32,7 @@ public class ActionSurSalarieView extends View {
 	private int position;
 	private Label txt;
 	private Label errorTxt;
-	private Button acqComp;
+	private CheckBox competence;
 	private Button revendreComp;
 
 	/**
@@ -99,9 +101,22 @@ public class ActionSurSalarieView extends View {
 				+ monopolyView.getPartie().getPM().getCase(position).getNom() + " ?");
 		aside.getChildren().add(txt);
 
-		HBox buttons_horiz = new HBox();
-		buttons_horiz.setSpacing(10);
+		VBox checkboxes = new VBox();
+		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28) {
+			for(int i = 0; i < fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().size(); i++) {
+				competence = new CheckBox();
+				competence.setText(fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(i) +" (" + fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
+				checkboxes.getChildren().add(competence);
+				competence.setOnAction(new ActionSurSalarieAjoutCompetenceController(this, fenetreDeJeu.getPartie().getPM().getCase(position).getCompetences().get(i)));
+			}
+			
+			revendreComp = new Button("Licencier le salarié");
+		}
+		else {
+			revendreComp = new Button("Mettre fin au contrat avec le client");
+		}
 
+<<<<<<< HEAD
 		acqComp = new Button("Monter en competence ("
 				+ monopolyView.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
 		acqComp.setOnAction(new ActionSurSalarieAcquerirController(this));
@@ -109,10 +124,14 @@ public class ActionSurSalarieView extends View {
 			buttons_horiz.getChildren().add(acqComp);
 
 		revendreComp = new Button("Licencier le salarié");
+=======
+		HBox button_licenciement = new HBox();
+>>>>>>> branch 'master' of https://github.com/supersushi/MonopolyIngenierieDesExigences.git
 		revendreComp.setOnAction(new ActionSurSalarieRevendreController(this));
-		buttons_horiz.getChildren().add(revendreComp);
+		button_licenciement.getChildren().add(revendreComp);
 
-		aside.getChildren().add(buttons_horiz);
+		aside.getChildren().add(checkboxes);
+		aside.getChildren().add(button_licenciement);
 
 		errorTxt = new Label("");
 		errorTxt.setTextFill(Color.BLACK);
@@ -120,8 +139,8 @@ public class ActionSurSalarieView extends View {
 
 		root.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
 			if (ev.getCode() == KeyCode.ENTER) {
-				if (acqComp.isFocused())
-					acqComp.fire();
+				if (competence.isFocused())
+					competence.fire();
 				else
 					revendreComp.fire();
 				ev.consume();
@@ -139,7 +158,7 @@ public class ActionSurSalarieView extends View {
 		root = new HBox();
 		initRoot();
 
-		Scene scene = new Scene(root, 470, 130);
+		Scene scene = new Scene(root, 470, 180);
 		stage.setScene(scene);
 		stage.show();
 	}

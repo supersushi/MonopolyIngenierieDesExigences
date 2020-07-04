@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import application.Clavier;
 import jeu.JoueurMonopoly;
 import jeu.PlateauMonopoly;
@@ -91,6 +93,12 @@ public class CaseImpotsController extends Case implements DefaultControllerInter
 
 	@Override
 	public String descriptionPoste() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getCompetences() {
 		// TODO Auto-generated method stub
 		return null;
 	}
