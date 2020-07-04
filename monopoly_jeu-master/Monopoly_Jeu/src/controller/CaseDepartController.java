@@ -7,42 +7,42 @@ import model.Case;
 import view.FenetreDeJeu;
 
 /**
- * Crée l'action de la case Open Space
-*@author   Massourang Jugurtha Lina Emma
-*/
-public class CaseOpenSpace extends Case {
+ * Crée l'action d'une case départ
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
+
+public class CaseDepartController extends Case implements DefaultControllerInterface {
 
 	/**
-	 * Indique le nom de la case et initialise sa valeur
+	 * Indique le nom de la case
 	 */
-	public CaseOpenSpace() {
-		super("Open Space", 0);
+	public CaseDepartController() {
+		super("Depart", 0);
 	}
 
 	/**
-	 * Méthode permettant à un joueur de récupérer l'argent dans case Open Space puis réinitialisation  à 0
+	 * Crédite le joueur de 200 lors de son passage par la case départ
+	 * 
+	 * @see Case
 	 */
-	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
 		Clavier es = new Clavier();
 
-		es.println(" -> " + joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
-		if(fjeu!=null)
-			fjeu.afficherMessage(joueur.getNom() + " trouve " + this.getPrix() + "€ dans l'Open Space !");
-		joueur.ajouterArgent(this.getPrix());
-		this.setPrix(0);
+		joueur.ajouterArgent(200);
+		es.println("-> " + joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€  !");
+		if (fjeu != null)
+			fjeu.afficherMessage(joueur.getNom() + " s'arrête sur la case départ et reçoit une prime de 200€ !");
 	}
-
-	
 
 	@Override
 	/**
-	 * Reprend le cours de la partie
+	 * Reprend la partie
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 		fjeu.getPartie().reprendrePartie();
 	}
-
 
 	@Override
 	public JoueurMonopoly getPatron() {
@@ -80,14 +80,16 @@ public class CaseOpenSpace extends Case {
 	}
 
 	@Override
-	public void setPatron(JoueurMonopoly j) {}
+	public void setPatron(JoueurMonopoly j) {
+	}
 
 	@Override
-	public void setRep(boolean b) {}
+	public void setRep(boolean b) {
+	}
 
 	@Override
 	public String toString() {
-		return "CaseOpenSpace [" + super.toString() + "]";
+		return "CaseDepart [" + super.toString() + "]";
 	}
 
 	@Override
@@ -96,5 +98,4 @@ public class CaseOpenSpace extends Case {
 		return null;
 	}
 
-	
 }

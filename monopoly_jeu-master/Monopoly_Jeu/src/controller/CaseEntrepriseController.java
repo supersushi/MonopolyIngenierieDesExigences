@@ -10,65 +10,70 @@ import view.FenetreDeJeu;
 
 /**
  * Crée l'action de la case Service Public
-*@author   Massourang Jugurtha Lina Emma
-*/
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
 
-public class CaseEntreprise extends Case {
+public class CaseEntrepriseController extends Case implements DefaultControllerInterface {
 
 	private JoueurMonopoly Patron;
 	private boolean reponseQuestion = false;
 
 	/**
 	 * Indique le nom de la case et définit son prix
+	 * 
 	 * @param nom String
 	 */
-	public CaseEntreprise(String nom) {
+	public CaseEntrepriseController(String nom) {
 		super(nom, 150);
 	}
 
 	@Override
 	/**
-	 * Méthode gérant l'acquisition d'une entreprise par un joueur 
-	 * Gère le changement du Salaire en fonction du nombre d'entreprise possédé par un joueur
+	 * Méthode gérant l'acquisition d'une entreprise par un joueur Gère le
+	 * changement du Salaire en fonction du nombre d'entreprise possédé par un
+	 * joueur
 	 */
-	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
 		Clavier es = new Clavier();
 
-		if(this.getPatron() == null) {
-			if(getRep()) {
-				if(EmbaucheSalarie(joueur, fjeu))
-					if( fjeu != null) fjeu.setSignetPatron(joueur, this);
-			}
-			else {
+		if (this.getPatron() == null) {
+			if (getRep()) {
+				if (EmbaucheSalarie(joueur, fjeu))
+					if (fjeu != null)
+						fjeu.setSignetPatron(joueur, this);
+			} else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas acheter cette entreprise.");
-				if(fjeu != null) fjeu.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
+				if (fjeu != null)
+					fjeu.afficherMessage(joueur.getNom() + " décide de ne pas acheter cette entreprise.");
 			}
 		}
 
-		else if(this.getPatron() != joueur)
+		else if (this.getPatron() != joueur)
 			payerSalaire(joueur, plateau, fjeu);
 
 		else {
 			es.println(" > " + joueur.getNom() + " possède l'entreprise.");
-			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if (fjeu != null)
+				fjeu.afficherMessage(
+						"Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
-
 	public boolean EmbaucheSalarie(JoueurMonopoly joueur, FenetreDeJeu fjeu) {
-		if((joueur.getArgent() - this.getPrix()) <= 0) {
+		if ((joueur.getArgent() - this.getPrix()) <= 0) {
 			System.out.println("Vous n'avez pas assez d'argent!");
 			return false;
-		}
-		else {
+		} else {
 			setPatron(joueur);
 			joueur.ajouterSalarie(this);
 			joueur.retirerArgent(this.getPrix());
 			joueur.setNbEntreprises(joueur.getNbEntreprises() + 1);
 
 			System.out.println("-> " + joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
+			if (fjeu != null)
+				fjeu.afficherMessage(joueur.getNom() + " achète " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
@@ -76,30 +81,35 @@ public class CaseEntreprise extends Case {
 	public void payerSalaire(JoueurMonopoly joueur, PlateauMonopoly pm, FenetreDeJeu fjeu) {
 		String beneficiaire = "la Banque";
 
-		if(!this.getPatron().getEstMalade()) {
+		if (!this.getPatron().getEstMalade()) {
 
 			int Salaire = pm.des.lancerDes();
-			if(fjeu!=null) {
+			if (fjeu != null) {
 				fjeu.effacerDes();
 				fjeu.afficherDes(pm);
 			}
 
-			if(this.getPatron().getNbEntreprises() == 2) Salaire*=10;
-			else Salaire*=4;
+			if (this.getPatron().getNbEntreprises() == 2)
+				Salaire *= 10;
+			else
+				Salaire *= 4;
 
-			System.out.println(" > " + joueur.getNom() + " lance les dés... [" + pm.des.getDe1() + "][" + pm.des.getDe2() + "]... et obtient un " + pm.des.getDes());
+			System.out.println(" > " + joueur.getNom() + " lance les dés... [" + pm.des.getDe1() + "]["
+					+ pm.des.getDe2() + "]... et obtient un " + pm.des.getDes());
 			joueur.retirerArgent(Salaire);
 
-			if(!this.getPatron().getEstFauche()) {
+			if (!this.getPatron().getEstFauche()) {
 				this.getPatron().ajouterArgent(Salaire);
 				beneficiaire = this.getPatron().getNom();
 			}
 			System.out.println("-> " + joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
-			if(fjeu!=null) fjeu.afficherMessage(joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
-		}
-		else {
+			if (fjeu != null)
+				fjeu.afficherMessage(joueur.getNom() + " paye un salaire de " + Salaire + "€ à " + beneficiaire);
+		} else {
 			System.out.println("-> Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
-			if(fjeu!=null) fjeu.afficherMessage("Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if (fjeu != null)
+				fjeu.afficherMessage(
+						"Le directeur est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
@@ -110,18 +120,16 @@ public class CaseEntreprise extends Case {
 	 */
 	public void fenetreAction(FenetreDeJeu fjeu) {
 
-		if(fjeu.getPartie().PARTIE_AUTO) {
+		if (fjeu.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
-			if(rand.nextBoolean())
+			if (rand.nextBoolean())
 				reponseQuestion = true;
 			fjeu.getPartie().reprendrePartie();
-		}
-		else if(this.getPatron() == null)
+		} else if (this.getPatron() == null)
 			fjeu.afficherFenetreEmbaucherSalarie();
 		else
 			fjeu.getPartie().reprendrePartie();
 	}
-
 
 	@Override
 	public JoueurMonopoly getPatron() {
@@ -170,15 +178,14 @@ public class CaseEntreprise extends Case {
 
 	@Override
 	public String toString() {
-		return "CaseServicePublic [" + super.toString() + ", Patron=" + (Patron==null?"null":Patron.getNom()) + "]";
+		return "CaseServicePublic [" + super.toString() + ", Patron=" + (Patron == null ? "null" : Patron.getNom())
+				+ "]";
 	}
 
 	@Override
 	public String descriptionPoste() {
-		
-		return "Tout projet d’acquisition, de rachat d’une entreprise ou de branches d’activité,\ns’inscrit dans une stratégie de développement globale." ;
+
+		return "Tout projet d’acquisition, de rachat d’une entreprise ou de branches d’activité,\ns’inscrit dans une stratégie de développement globale.";
 	}
 
-
-	
 }

@@ -6,8 +6,9 @@ import view.FenetreDeJeu;
 
 /**
  * Classe abstraite représentant une carte du Monopoly
-*@author  Massourang Jugurtha Lina Emma
-*/
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
 
 public abstract class Carte {
 
@@ -16,7 +17,8 @@ public abstract class Carte {
 
 	/**
 	 * Intitule et description de la carte
-	 * @param Intitule String
+	 * 
+	 * @param Intitule    String
 	 * @param description String
 	 */
 	public Carte(String intitule, String description) {
@@ -26,6 +28,7 @@ public abstract class Carte {
 
 	/**
 	 * Retourne l'intitule
+	 * 
 	 * @return Intitule
 	 */
 	public String getNom() {
@@ -33,7 +36,8 @@ public abstract class Carte {
 	}
 
 	/**
-	 * Retourne la description 
+	 * Retourne la description
+	 * 
 	 * @return description
 	 */
 	public String getDesc() {
@@ -42,11 +46,12 @@ public abstract class Carte {
 
 	/**
 	 * Action en fonction du joueur et du plateau de jeu
-	 * @param joueur JoueurMonopoly
+	 * 
+	 * @param joueur  JoueurMonopoly
 	 * @param plateau PlateauMonopoly
-	 * @param fjeu FenetreDeJeu
+	 * @param fjeu    FenetreDeJeu
 	 */
-	public abstract void actionCarte(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu);
+	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu);
 
 	@Override
 	public String toString() {

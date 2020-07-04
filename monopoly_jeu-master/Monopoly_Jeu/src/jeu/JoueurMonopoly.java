@@ -8,9 +8,10 @@ import model.Case;
 import model.Joueur;
 
 /**
- * Définit un joueur et ses données dans le jeu du Monopoly : compétences, entreprises possédées etc
+ * Définit un joueur et ses données dans le jeu du Monopoly : compétences,
+ * entreprises possédées etc
  * 
- * @author  Massourang Jugurtha Lina Emma
+ * @author Massourang Jugurtha Lina Emma
  */
 
 public class JoueurMonopoly extends Joueur {
@@ -27,7 +28,6 @@ public class JoueurMonopoly extends Joueur {
 
 	/* CONSTRUCTEUR */
 
-	
 	public JoueurMonopoly(String nom, int id, int argent) {
 		super(nom, id);
 		this.argent = argent;
@@ -47,7 +47,7 @@ public class JoueurMonopoly extends Joueur {
 	/**
 	 * Met à jour le nombre de tour passé en arret maladie
 	 * 
-	 * @param toursEnArretMaladie 
+	 * @param toursEnArretMaladie
 	 */
 	public void setToursEnArretMaladie(int nbtoursarret) {
 		this.nbtoursArret = nbtoursarret;
@@ -72,7 +72,7 @@ public class JoueurMonopoly extends Joueur {
 	}
 
 	/**
-	 * Renvoie TRUE si le joueur possède la carte "Sortie d'arret maladie" 
+	 * Renvoie TRUE si le joueur possède la carte "Sortie d'arret maladie"
 	 * 
 	 * @return possedeCarteSortieArretMaladie
 	 */
@@ -90,8 +90,6 @@ public class JoueurMonopoly extends Joueur {
 	}
 
 	/* PARTIE Salaries GRADES ENTREPRISE */
-
-	
 
 	/**
 	 * Renvoie le nombre d'entreprises qu'un joueur possède
@@ -111,9 +109,8 @@ public class JoueurMonopoly extends Joueur {
 		this.nombreEntreprisesPossedees = nb;
 	}
 
-	
 	/**
-	 * Ajoute une compétence à la liste 
+	 * Ajoute une compétence à la liste
 	 * 
 	 * @param CaseSalarie
 	 */
@@ -122,7 +119,8 @@ public class JoueurMonopoly extends Joueur {
 	}
 
 	/**
-	 * Affichage de la liste des compétences d'un joueur 
+	 * Affichage de la liste des compétences d'un joueur
+	 * 
 	 * @return s
 	 */
 	public String getListeStringSalaries() {
@@ -135,15 +133,16 @@ public class JoueurMonopoly extends Joueur {
 
 	/**
 	 * Retourne la liste de compétences qu'a acquise un joueur
+	 * 
 	 * @return Salaries
 	 */
 	public ArrayList<Case> getListeSalaries() {
 		return this.Salaries;
 	}
 
-	
 	/**
 	 * Rentourne la liste de couleurs que possède un joueur
+	 * 
 	 * @return couleurs
 	 */
 	public ArrayList<String> getListeCouleur() {
@@ -199,7 +198,7 @@ public class JoueurMonopoly extends Joueur {
 		return this.couleurs;
 	}
 
-	/* PARTIE BANQUE*/
+	/* PARTIE BANQUE */
 
 	/**
 	 * Renvoie la somme en banque d'un joueur
@@ -211,7 +210,7 @@ public class JoueurMonopoly extends Joueur {
 	}
 
 	/**
-	 * Ajoute un montant au compte en banque d'un joueur 
+	 * Ajoute un montant au compte en banque d'un joueur
 	 * 
 	 * @param montant int
 	 */
@@ -220,7 +219,7 @@ public class JoueurMonopoly extends Joueur {
 	}
 
 	/**
-	 * Retire un montant au compte en banque d'un joueur 
+	 * Retire un montant au compte en banque d'un joueur
 	 * 
 	 * @param montant int
 	 */
@@ -275,9 +274,9 @@ public class JoueurMonopoly extends Joueur {
 	@Override
 	public String toString() {
 		return "JoueurMonopoly [" + super.toString() + ", argent=" + argent + ", estFauche=" + estFauche
-				+ ", estMalade=" + estMalade + ", toursEnArretMaladie=" + nbtoursArret + ", possedeCarteSortieArretMaladie="
-				+ possedeCarteSortieArretMaladie + ", nombreEntreprisesPossedees=" + nombreEntreprisesPossedees
-				+ ", nombreServicesPossedes=" + nombreServicesPossedes + ", \nSalaries=[" + getListeStringSalaries()
-				+ "], \ncouleurs=" + getListeCouleur() + "]";
+				+ ", estMalade=" + estMalade + ", toursEnArretMaladie=" + nbtoursArret
+				+ ", possedeCarteSortieArretMaladie=" + possedeCarteSortieArretMaladie + ", nombreEntreprisesPossedees="
+				+ nombreEntreprisesPossedees + ", nombreServicesPossedes=" + nombreServicesPossedes + ", \nSalaries=["
+				+ getListeStringSalaries() + "], \ncouleurs=" + getListeCouleur() + "]";
 	}
 }

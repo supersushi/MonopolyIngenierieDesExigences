@@ -8,27 +8,28 @@ import view.FenetreDeJeu;
 
 /**
  * Crée l'action d'une case impôt ou d'une taxe de luxe
-*@author  Massourang Jugurtha Lina Emma
-*/
-public class CaseImpots extends Case {
+ * 
+ * @author Massourang Jugurtha Lina Emma
+ */
+public class CaseImpotsController extends Case implements DefaultControllerInterface {
 
 	/**
-	 * @param nom String : Intitulé de la case
+	 * @param nom    String : Intitulé de la case
 	 * @param valeur int : prix de l'impot à payer
 	 */
-	public CaseImpots(String nom, int valeur) {
+	public CaseImpotsController(String nom, int valeur) {
 		super(nom, valeur);
 	}
 
 	/**
 	 * Cette méthode débite le joueur et crédite l'Open Space
 	 */
-	public void actionCase(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
+	public void action(JoueurMonopoly joueur, PlateauMonopoly plateau, FenetreDeJeu fjeu) {
 
 		Clavier es = new Clavier();
 
 		es.println(" -> " + joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
-		if(fjeu != null)
+		if (fjeu != null)
 			fjeu.afficherMessage(joueur.getNom() + " crédite de " + this.getPrix() + "€ l'Open Space.");
 
 		joueur.retirerArgent(this.getPrix());
@@ -37,7 +38,6 @@ public class CaseImpots extends Case {
 		plateau.getCase(20).setPrix(nouveauMontantOpenSpace);
 	}
 
-	
 	@Override
 	/**
 	 * Reprend le cours de la partie
@@ -82,17 +82,17 @@ public class CaseImpots extends Case {
 	}
 
 	@Override
-	public void setPatron(JoueurMonopoly j) {}
+	public void setPatron(JoueurMonopoly j) {
+	}
 
 	@Override
-	public void setRep(boolean b) {}
+	public void setRep(boolean b) {
+	}
 
 	@Override
 	public String descriptionPoste() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }
