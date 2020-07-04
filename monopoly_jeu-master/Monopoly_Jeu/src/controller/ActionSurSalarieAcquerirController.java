@@ -23,8 +23,6 @@ public class ActionSurSalarieAcquerirController implements EventHandler<ActionEv
 		if (c.getPeutMonterEnCompetence()) {
 			c.monterEnCompetence(actionSurSalarieView.getMonopolyView(), null);
 			actionSurSalarieView.getMonopolyView().setCompetence(c);
-			c.monterEnCompetence(actionSurSalarieView.getMonopolyView(), null);
-			actionSurSalarieView.getMonopolyView().setCompetence(c);
 			actionSurSalarieView.getStage().close();
 		} else {
 			actionSurSalarieView.getErrorTxt().setText("Impossible d'obtenir une compétence.");

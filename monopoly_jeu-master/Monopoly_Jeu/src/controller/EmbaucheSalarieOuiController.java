@@ -14,7 +14,7 @@ public class EmbaucheSalarieOuiController implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent event) {
-		embaucheSalarieView.getFenetreDeJeu().getPartie().getPM().getCaseActive().setRep(true);
+		embaucheSalarieView.getMonopolyView().getPartie().getPM().getCaseActive().setRep(true);
 		embaucheSalarieView.getStage().close();
 		event.consume();
 	}

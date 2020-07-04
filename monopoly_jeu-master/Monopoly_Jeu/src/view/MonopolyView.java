@@ -317,7 +317,7 @@ public class MonopolyView extends View {
 			@Override
 			public void run() {
 
-				embaucheSalarieView.afficherFenetre();
+				embaucheSalarieView.afficherView();
 			}
 		});
 	}

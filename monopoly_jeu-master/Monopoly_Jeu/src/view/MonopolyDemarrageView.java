@@ -132,26 +132,44 @@ public class MonopolyDemarrageView extends View {
 		return stage;
 	}
 
-	public MonopolyView getFenetreDeJeu() {
+	/**
+	 * @return monopolyView MonopolyView
+	 */
+	public MonopolyView getMonopolyView() {
 		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView monopolyView) {
+	/**
+	 * @param monopolyView MonopolyView
+	 */
+	public void setMonopolyView(MonopolyView monopolyView) {
 		this.monopolyView = monopolyView;
 	}
 
+	/**
+	 * @return listePlayer ArrayList<TextField>
+	 */
 	public ArrayList<TextField> getListePlayer() {
 		return listePlayer;
 	}
 
+	/**
+	 * @param listePlayer ArrayList<TextField>
+	 */
 	public void setListePlayer(ArrayList<TextField> listePlayer) {
 		this.listePlayer = listePlayer;
 	}
 
+	/**
+	 * @return choix int
+	 */
 	public int getChoix() {
 		return choix;
 	}
 
+	/**
+	 * @param choix int
+	 */
 	public void setChoix(int choix) {
 		this.choix = choix;
 	}

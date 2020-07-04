@@ -33,7 +33,7 @@ public class EmbaucheSalarieView extends View {
 	/**
 	 * Constructeur prenant en paramètr FenetreDeJeu
 	 * 
-	 * @param fp FenetreDeJeu
+	 * @param monopoly MonopolyView
 	 */
 	public EmbaucheSalarieView(MonopolyView monopolyView) {
 
@@ -142,7 +142,7 @@ public class EmbaucheSalarieView extends View {
 	/**
 	 * Affiche la fenêtre en réinitialisant la HBox root à chaque appel.
 	 */
-	public void afficherFenetre() {
+	public void afficherView() {
 		root = new HBox();
 		initRoot();
 
@@ -160,11 +160,17 @@ public class EmbaucheSalarieView extends View {
 		return stage;
 	}
 
-	public MonopolyView getFenetreDeJeu() {
+	/**
+	 * @return monopolyView MonopolyView
+	 */
+	public MonopolyView getMonopolyView() {
 		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView monopolyView) {
+	/**
+	 * @param monopolyView MonopolyView
+	 */
+	public void setMonopolyView(MonopolyView monopolyView) {
 		this.monopolyView = monopolyView;
 	}
 }

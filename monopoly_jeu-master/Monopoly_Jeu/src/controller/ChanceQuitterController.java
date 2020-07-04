@@ -14,7 +14,7 @@ public class ChanceQuitterController implements EventHandler<WindowEvent> {
 
 	@Override
 	public void handle(WindowEvent event) {
-		carteChanceView.getFenetreDeJeu().getPartie().reprendrePartie();
+		carteChanceView.getMonopolyView().getPartie().reprendrePartie();
 		event.consume();
 	}
 }

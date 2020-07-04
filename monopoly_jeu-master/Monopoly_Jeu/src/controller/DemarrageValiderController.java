@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
-import view.MonopolyView;
 import view.MonopolyDemarrageView;
+import view.MonopolyView;
 
 public class DemarrageValiderController implements EventHandler<ActionEvent> {
 
@@ -16,7 +16,7 @@ public class DemarrageValiderController implements EventHandler<ActionEvent> {
 
 	public DemarrageValiderController(MonopolyDemarrageView monopolyDemarrageView) {
 		this.monopolyDemarrageView = monopolyDemarrageView;
-		this.monopolyView = monopolyDemarrageView.getFenetreDeJeu();
+		this.monopolyView = monopolyDemarrageView.getMonopolyView();
 		this.listePlayer = monopolyDemarrageView.getListePlayer();
 	}
 

@@ -14,7 +14,7 @@ public class EmbaucheQuitterController implements EventHandler<WindowEvent> {
 
 	@Override
 	public void handle(WindowEvent event) {
-		embaucheSalarieView.getFenetreDeJeu().getPartie().reprendrePartie();
+		embaucheSalarieView.getMonopolyView().getPartie().reprendrePartie();
 		event.consume();
 	}
 }

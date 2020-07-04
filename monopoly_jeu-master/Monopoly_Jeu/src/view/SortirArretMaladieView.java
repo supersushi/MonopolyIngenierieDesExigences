@@ -112,11 +112,17 @@ public class SortirArretMaladieView extends View {
 		return stage;
 	}
 
-	public MonopolyView getFenetreDeJeu() {
+	/**
+	 * @return monopolyView MonopolyView
+	 */
+	public MonopolyView getMonopolyView() {
 		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView monopolyView) {
+	/**
+	 * @param monopolyView MonopolyView
+	 */
+	public void setMonopolyView(MonopolyView monopolyView) {
 		this.monopolyView = monopolyView;
 	}
 

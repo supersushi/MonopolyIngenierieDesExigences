@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import model.View;
 
 /**
- * Fenêtre à afficher lorqu'on atterit sur une CaseCommunaute.
+ * View à afficher lorqu'on atterit sur une CaseCommunaute.
  */
 public class CarteCommunauteView extends View {
 
@@ -29,9 +29,9 @@ public class CarteCommunauteView extends View {
 	private Label l_Description = new Label("?");
 
 	/**
-	 * constructeur prenant en paramètre FenetreDeJeu
+	 * constructeur prenant en paramètre MonopolyView
 	 * 
-	 * @param monopolyView FenetreDeJeu
+	 * @param monopolyView MonopolyView
 	 */
 	public CarteCommunauteView(MonopolyView monopolyView) {
 
@@ -120,11 +120,17 @@ public class CarteCommunauteView extends View {
 		l_Description = new Label(description);
 	}
 
-	public MonopolyView getFenetreDeJeu() {
+	/**
+	 * @return monopolyView MonopolyView
+	 */
+	public MonopolyView getMonopolyView() {
 		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView monopolyView) {
+	/**
+	 * @param monopolyView MonopolyView
+	 */
+	public void setMonopolyView(MonopolyView monopolyView) {
 		this.monopolyView = monopolyView;
 	}
 

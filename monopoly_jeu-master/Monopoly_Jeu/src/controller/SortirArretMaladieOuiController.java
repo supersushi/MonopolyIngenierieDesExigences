@@ -15,7 +15,7 @@ public class SortirArretMaladieOuiController implements EventHandler<ActionEvent
 	@Override
 	public void handle(ActionEvent event) {
 		sortirArretMaladieView.getStage().close();
-		sortirArretMaladieView.getFenetreDeJeu().getPartie().getPM().getCaseActive().setRep(true);
+		sortirArretMaladieView.getMonopolyView().getPartie().getPM().getCaseActive().setRep(true);
 		event.consume();
 	}
 }

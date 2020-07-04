@@ -1,9 +1,8 @@
 package view;
 
-import controller.ActionSurSalarieAcquerirController;
+import controller.ActionSurSalarieAjoutCompetenceController;
 import controller.ActionSurSalarieQuitterController;
 import controller.ActionSurSalarieRevendreController;
-import controller.ActionSurSalarieAjoutCompetenceController;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,8 +20,11 @@ import javafx.stage.Stage;
 import model.View;
 
 /**
- * Fenêtre d'affichage lors du clique sur une compétence. Actions : - Embaucher
- * un salarié - Licencier un salarié - Faire monter en compétence le salarié
+ * Vue permettant d'effectuer des actions sur les salariés
+ */
+/**
+ * @author Massourang Jugurtha Lina Emma
+ *
  */
 public class ActionSurSalarieView extends View {
 
@@ -38,8 +40,7 @@ public class ActionSurSalarieView extends View {
 	/**
 	 * Constructeur
 	 * 
-	 * @param fjeu FenetreDeJeu
-	 * @see MonopolyView
+	 * @param MonopolyView
 	 */
 	public ActionSurSalarieView(MonopolyView monopolyView) {
 
@@ -103,16 +104,17 @@ public class ActionSurSalarieView extends View {
 
 		VBox checkboxes = new VBox();
 		if (position != 5 && position != 15 && position != 25 && position != 35 && position != 12 && position != 28) {
-			for(int i = 0; i < monopolyView.getPartie().getPM().getCase(position).getCompetences().size(); i++) {
+			for (int i = 0; i < monopolyView.getPartie().getPM().getCase(position).getCompetences().size(); i++) {
 				competence = new CheckBox();
-				competence.setText(monopolyView.getPartie().getPM().getCase(position).getCompetences().get(i) +" (" + monopolyView.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
+				competence.setText(monopolyView.getPartie().getPM().getCase(position).getCompetences().get(i) + " ("
+						+ monopolyView.getPartie().getPM().getCase(position).getPrixCompetence() + "€)");
 				checkboxes.getChildren().add(competence);
-				competence.setOnAction(new ActionSurSalarieAjoutCompetenceController(this, monopolyView.getPartie().getPM().getCase(position).getCompetences().get(i)));
+				competence.setOnAction(new ActionSurSalarieAjoutCompetenceController(this,
+						monopolyView.getPartie().getPM().getCase(position).getCompetences().get(i)));
 			}
-			
+
 			revendreComp = new Button("Licencier le salarié");
-		}
-		else {
+		} else {
 			revendreComp = new Button("Mettre fin au contrat avec le client");
 		}
 
@@ -162,26 +164,44 @@ public class ActionSurSalarieView extends View {
 		return stage;
 	}
 
+	/**
+	 * @return monopolyView MonopolyView
+	 */
 	public MonopolyView getMonopolyView() {
 		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView fenetreDeJeu) {
-		this.monopolyView = fenetreDeJeu;
+	/**
+	 * @param monopolyView
+	 */
+	public void setMonopolyView(MonopolyView monopolyView) {
+		this.monopolyView = monopolyView;
 	}
 
+	/**
+	 * @return position int
+	 */
 	public int getPosition() {
 		return position;
 	}
 
+	/**
+	 * @param position int
+	 */
 	public void setPosition(int position) {
 		this.position = position;
 	}
 
+	/**
+	 * @return errorTxt label
+	 */
 	public Label getErrorTxt() {
 		return errorTxt;
 	}
 
+	/**
+	 * @param errorTxt
+	 */
 	public void setErrorTxt(Label errorTxt) {
 		this.errorTxt = errorTxt;
 	}

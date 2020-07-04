@@ -31,7 +31,7 @@ public class CarteChanceView extends View {
 	/**
 	 * Constructeur
 	 * 
-	 * @param fjeu FenetreDeJeu
+	 * @param monopolyView MonopolyView
 	 */
 	public CarteChanceView(MonopolyView monopolyView) {
 		this.monopolyView = monopolyView;
@@ -92,7 +92,7 @@ public class CarteChanceView extends View {
 	}
 
 	/**
-	 * Renvoie la Stage de la fenêtre.
+	 * Renvoie la Stage de la view.
 	 * 
 	 * @return stage Stage
 	 */
@@ -118,16 +118,22 @@ public class CarteChanceView extends View {
 		l_Description = new Label(description);
 	}
 
-	public MonopolyView getFenetreDeJeu() {
+	/**
+	 * @return monopolyView MonopolyView
+	 */
+	public MonopolyView getMonopolyView() {
 		return monopolyView;
 	}
 
-	public void setFenetreDeJeu(MonopolyView monopolyView) {
+	/**
+	 * @param monopolyView MonopolyView
+	 */
+	public void setMonopolyView(MonopolyView monopolyView) {
 		this.monopolyView = monopolyView;
 	}
 
 	/**
-	 * Affiche la fenêtre et réinitialisant root à chaque appel.
+	 * Affiche la view et réinitialisant root à chaque appel.
 	 */
 	public void afficherCarte() {
 		root = new HBox();

@@ -14,7 +14,7 @@ public class CommunauteQuitterController implements EventHandler<WindowEvent> {
 
 	@Override
 	public void handle(WindowEvent event) {
-		carteCommunauteView.getFenetreDeJeu().getPartie().reprendrePartie();
+		carteCommunauteView.getMonopolyView().getPartie().reprendrePartie();
 		event.consume();
 	}
 }

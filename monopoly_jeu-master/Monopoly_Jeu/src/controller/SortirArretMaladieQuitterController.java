@@ -14,7 +14,7 @@ public class SortirArretMaladieQuitterController implements EventHandler<WindowE
 
 	@Override
 	public void handle(WindowEvent event) {
-		sortirArretMaladieView.getFenetreDeJeu().getPartie().reprendrePartie();
+		sortirArretMaladieView.getMonopolyView().getPartie().reprendrePartie();
 		event.consume();
 	}
 }
