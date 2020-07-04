@@ -40,7 +40,7 @@ public class RequeteMonopolyClient {
 		ois = new ObjectInputStream(socket.getInputStream());
 		Fenetre result = (Fenetre) ois.readObject();
 
-		LOGGER.log(Level.INFO, "Received response : " + result);
+		LOGGER.log(Level.INFO, "Received response" + result);
 
 		socket.close();
 
