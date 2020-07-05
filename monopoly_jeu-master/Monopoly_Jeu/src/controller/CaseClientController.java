@@ -77,7 +77,7 @@ public class CaseClientController extends CaseModel implements DefaultController
 		}
 	}
 
-	public void payerSalaire(JoueurMonopoly joueur, MonopolyView fjeu) {
+	public void payerSalaire(JoueurMonopoly joueur, MonopolyView monopolyView) {
 		String beneficiaire = "la Banque";
 
 		if (!this.getPatron().getEstMalade()) {
@@ -89,12 +89,14 @@ public class CaseClientController extends CaseModel implements DefaultController
 				beneficiaire = this.getPatron().getNom();
 			}
 			System.out.println("-> " + joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
-			if (fjeu != null)
-				fjeu.afficherMessage(joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
+			if (monopolyView != null)
+				monopolyView.afficherMessage(
+						joueur.getNom() + " paye un Salaire de " + getSalaire() + "€ à " + beneficiaire);
 		} else {
 			System.out.println("-> Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
-			if (fjeu != null)
-				fjeu.afficherMessage("Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
+			if (monopolyView != null)
+				monopolyView.afficherMessage(
+						"Le patron est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
 		}
 	}
 
