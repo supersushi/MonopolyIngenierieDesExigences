@@ -22,10 +22,10 @@ class CaseOpenSpaceTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe donc l'argent du joueur1
+	 * Permet de tester la méthode action de la classe donc l'argent du joueur1
 	 * augmente du prix de la case et le prix de la case redevient 0
 	 */
-	void actionCaseTest() {
+	void actionTest() {
 		caseOpenSp.setPrix(200);
 		caseOpenSp.action(joueur1, plateau, null);
 		assertEquals(1200, joueur1.getArgent());

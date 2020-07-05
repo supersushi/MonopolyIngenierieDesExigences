@@ -25,11 +25,11 @@ class CaseAllerArretMaladieTest {
 
 	@Test
 	/**
-	 * Test permettant de tester la méthode actionCase de la classe dans le cas où
+	 * Test permettant de tester la méthode action de la classe dans le cas où
 	 * le joueur1 possède une carte sortie arret maladie donc n'est pas malade perd
 	 * sa carte et reste sur la case
 	 */
-	void actionCaseCarteTest() {
+	void actionCarteTest() {
 		joueur1.setPosition(30);
 		joueur1.setCarteSortieArretMaladie(true);
 		caseArretMal.action(joueur1, plateau, null);
@@ -41,7 +41,7 @@ class CaseAllerArretMaladieTest {
 
 	@Test
 	/**
-	 * Test permettant de tester la méthode actionCase de la classe dans le cas où
+	 * Test permettant de tester la méthode action de la classe dans le cas où
 	 * le joueur2 ne possède pas de carte donc est malade et est transporté en case
 	 * 10
 	 */

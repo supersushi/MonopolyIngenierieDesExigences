@@ -45,17 +45,17 @@ public class CaseClientController extends CaseModel implements DefaultController
 		if (this.getPatron() == null) {
 			if (getRep()) {
 				if (EmbaucheSalarie(joueur, monopolyView))
-					monopolyView.setSignetPatron(joueur, this);
+					if(monopolyView != null) monopolyView.setSignetPatron(joueur, this);
 			} else {
 				es.println("-> " + joueur.getNom() + " décide de ne pas faire affaire avec ce client.");
-				monopolyView.afficherMessage(joueur.getNom() + " décide de ne pas faire affaire avec ce client");
+				if(monopolyView != null) monopolyView.afficherMessage(joueur.getNom() + " décide de ne pas faire affaire avec ce client");
 			}
 		} else if (this.getPatron() != joueur)
 			payerSalaire(joueur, monopolyView);
 
 		else {
 			es.println("-> " + joueur.getNom() + " fait deja affaire avec ce client.");
-			monopolyView.afficherMessage(joueur.getNom() + " ait deja affaire avec ce client.");
+			if(monopolyView != null) monopolyView.afficherMessage(joueur.getNom() + " ait deja affaire avec ce client.");
 		}
 	}
 

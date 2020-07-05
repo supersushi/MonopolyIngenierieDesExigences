@@ -103,7 +103,7 @@ public class PlateauMonopoly extends model.Plateau {
 		setCase(16, new CaseSalarieController("Gestionnaire d'application", 180,
 				new ArrayList<Integer>(Arrays.asList(14, 70, 200, 550, 750, 950)), 100, 0, "orange",
 				"Vous représenterez les maîtres d'ouvrage lors de la vie courante des systèmes. \nVous participerez à l'élaboration des règles de fonctionnement \net d'utilisation du système d'information.",
-				new ArrayList<String>(Arrays.asList("Perfectionnement en rédaction", "Perfectionnement dans le travail en équipe", "Parfait orateur", "Perfectionnement en communication", "Perfectionnement en rédaction"))));
+				new ArrayList<String>(Arrays.asList("Perfectionnement en rédaction", "Perfectionnement dans le travail en équipe", "Parfait orateur", "Perfectionnement en communication", "Perfectionnement en organisation"))));
 		setCase(18, new CaseSalarieController("Architecte fonctionnel", 180,
 				new ArrayList<Integer>(Arrays.asList(14, 70, 200, 550, 750, 950)), 100, 0, "orange",
 				"Vous traduirez les besoins fonctionnels d'un système d'information en \nfonction des contraintes logistiques, économiques et des objectifs \ndu domaine métier.",

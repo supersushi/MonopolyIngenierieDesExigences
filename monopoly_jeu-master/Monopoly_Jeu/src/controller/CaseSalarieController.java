@@ -147,6 +147,8 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 		nbCompetence++;
 		competences.remove(competence);
 		Patron.retirerArgent(this.getPrixCompetence());
+		setPrix(this.getPrix() + this.getPrixCompetence());
+		setPrixCompetence(this.getPrixCompetence() + 50);
 
 		if (this.nbCompetence <= 4) {
 			System.out.println("-> " + Patron.getNom() + " a permis à l'employé " + getNom()
@@ -168,6 +170,10 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 		}
 	}
 
+	public void setPrixCompetence(int prixCompetence) {
+		this.prixCompetence = prixCompetence;
+	}
+
 	/**
 	 * Méthode permettant l'affichage d'une fenêtre lors de l'embauche d'un salarie
 	 */
@@ -186,34 +192,11 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 	}
 
 	/*
-	 * =========================== Méthodes abstraites de Case
-	 * ===========================
+	 * =========================== Méthodes abstraites de Case ===========================
 	 */
 
 	public boolean getPeutMonterEnCompetence() {
-//		if (Patron.getListeCouleur().contains(this.getCouleur())) {
-//
-//			ArrayList<Case> couleur = new ArrayList<Case>();
-//			for (Case c : Patron.getListeSalaries())
-//				if (c.getCouleur() == this.getCouleur() && c != this)
-//					couleur.add(c);
-//
-//			this.monterEnComptence = true;
-//			for (Case c : couleur) {
-//				if (!(this.getNbCompetence() == c.getNbCompetence()
-//						|| this.getNbCompetence() == c.getNbCompetence() - 1))
-//					this.monterEnComptence = false;
-//			}
-//
-//			if (Patron.getArgent() < this.getPrixCompetence()) {
-//				this.monterEnComptence = false;
-//				System.out.println("Vous n'avez pas assez monter en competence!");
-//			}
-//			if (getNbCompetence() == 5) {
-//				this.monterEnComptence = false;
-//				System.out.println("Vous ne pouvez pas avoir plus de compétence !");
-//			}
-//		} 
+		
 		if (Patron.getArgent() < this.getPrixCompetence()) {
 			this.monterEnComptence = false;
 			System.out.println("Vous n'avez pas assez d'argent pour monter en compétence!");

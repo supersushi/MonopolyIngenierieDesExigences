@@ -20,9 +20,9 @@ class CarteSortirArretMaladieTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCarte de la classe
+	 * Permet de tester la méthode action de la classe
 	 */
-	void actionCarteTest() {
+	void actionTest() {
 		carteSortie.action(joueur, null, null);
 		assertTrue(joueur.getCarteSortieArretMaladie());
 	}
