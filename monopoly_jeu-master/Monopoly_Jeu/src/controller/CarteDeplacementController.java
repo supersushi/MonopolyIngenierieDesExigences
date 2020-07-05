@@ -37,7 +37,7 @@ public class CarteDeplacementController extends CarteModel implements DefaultCon
 	 * 
 	 * @param joueur       JoueurMonopoly
 	 * @param plateau      PlateauMonopoly
-	 * @param monopolyView FenetreDeJeu
+	 * @param monopolyView MonopolyView
 	 */
 	@SuppressWarnings("static-access")
 	@Override
