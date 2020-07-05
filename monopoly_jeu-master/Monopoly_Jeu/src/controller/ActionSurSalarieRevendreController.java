@@ -19,9 +19,7 @@ public class ActionSurSalarieRevendreController implements EventHandler<ActionEv
 	public void handle(ActionEvent event) {
 		MonopolyView fenetreDeJeu = actionSurSalarieView.getMonopolyView();
 		int position = actionSurSalarieView.getPosition();
-		int prixRevente = fenetreDeJeu.getPartie().getPM().getCase(position).getPrix()
-				+ fenetreDeJeu.getPartie().getPM().getCase(position).getNbCompetence()
-						* fenetreDeJeu.getPartie().getPM().getCase(position).getPrixCompetence();
+		int prixRevente = fenetreDeJeu.getPartie().getPM().getCase(position).getPrix();
 		fenetreDeJeu
 				.afficherMessage(fenetreDeJeu.getPartie().getPM().getCase(position).getPatron().getNom() + " revend "
 						+ fenetreDeJeu.getPartie().getPM().getCase(position).getNom() + " pour " + prixRevente + "€");
@@ -38,10 +36,7 @@ public class ActionSurSalarieRevendreController implements EventHandler<ActionEv
 		} else if (c.getId() == 12 || c.getId() == 28) {
 			fenetreDeJeu.getPartie().getPM().getJoueurActif()
 					.setNbEntreprises(fenetreDeJeu.getPartie().getPM().getJoueurActif().getNbEntreprises() - 1);
-		} else {
-			CaseSalarieController t = (CaseSalarieController) fenetreDeJeu.getPartie().getPM().getCase(position);
-			t.setNbCompetence(0);
-		}
+		} 
 
 		for (int i = 0; i < 6; i++) {
 			fenetreDeJeu.getPartie().getPM().getCase(position).Salaries.get(i).setFill(Color.TRANSPARENT);
