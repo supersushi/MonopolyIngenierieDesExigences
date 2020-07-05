@@ -91,14 +91,20 @@ class CaseSalarieTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode monterEnCompetence donc le nbCompetence augmente
-	 * de 1
+	 * Permet de tester la méthode monterEnCompetence de la classe
+	 * donc le nbCompetence augmente de 1, l'argent du patron baisse du montant de la compétence, 
+	 * le montant de la case augmente du prix de la coompétence et le prix de la compétence augment de 50€
 	 */
 	void monterEnCompetenceTest() {
 		caseSal.setPatron(joueur1);
+		caseSal.setPrixCompetence(50);
+		caseSal.setPrix(150);
 		assertEquals(0, caseSal.getNbCompetence());
 		caseSal.monterEnCompetence(null, null);
 		assertEquals(1, caseSal.getNbCompetence());
+		assertEquals(950, caseSal.getPatron().getArgent());
+		assertEquals(200, caseSal.getPrix());
+		assertEquals(100, caseSal.getPrixCompetence());
 	}
 
 	@Test
