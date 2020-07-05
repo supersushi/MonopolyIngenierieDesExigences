@@ -36,7 +36,7 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 	 * @param Salaire        ArrayList
 	 * @param prixCompetence int
 	 * @param nbCompetence   int
-	 * @param competences	 ArrayList
+	 * @param competences    ArrayList
 	 * @param couleur        String
 	 */
 	public CaseSalarieController(String nom, int valeur, ArrayList<Integer> Salaire, int prixCompetence,
@@ -101,11 +101,11 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 			System.out
 					.println("-> " + joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			if (monopolyView != null)
-				monopolyView.afficherMessage(joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
+				monopolyView.afficherMessage(
+						joueur.getNom() + " embauche " + this.getNom() + " pour " + this.getPrix() + "€");
 			return true;
 		}
 	}
-
 
 	public ArrayList<String> getCompetences() {
 		return competences;
@@ -126,7 +126,8 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 			}
 			System.out.println(" > " + joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
 			if (monopolyView != null)
-				monopolyView.afficherMessage(joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
+				monopolyView.afficherMessage(
+						joueur.getNom() + " paye un salaire de " + getSalaire() + "€ à " + beneficiaire);
 		} else {
 			System.out.println(
 					"-> Le propriétaire est en arret maladie. " + joueur.getNom() + " ne paye pas de salaire.");
@@ -148,17 +149,17 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 		Patron.retirerArgent(this.getPrixCompetence());
 
 		if (this.nbCompetence <= 4) {
-			System.out.println("-> " + Patron.getNom() + " a permis à l'employé " + getNom() + "\n d'intégrer une formation pour \n"+ competence + "!");
-			if (monopolyView != null) 
-				monopolyView.afficherMessage(
-						"-> " + Patron.getNom() + " a permis à l'employé " + getNom() + " d'intégrer une formation pour "+ competence + "!");
-		} else if(this.nbCompetence == 5) {
+			System.out.println("-> " + Patron.getNom() + " a permis à l'employé " + getNom()
+					+ "\n d'intégrer une formation pour \n" + competence + "!");
+			if (monopolyView != null)
+				monopolyView.afficherMessage("-> " + Patron.getNom() + " a permis à l'employé " + getNom()
+						+ " d'intégrer une formation pour " + competence + "!");
+		} else if (this.nbCompetence == 5) {
 			System.out.println(getNom() + " a 5 compétences! Il obtient un grade!");
-			if (monopolyView != null) { 
-				monopolyView.afficherMessage(
-						"-> " + getNom() + " obtient un grade!");
+			if (monopolyView != null) {
+				monopolyView.afficherMessage("-> " + getNom() + " obtient un grade!");
 			}
-		}else {
+		} else {
 			System.out.println("-> " + Patron.getNom() + " a obtenu un grade pour \n" + getNom()
 					+ " et ne peut plus monter en compétence!");
 			if (monopolyView != null)
@@ -216,12 +217,10 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 		if (Patron.getArgent() < this.getPrixCompetence()) {
 			this.monterEnComptence = false;
 			System.out.println("Vous n'avez pas assez d'argent pour monter en compétence!");
-		}
-		if (getNbCompetence() == 5) {
+		} else if (getNbCompetence() == 5) {
 			this.monterEnComptence = false;
 			System.out.println("Vous ne pouvez pas avoir plus de compétence !");
-		}
-		else
+		} else
 			this.monterEnComptence = true;
 
 		return this.monterEnComptence;

@@ -150,7 +150,7 @@ public class ActionSurSalarieView extends ViewModel {
 		root = new HBox();
 		initRoot();
 
-		Scene scene = new Scene(root, 470, 130);
+		Scene scene = new Scene(root, 470, 180);
 		stage.setScene(scene);
 		stage.show();
 	}
