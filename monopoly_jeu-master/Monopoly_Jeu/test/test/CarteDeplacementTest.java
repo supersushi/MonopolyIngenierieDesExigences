@@ -24,11 +24,11 @@ class CarteDeplacementTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCarte de la classe dans le cas où la carte
+	 * Permet de tester la méthode action de la classe dans le cas où la carte
 	 * a un déplacement relatif et où le déplacement amène le joueur1 à passer par
 	 * la case départ donc le joueur1 change de position et gagne 200€
 	 */
-	void actionCarteDepRelatifTest() {
+	void actionDepRelatifTest() {
 		carteDep = new CarteDeplacementController("déplacement", "relatif", 23, true);
 		joueur1.setPosition(24);
 		carteDep.action(joueur1, plateau, null);
@@ -38,11 +38,11 @@ class CarteDeplacementTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCarte de la classe dans le cas où la carte
+	 * Permet de tester la méthode action de la classe dans le cas où la carte
 	 * est un arrêt maladie et où le joueur1 possède une carte de sortie d'arrêt
 	 * maladie donc le joueur1 perd sa carte de sortie maladie
 	 */
-	void actionCarteDepArretMalTest() {
+	void actionDepArretMalTest() {
 		carteDep = new CarteDeplacementController("ArretMaladie", "non relatif", 13, false);
 		joueur1.setCarteSortieArretMaladie(true);
 		carteDep.action(joueur1, plateau, null);
@@ -51,12 +51,12 @@ class CarteDeplacementTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCarte de la classe dans le cas où la carte
+	 * Permet de tester la méthode action de la classe dans le cas où la carte
 	 * est un arrêt maladie mais où le joueur1 ne possède pas de carte de sortie
 	 * d'arrêt maladie donc le joueur tombe malade et se déplace sur la case de la
 	 * carte
 	 */
-	void actionCarteMaladeTest() {
+	void actionMaladeTest() {
 		carteDep = new CarteDeplacementController("ArretMaladie", "non relatif", 13, false);
 		joueur1.setPosition(3);
 		carteDep.action(joueur1, plateau, null);

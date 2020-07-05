@@ -27,23 +27,14 @@ class CaseSalarieTest {
 			new ArrayList<Integer>(Arrays.asList(15, 30, 60, 120, 240, 480)), 80, 0, "turquoise", "description poste", 
 			new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
 	PlateauMonopoly plateau = new PlateauMonopoly(2);
-	CaseSalarieController caseSal1 = new CaseSalarieController("Salarié 1", 100,
-			new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise",
-			"description salarié 1", new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
-	CaseSalarieController caseSal2 = new CaseSalarieController("Salarié 2", 100,
-			new ArrayList<Integer>(Arrays.asList(6, 30, 90, 270, 400, 550)), 50, 0, "turquoise",
-			"description salarié 2", new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
-	CaseSalarieController caseSal3 = new CaseSalarieController("Salarié 3", 120,
-			new ArrayList<Integer>(Arrays.asList(8, 40, 100, 300, 450, 600)), 50, 0, "turquoise",
-			"description salarié 3", new ArrayList<String>(Arrays.asList("compétence 1", "compétence 2")));
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase dans le cas où le joueur1 embauche le
+	 * Permet de tester la méthode action dans le cas où le joueur1 embauche le
 	 * salarie donc le joueur1 devient le patron de la case, son argent baisse et le
 	 * salarié est ajouté dans sa liste de salariés
 	 */
-	void actionCaseEmbaucheTest() {
+	void actionEmbaucheTest() {
 		caseSal.setRep(true);
 		caseSal.setId(25);
 		caseSal.action(joueur1, null, null);
@@ -55,11 +46,11 @@ class CaseSalarieTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase dans le cas où ce n'est pas le patron
+	 * Permet de tester la méthode action dans le cas où ce n'est pas le patron
 	 * de la case qui tombe dessus donc l'argent du joueur2 baisse et celui du
 	 * joueur1 augmente
 	 */
-	void actionCasePayerTest() {
+	void actionPayerTest() {
 		caseSal.setPatron(joueur1);
 		caseSal.action(joueur2, null, null);
 		System.out.println(caseSal.getSalaire());
@@ -110,19 +101,17 @@ class CaseSalarieTest {
 	@Test
 	/**
 	 * Permet de tester la méthode getPeutMonterEnCompetence dans les différents cas
-	 * de la méthode (s'il peut monter en compétenece et si
-	 * le nombre de compétence a atteint son maximum)
+	 * de la méthode (s'il peut monter en compétenece, si le patron n'a plus d'argent et et si le nombre de compétence a atteint son maximum)
 	 */
 	void getPeutMonterEnCompetenceTest() {
 		caseSal.setPatron(joueur1);
+		caseSal.setPrixCompetence(100);
 		assertTrue(caseSal.getPeutMonterEnCompetence());
-		caseSal1.embaucherSalarie(joueur1, null);
-		caseSal2.embaucherSalarie(joueur1, null);
-		caseSal3.embaucherSalarie(joueur1, null);
 		caseSal.setPatron(joueur1);
 		assertTrue(caseSal.getPeutMonterEnCompetence());
-		caseSal1.setNbCompetence(2);
-		assertTrue(caseSal.getPeutMonterEnCompetence());
+		joueur1.retirerArgent(950);
+		assertFalse(caseSal.getPeutMonterEnCompetence());
+		joueur1.ajouterArgent(950);
 		caseSal.setNbCompetence(5);
 		assertFalse(caseSal.getPeutMonterEnCompetence());
 	}

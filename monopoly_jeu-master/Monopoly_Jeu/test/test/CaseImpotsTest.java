@@ -25,11 +25,11 @@ class CaseImpotsTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe donc le joueur perd le
+	 * Permet de tester la méthode action de la classe donc le joueur perd le
 	 * prix de la case impôt et le prix de la case open space augmente du prix de la
 	 * case impôt
 	 */
-	void actionCaseTest() {
+	void actionTest() {
 		assertEquals(0, caseOpenSp.getPrix());
 		caseImp.action(joueur1, plateau, null);
 		assertEquals(900, joueur1.getArgent());

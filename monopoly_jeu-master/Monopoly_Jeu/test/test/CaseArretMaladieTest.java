@@ -24,11 +24,11 @@ class CaseArretMaladieTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe dans le cas où le joueur1
+	 * Permet de tester la méthode action de la classe dans le cas où le joueur1
 	 * est malade et souhaite payer pour se soigner donc perd 25€ et son nombre de
 	 * tours en arrêt repasse à 1
 	 */
-	void actionCasePayerTest() {
+	void actionPayerTest() {
 		joueur1.setEstMalade(true);
 		caseArret.setRep(true);
 		joueur1.setToursEnArretMaladie(2);
@@ -39,11 +39,11 @@ class CaseArretMaladieTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe dans le cas où le joueur2
+	 * Permet de tester la méthode action de la classe dans le cas où le joueur2
 	 * est malade et est forcé de payer puisque son nombre de tours en arrêt est > 2
 	 * donc perd 25€, n'est plus malade et son nombre de tours en arrêt repasse à 1
 	 */
-	void actionCaseImpayeTest() {
+	void actionImpayeTest() {
 		joueur2.setEstMalade(true);
 		caseArret.setRep(false);
 		joueur2.setToursEnArretMaladie(3);

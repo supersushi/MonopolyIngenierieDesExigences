@@ -24,11 +24,11 @@ class CaseEntrepriseTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe dans le cas où le joueur1
+	 * Permet de tester la méthode action de la classe dans le cas où le joueur1
 	 * le joueur achète la case qui n'avait pas de patron donc perd le prix de la
 	 * case et augmente son nombre d'entreprise
 	 */
-	void actionCaseAchatTest() {
+	void actionAchatTest() {
 		caseEnt.setId(12);
 		caseEnt.setRep(true);
 		caseEnt.action(joueur1, plateau, null);
@@ -41,11 +41,11 @@ class CaseEntrepriseTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe dans le cas où le joueur2
+	 * Permet de tester la méthode action de la classe dans le cas où le joueur2
 	 * paye un salaire au joueur1 donc le joueur1 gagne de l'argent et le joueur2 en
 	 * perd
 	 */
-	void actionCaseSalaire() {
+	void actionSalaire() {
 		caseEnt.setPatron(joueur1);
 		caseEnt.action(joueur2, plateau, null);
 		assertTrue(1500 < joueur1.getArgent());
@@ -54,10 +54,10 @@ class CaseEntrepriseTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe dans le cas où le joueur1
+	 * Permet de tester la méthode action de la classe dans le cas où le joueur1
 	 * est malade donc le joueur2 ne lui paie pas de salaire
 	 */
-	void actionCaseSalaireMaladeTest() {
+	void actionSalaireMaladeTest() {
 		joueur1.setEstMalade(true);
 		caseEnt.setPatron(joueur1);
 		caseEnt.action(joueur2, plateau, null);

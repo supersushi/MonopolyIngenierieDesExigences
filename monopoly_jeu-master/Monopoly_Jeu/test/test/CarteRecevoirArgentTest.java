@@ -22,11 +22,11 @@ class CarteRecevoirArgentTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCarte de la classe dans le cas où la carte
+	 * Permet de tester la méthode action de la classe dans le cas où la carte
 	 * est Anniversaire donc tous les joueurs donnent 20€ au joueur (0 ici) qui a
 	 * tiré la carte
 	 */
-	void actionCarteAnniversaireTest() {
+	void actionAnniversaireTest() {
 		carteArgent = new CarteRecevoirArgentController("Anniversaire", "description", 50);
 		carteArgent.action(plateau.getJoueur(0), plateau, null);
 		assertEquals(1040, plateau.getJoueur(0).getArgent());
@@ -36,10 +36,10 @@ class CarteRecevoirArgentTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthide actionCarte de la classe donc l'argent du joueur
+	 * Permet de tester la méthide action de la classe donc l'argent du joueur
 	 * augmente du prix de la carte
 	 */
-	void actionCarteTest() {
+	void actionTest() {
 		carteArgent = new CarteRecevoirArgentController("Recevoir argent", "description", 60);
 		carteArgent.action(joueur, null, null);
 		assertEquals(1060, joueur.getArgent());

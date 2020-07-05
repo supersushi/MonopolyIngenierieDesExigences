@@ -22,11 +22,11 @@ class CartePayerTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode carteAction de la classe dans le cas où la carte
+	 * Permet de tester la méthode action de la classe dans le cas où la carte
 	 * est celle du président du conseil donc le joueur 0 donne 10€ à tous les
 	 * autres joueurs
 	 */
-	void carteActionPresidentTest() {
+	void actionPresidentTest() {
 		cartePayer = new CartePayerController("Président du conseil d'administration", "description", 10);
 		cartePayer.action(plateau.getJoueur(0), plateau, null);
 		assertEquals(980, plateau.getJoueur(0).getArgent());
@@ -36,11 +36,11 @@ class CartePayerTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode carteAction de la classe donc l'argent du joueur
+	 * Permet de tester la méthode action de la classe donc l'argent du joueur
 	 * baisse du prix de la carte et le prix dans la case OpenSpace augmente du prix
 	 * de la carte
 	 */
-	void carteActionTest() {
+	void actionTest() {
 		cartePayer = new CartePayerController("Carte Payer", "description", 30);
 		cartePayer.action(joueur, plateau, null);
 		assertEquals(970, joueur.getArgent());

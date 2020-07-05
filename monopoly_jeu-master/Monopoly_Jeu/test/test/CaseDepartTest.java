@@ -22,10 +22,10 @@ class CaseDepartTest {
 
 	@Test
 	/**
-	 * Permet de tester la méthode actionCase de la classe et vérifie que le joueur1
+	 * Permet de tester la méthode action de la classe et vérifie que le joueur1
 	 * gagne 200€
 	 */
-	void actionCaseTest() {
+	void actionTest() {
 		caseDep.action(joueur1, plateau, null);
 		assertEquals(1200, joueur1.getArgent());
 	}
