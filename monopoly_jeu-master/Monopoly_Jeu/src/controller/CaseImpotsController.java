@@ -44,7 +44,7 @@ public class CaseImpotsController extends CaseModel implements DefaultController
 	/**
 	 * Reprend le cours de la partie
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 		monopolyView.getPartie().reprendrePartie();
 	}
 

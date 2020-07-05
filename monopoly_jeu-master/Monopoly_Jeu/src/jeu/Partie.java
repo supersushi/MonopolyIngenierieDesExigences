@@ -93,7 +93,7 @@ public class Partie {
 								Thread.sleep(VITESSE_PARTIE);
 
 								pausePartie = true;
-								cells.fenetreAction(fjeu);
+								cells.actionView(fjeu);
 
 								while (pausePartie && !PARTIE_AUTO) {
 									Thread.sleep(200);

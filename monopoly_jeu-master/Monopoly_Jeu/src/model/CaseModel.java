@@ -169,29 +169,38 @@ public abstract class CaseModel {
 	public abstract void setRep(boolean b);
 
 	/**
-	 * Appelle la fenêtre d'action associé à la case (acquisition d'une compétence,
+	 * Appelle la view d'action associé à la case (acquisition d'une compétence,
 	 * d'un grade, tirage d'une carte)
 	 * 
-	 * @param fjeu : fenetre de la partie en cours
+	 * @param monopolyView : View de la partie en cours
 	 */
-	public abstract void fenetreAction(MonopolyView fjeu);
+	public abstract void actionView(MonopolyView monopolyView);
 
 	/**
 	 * Action de la case lorsqu'un joueur atteri dessus
 	 * 
-	 * @param joueur  JoueurMonopoly
-	 * @param plateau PlateauMonopoly
-	 * @param fjeu    FenetreDeJeu
+	 * @param joueur       JoueurMonopoly
+	 * @param plateau      PlateauMonopoly
+	 * @param monopolyView MonopolyView
+	 * @see MonopolyView
+	 * @see JoueurMonopoly
+	 * @see PlateauMonopoly
 	 */
-	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView fjeu);
+	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView);
 
 	@Override
 	public String toString() {
 		return "Case [nom=" + nom + ", id=" + id + ", valeur=" + valeur + "]";
 	}
 
+	/**
+	 * @return descriptionPoste String
+	 */
 	public abstract String descriptionPoste();
 
+	/**
+	 * @return competences ArrayList<String>
+	 */
 	public abstract ArrayList<String> getCompetences();
 
 }

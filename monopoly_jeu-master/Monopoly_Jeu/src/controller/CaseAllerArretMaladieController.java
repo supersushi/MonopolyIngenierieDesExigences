@@ -54,7 +54,7 @@ public class CaseAllerArretMaladieController extends CaseModel implements Defaul
 	/**
 	 * Cette méthode permet de reprendre une partie en cours
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 		monopolyView.getPartie().reprendrePartie();
 	}
 

@@ -35,7 +35,7 @@ public class CaseCommunauteController extends CaseModel implements DefaultContro
 	 * 
 	 * @see Carte
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 

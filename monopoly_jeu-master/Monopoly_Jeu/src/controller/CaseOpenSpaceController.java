@@ -41,7 +41,7 @@ public class CaseOpenSpaceController extends CaseModel implements DefaultControl
 	/**
 	 * Reprend le cours de la partie
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 		monopolyView.getPartie().reprendrePartie();
 	}
 

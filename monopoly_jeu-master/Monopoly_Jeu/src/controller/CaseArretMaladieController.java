@@ -107,7 +107,7 @@ public class CaseArretMaladieController extends CaseModel implements DefaultCont
 	/**
 	 * Reprend le cours de la partie
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 
 		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
@@ -130,7 +130,7 @@ public class CaseArretMaladieController extends CaseModel implements DefaultCont
 			e.printStackTrace();
 		}
 
-		plateau.getCase(joueur.getPosition()).fenetreAction(monopolyView);
+		plateau.getCase(joueur.getPosition()).actionView(monopolyView);
 		monopolyView.deplacerPion(joueur);
 		monopolyView.getPartie().pausePartie();
 		while (monopolyView.getPartie().getPausePartie() && !monopolyView.getPartie().PARTIE_AUTO) {

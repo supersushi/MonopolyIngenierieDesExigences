@@ -84,7 +84,7 @@ public class CarteDeplacementController extends CarteModel implements DefaultCon
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				plateau.getCase(joueur.getPosition()).fenetreAction(monopolyView);
+				plateau.getCase(joueur.getPosition()).actionView(monopolyView);
 				monopolyView.deplacerPion(joueur);
 				monopolyView.getPartie().pausePartie();
 				while (monopolyView.getPartie().getPausePartie() && !monopolyView.getPartie().PARTIE_AUTO) {

@@ -47,11 +47,11 @@ public abstract class CarteModel {
 	/**
 	 * Action en fonction du joueur et du plateau de jeu
 	 * 
-	 * @param joueur  JoueurMonopoly
-	 * @param plateau PlateauMonopoly
-	 * @param fjeu    FenetreDeJeu
+	 * @param joueur       JoueurMonopoly
+	 * @param plateau      PlateauMonopoly
+	 * @param monopolyView MonopolyView
 	 */
-	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView fjeu);
+	public abstract void action(JoueurMonopoly joueur, PlateauMonopoly plateau, MonopolyView monopolyView);
 
 	@Override
 	public String toString() {

@@ -171,7 +171,7 @@ public class CaseSalarieController extends CaseModel implements DefaultControlle
 	 * Méthode permettant l'affichage d'une fenêtre lors de l'embauche d'un salarie
 	 */
 	@SuppressWarnings("static-access")
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 
 		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();

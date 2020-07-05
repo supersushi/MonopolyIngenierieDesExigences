@@ -42,7 +42,7 @@ public class CaseDepartController extends CaseModel implements DefaultController
 	/**
 	 * Reprend la partie
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 		monopolyView.getPartie().reprendrePartie();
 	}
 

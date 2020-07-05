@@ -41,7 +41,7 @@ public class CaseChanceController extends CaseModel implements DefaultController
 	 * 
 	 * @see Carte
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 
 		Clavier es = new Clavier();
 

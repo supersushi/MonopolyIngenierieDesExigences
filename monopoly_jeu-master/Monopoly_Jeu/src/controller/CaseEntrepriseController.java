@@ -119,7 +119,7 @@ public class CaseEntrepriseController extends CaseModel implements DefaultContro
 	/**
 	 * Affiche une fenêtre pour l'achat de la case concernée
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 
 		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();

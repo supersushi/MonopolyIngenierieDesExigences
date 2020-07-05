@@ -103,7 +103,7 @@ public class CaseClientController extends CaseModel implements DefaultController
 	/**
 	 * Affiche une fenêtre pour embaucher un salarié
 	 */
-	public void fenetreAction(MonopolyView monopolyView) {
+	public void actionView(MonopolyView monopolyView) {
 
 		if (monopolyView.getPartie().PARTIE_AUTO) {
 			Random rand = new Random();
