@@ -104,19 +104,19 @@ class CaseSalarieTest {
 	@Test
 	/**
 	 * Permet de tester la méthode getPeutMonterEnCompetence dans les différents cas
-	 * de la méthode (si le joueur1 possède toutes les cases de la même couleur, si
+	 * de la méthode (s'il peut monter en compétenece et si
 	 * le nombre de compétence a atteint son maximum)
 	 */
 	void getPeutMonterEnCompetenceTest() {
 		caseSal.setPatron(joueur1);
-		assertFalse(caseSal.getPeutMonterEnCompetence());
+		assertTrue(caseSal.getPeutMonterEnCompetence());
 		caseSal1.embaucherSalarie(joueur1, null);
 		caseSal2.embaucherSalarie(joueur1, null);
 		caseSal3.embaucherSalarie(joueur1, null);
 		caseSal.setPatron(joueur1);
 		assertTrue(caseSal.getPeutMonterEnCompetence());
 		caseSal1.setNbCompetence(2);
-		assertFalse(caseSal.getPeutMonterEnCompetence());
+		assertTrue(caseSal.getPeutMonterEnCompetence());
 		caseSal.setNbCompetence(5);
 		assertFalse(caseSal.getPeutMonterEnCompetence());
 	}

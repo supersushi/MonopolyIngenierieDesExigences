@@ -38,22 +38,23 @@ public class CartePayerController extends CarteModel implements DefaultControlle
 
 		Clavier es = new Clavier();
 
-		if (getNom().equals("Pr�sident du conseil d'administration")) {
+		if (getNom().equals("Président du conseil d'administration")) {
 			for (int i = 0; i < plateau.getNbJoueurs(); i++) {
 				if (plateau.getJoueur(i) != joueur && !plateau.getJoueur(i).getEstFauche()) {
+					System.out.println(plateau.getJoueur(i));
 					plateau.getJoueur(i).ajouterArgent(10);
 					joueur.retirerArgent(10);
 				}
 			}
-			es.println("-> " + joueur.getNom() + " verse 10� � chaque joueur.");
+			es.println("-> " + joueur.getNom() + " verse 10€ à chaque joueur.");
 			if (monopolyView != null)
-				monopolyView.afficherMessage(joueur.getNom() + " verse 10� � chaque joueur.");
+				monopolyView.afficherMessage(joueur.getNom() + " verse 10€ à chaque joueur.");
 		} else {
 			joueur.retirerArgent(montant);
 			plateau.getCase(20).setPrix(plateau.getCase(20).getPrix() + montant);
-			es.println("-> " + joueur.getNom() + " d�pose " + montant + "� dans l'open space");
+			es.println("-> " + joueur.getNom() + " dépose " + montant + "€ dans l'open space");
 			if (monopolyView != null)
-				monopolyView.afficherMessage(joueur.getNom() + " d�pose " + montant + "� dans l'open space");
+				monopolyView.afficherMessage(joueur.getNom() + " dépose " + montant + "€ dans l'open space");
 		}
 	}
 
