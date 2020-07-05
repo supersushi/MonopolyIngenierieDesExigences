@@ -17,7 +17,7 @@ import view.MonopolyView;
 public class Partie {
 
 	private PlateauMonopoly pm;
-	private MonopolyView fjeu;
+	private MonopolyView monopolyView;
 	private boolean pausePartie = false;
 	public final static long VITESSE_PARTIE = 1000;
 	public final static boolean PARTIE_AUTO = false;
@@ -28,11 +28,11 @@ public class Partie {
 	 * Créé une partie en fonction du nombre de joueurs
 	 * 
 	 * @param nombreDeJoueurs int
-	 * @param fjeu            FenetreDeJeu
+	 * @param monopolyView    MonopolyView
 	 */
-	public Partie(int nombreDeJoueurs, ArrayList<String> nomsDesJoueurs, MonopolyView fjeu) {
+	public Partie(int nombreDeJoueurs, ArrayList<String> nomsDesJoueurs, MonopolyView monopolyView) {
 		this.pm = new PlateauMonopoly(nombreDeJoueurs);
-		this.fjeu = fjeu;
+		this.monopolyView = monopolyView;
 
 		for (int i = 0; i < nombreDeJoueurs; i++) {
 			pm.getJoueur(i).setNom(nomsDesJoueurs.get(i));
@@ -67,7 +67,8 @@ public class Partie {
 								es.println("- Debut du tour " + pm.getNbTours() + " -");
 
 							es.println("C'est au joueur: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
-							fjeu.afficherMessage("C'est à: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
+							monopolyView.afficherMessage(
+									"C'est à: " + joueur.getNom() + ". Il a " + joueur.getArgent() + "€");
 
 							if (!joueur.getEstFauche()) {
 								Thread.sleep(VITESSE_PARTIE);
@@ -76,11 +77,11 @@ public class Partie {
 
 								if (!joueur.getEstMalade()) {
 
-									fjeu.afficherDes(pm);
+									monopolyView.afficherDes(pm);
 									es.println("" + joueur.getNom() + " lance les Des... [" + pm.des.getDe1() + "]["
 											+ pm.des.getDe2() + "]... et obtient un " + lancé + " !");
 									pm.deplacerJoueur(joueur, lancé);
-									fjeu.deplacerPion(joueur);
+									monopolyView.deplacerPion(joueur);
 
 									cells = pm.getCase(joueur.getPosition());
 									es.println("" + joueur.getNom() + " avance de " + lancé + " cases et atterit sur "
@@ -93,13 +94,13 @@ public class Partie {
 								Thread.sleep(VITESSE_PARTIE);
 
 								pausePartie = true;
-								cells.actionView(fjeu);
+								cells.actionView(monopolyView);
 
 								while (pausePartie && !PARTIE_AUTO) {
 									Thread.sleep(200);
 								}
 
-								cells.action(joueur, pm, fjeu);
+								cells.action(joueur, pm, monopolyView);
 
 								es.println(
 										"" + joueur.getNom() + " possède à la fin du tour " + joueur.getArgent() + "€");
@@ -109,8 +110,8 @@ public class Partie {
 							}
 
 							Thread.sleep(400);
-							fjeu.deplacerPion(joueur);
-							fjeu.refreshLabels(pm);
+							monopolyView.deplacerPion(joueur);
+							monopolyView.refreshLabels(pm);
 
 							pausePartie = !joueur.getEstFauche();
 							while (pausePartie && !PARTIE_AUTO) {
@@ -118,7 +119,7 @@ public class Partie {
 							}
 
 							es.println("");
-							fjeu.effacerDes();
+							monopolyView.effacerDes();
 							pm.setJoueurSuivant();
 
 						}
@@ -126,7 +127,7 @@ public class Partie {
 						es.println("- La partie est terminée -");
 						es.println(" Le gagnant est " + pm.estVainqueur().getNom() + " !");
 
-						fjeu.afficherVainqueur(pm);
+						monopolyView.afficherVainqueur(pm);
 
 						return null;
 					}
